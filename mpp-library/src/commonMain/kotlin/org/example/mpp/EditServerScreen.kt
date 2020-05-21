@@ -7,7 +7,9 @@ import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
 import dev.icerock.moko.widgets.screen.navigation.Route
+import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
+import org.example.library.MR
 
 class EditServerScreen(
     private val theme: Theme,
@@ -16,6 +18,8 @@ class EditServerScreen(
     -> ServerViewModel,
     private val routeInputCode: Route<String>
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener {
+
+//    override var screenResult: Result? = null
 
     override fun createContentWidget() = with(theme) {
 
@@ -51,7 +55,7 @@ class EditServerScreen(
             val serverTokenInput = +input(
                 id = Ids.ServerToken,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                label = const("Server Token"),
+                label = const("Authorization Token"),
 //                field = FormField(initialValue = "", validation = liveBlock { null })
                 field = viewModel.serverTokenField
             )
@@ -71,6 +75,8 @@ class EditServerScreen(
             )
 //            {
 //                showToast("cancel pressed".desc())
+//            screenResult = Result(true)
+//            routeBack.route()
 //            }
 
             constraints {

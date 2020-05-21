@@ -6,10 +6,12 @@ import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
+import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 
 class MainScreen(
     private val theme: Theme,
+//    private val routeMain: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<MainViewModel.EventsListener>)
     -> MainViewModel
 ) : WidgetScreen<Args.Empty>(), MainViewModel.EventsListener {
@@ -30,9 +32,6 @@ class MainScreen(
                 content = ButtonWidget.Content.Text(Value.data("+".desc())),
                 onTap = viewModel::onAddPressed
             )
-//            {
-//                showToast("save pressed".desc())
-//            }
 
             constraints {
                 createNewServer bottomToBottom root offset 16
