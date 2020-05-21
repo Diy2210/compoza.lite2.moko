@@ -30,7 +30,7 @@ class App : BaseApplication() {
 
             val editServerScreen = registerScreen(EditServerScreen::class) {
                 navigationFactory.createEditServerScreen(
-                    editServerRoute = rootNavigationRouter.createReplaceRoute(newMainScreen)
+                    editServerRoute = rootNavigationRouter.createReplaceRoute(mainScreen)
                 )
             }
 
