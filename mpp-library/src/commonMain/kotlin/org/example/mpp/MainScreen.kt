@@ -1,7 +1,3 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
 package org.example.mpp
 
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -10,8 +6,6 @@ import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
-import dev.icerock.moko.widgets.screen.navigation.Route
-import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 
 class MainScreen(
@@ -52,7 +46,6 @@ class MainScreen(
     }
 
     override fun routeToEditServer() {
-        TODO("Not yet implemented")
         routeToEditServer()
     }
 }

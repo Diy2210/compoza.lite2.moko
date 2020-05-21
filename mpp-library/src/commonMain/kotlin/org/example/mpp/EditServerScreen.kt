@@ -7,7 +7,6 @@ import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
 import dev.icerock.moko.widgets.screen.navigation.Route
-import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 
 class EditServerScreen(
@@ -19,8 +18,6 @@ class EditServerScreen(
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener {
 
     override fun createContentWidget() = with(theme) {
-
-//        val viewModel = getViewModel(serverModelFactory)
 
         val viewModel = getViewModel {
             viewModelFactory(createEventsDispatcher())
