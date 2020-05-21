@@ -14,7 +14,7 @@ object Versions {
     private const val mokoResources = "0.9.0"
     private const val mokoNetwork = "0.6.0"
     private const val mokoUnits = "0.3.1"
-    private const val mokoWidgets = "0.1.0-dev-18"
+    private const val mokoWidgets = "0.1.0-dev-19"
 
     object Plugins {
         const val kotlin = Versions.kotlin
