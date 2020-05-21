@@ -13,10 +13,10 @@ import org.example.library.MR
 
 class EditServerScreen(
     private val theme: Theme,
-    private val mainRoute: Route<Unit>,
+    private val editServerRoute: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
-    -> ServerViewModel,
-    private val routeInputCode: Route<String>
+    -> ServerViewModel
+//    private val routeEditServer: Route<String>
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener {
 
 //    override var screenResult: Result? = null

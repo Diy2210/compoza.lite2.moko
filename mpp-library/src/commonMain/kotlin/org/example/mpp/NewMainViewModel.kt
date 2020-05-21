@@ -4,9 +4,9 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 
-class MainViewModel(
+class NewMainViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
-) : ViewModel(), EventsDispatcherOwner<MainViewModel.EventsListener> {
+) : ViewModel(), EventsDispatcherOwner<NewMainViewModel.EventsListener> {
 
     fun onAddPressed() {
         eventsDispatcher.dispatchEvent { routeToEditServer() }
