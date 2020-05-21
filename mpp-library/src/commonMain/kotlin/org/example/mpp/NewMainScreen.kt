@@ -6,6 +6,8 @@ import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
+import dev.icerock.moko.widgets.screen.navigation.NavigationBar
+import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
@@ -15,7 +17,9 @@ class NewMainScreen(
     private val routeNewMain: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<NewMainViewModel.EventsListener>)
     -> NewMainViewModel
-) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener {
+) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener, NavigationItem {
+
+    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Servers".desc())
 
     override fun createContentWidget() = with(theme) {
 
