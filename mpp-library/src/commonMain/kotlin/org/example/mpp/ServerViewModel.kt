@@ -11,28 +11,15 @@ class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
-    val serverTitle = FormField<String, StringDesc>("", liveBlock { null })
-    val serverUrl = FormField<String, StringDesc>("", liveBlock { null })
-    val serverToken = FormField<String, StringDesc>("", liveBlock { null })
-
-    val serverTitleField: FormField<String, StringDesc> = FormField(
-        initialValue = "",
-        validation = liveBlock { null }
-    )
-    val serverUrlField: FormField<String, StringDesc> = FormField(
-        initialValue = "",
-        validation = liveBlock { null }
-    )
-    val serverTokenField: FormField<String, StringDesc> = FormField(
-        initialValue = "",
-        validation = liveBlock { null }
-    )
+    val serverTitleField = FormField<String, StringDesc>("", liveBlock { null })
+    val serverUrlField = FormField<String, StringDesc>("", liveBlock { null })
+    val serverTokenField = FormField<String, StringDesc>("", liveBlock { null })
 
     fun onSavePressed() {
         val title = serverTitleField.data.value
-        val url = serverTitleField.data.value
-        val token = serverTitleField.data.value
-        println("server title: $title " + "server url: $url" + "token: $token")
+        val url = serverUrlField.data.value
+        val token = serverTokenField.data.value
+        println("server title: $title , server url: $url , server token: $token")
         eventsDispatcher.dispatchEvent {
             routeInputCode(title, url, token)
         }

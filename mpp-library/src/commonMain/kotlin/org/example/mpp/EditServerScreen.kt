@@ -111,7 +111,7 @@ class EditServerScreen(
     }
 
     override fun routeToMain() {
-        routeToMain()
+        routeToMain.route()
     }
 
     override fun routeInputCode(title: String, url: String, token: String) {
