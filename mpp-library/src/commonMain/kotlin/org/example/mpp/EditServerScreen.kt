@@ -21,7 +21,7 @@ class EditServerScreen(
     -> ServerViewModel
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
-    override val navigationBar: NavigationBar get() = NavigationBar.Normal("Add new server".desc())
+    override val navigationBar: NavigationBar = NavigationBar.Normal("Add new server".desc())
 
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {
@@ -111,12 +111,12 @@ class EditServerScreen(
         object CancelBtn : ButtonWidget.Id
     }
 
-    override fun routeToMain() {
-        routeToMain.route()
-    }
-
     override fun showError(error: StringDesc) {
         showToast(error)
+    }
+
+    override fun routeToMain() {
+        routeToMain.route()
     }
 
 //    override fun routeInputCode(title: String, url: String, token: String) {

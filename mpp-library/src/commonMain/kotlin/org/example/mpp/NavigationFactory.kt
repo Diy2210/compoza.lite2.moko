@@ -3,7 +3,9 @@ package org.example.mpp
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.navigation.Route
 
-class NavigationFactory(private val theme: Theme) {
+class NavigationFactory(
+    private val theme: Theme) {
+
     fun createMainScreen(routeEditServer: Route<Unit>): NewMainScreen {
         return NewMainScreen(
             theme = theme,
@@ -17,8 +19,11 @@ class NavigationFactory(private val theme: Theme) {
     fun createEditServerScreen(routeToMain: Route<Unit>): EditServerScreen {
         return EditServerScreen(
             theme = theme,
-            viewModelFactory = {
-                ServerViewModel(it)
+//            viewModelFactory = {
+//                ServerViewModel(it)
+//            },
+            viewModelFactory = { eventsDispatcher ->
+                ServerViewModel(eventsDispatcher)
             },
             routeToMain = routeToMain
         )

@@ -44,7 +44,7 @@ class App : BaseApplication() {
 
     class RootNavigationScreen(
         initialScreen: TypedScreenDesc<Args.Empty, NewMainScreen>,
-        router: Router)
-        : NavigationScreen<NewMainScreen>(initialScreen, router)
+        router: Router
+    ) : NavigationScreen<NewMainScreen>(initialScreen, router)
 }
 

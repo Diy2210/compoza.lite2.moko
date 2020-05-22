@@ -1,0 +1,14 @@
+CREATE TABLE Servers (
+  server_id INTEGER NOT NULL,
+  server_title TEXT NOT NULL
+  server_url TEXT NOT NULL
+  server_token TEXT NOT NULL
+)
+
+CREATE INDEX server_id ON Servers(server_id)
+CREATE INDEX server_title ON Servers(server_title)
+CREATE INDEX server_url ON Servers(server_url)
+CREATE INDEX server_token ON Servers(server_token)
+
+INSERT INTO Servers (server_id, server_title, server_url, server_token)
+VALUES (0, 'title', 'url', 'token')

@@ -20,12 +20,14 @@ class ServerViewModel(
         val title = serverTitleField.data.value
         val url = serverUrlField.data.value
         val token = serverTokenField.data.value
-        if(title.isBlank() || url.isBlank() || token.isBlank()) {
+
+        if (title.isBlank() || url.isBlank() || token.isBlank()) {
             eventsDispatcher.dispatchEvent {
                 showError("All fields are required".desc())
             }
             return
         }
+
         eventsDispatcher.dispatchEvent {
 //            routeInputCode(title, url, token)
             println("server title: $title , server url: $url , server token: $token")

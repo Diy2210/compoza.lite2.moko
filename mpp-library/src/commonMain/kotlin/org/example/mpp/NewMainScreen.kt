@@ -19,7 +19,7 @@ class NewMainScreen(
     -> NewMainViewModel
 ) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener, NavigationItem {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Servers".desc())
+    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Compoza Lite".desc())
 
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {
@@ -29,7 +29,6 @@ class NewMainScreen(
         viewModel.eventsDispatcher.listen(this@NewMainScreen, this@NewMainScreen)
 
         constraint(size = WidgetSize.AsParent) {
-
             val createNewServer = +button(
                 id = Ids.createNewServer,
                 size = WidgetSize.WrapContent,
@@ -39,7 +38,7 @@ class NewMainScreen(
 
             constraints {
                 createNewServer bottomToBottom root offset 16
-                createNewServer rightToRight   root offset 16
+                createNewServer rightToRight root offset 16
             }
         }
     }
