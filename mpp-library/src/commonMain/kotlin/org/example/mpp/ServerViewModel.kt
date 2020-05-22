@@ -39,7 +39,9 @@ class ServerViewModel(
     }
 
     fun onCancelPressed() {
-        eventsDispatcher.dispatchEvent { routeToMain() }
+        eventsDispatcher.dispatchEvent {
+            routeToMain()
+        }
     }
 
     interface EventsListener {

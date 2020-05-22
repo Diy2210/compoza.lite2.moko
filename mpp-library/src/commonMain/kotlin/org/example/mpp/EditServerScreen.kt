@@ -39,7 +39,7 @@ class EditServerScreen(
             val serverTitleInput = +input(
                 id = Ids.ServerTitle,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                label = const("ServerTitle"),
+                label = const("Server Title"),
 //                field = FormField(initialValue = "", validation = liveBlock { null })
                 field = viewModel.serverTitleField
             )

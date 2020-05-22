@@ -9,7 +9,6 @@ import dev.icerock.moko.widgets.screen.WidgetScreen
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import org.example.library.MR
 
 class MainScreen(
     private val theme: Theme
@@ -18,13 +17,13 @@ class MainScreen(
     override val navigationBar: NavigationBar = NavigationBar.Normal(title = "".desc())
 
     override fun createContentWidget() = with(theme) {
-            container(size = WidgetSize.AsParent) {
-                center {
-                    text(
-                        size = WidgetSize.WrapContent,
-                        text = const("".desc() as StringDesc)
-                    )
-                }
+        container(size = WidgetSize.AsParent) {
+            center {
+                text(
+                    size = WidgetSize.WrapContent,
+                    text = const("".desc() as StringDesc)
+                )
             }
         }
     }
+}

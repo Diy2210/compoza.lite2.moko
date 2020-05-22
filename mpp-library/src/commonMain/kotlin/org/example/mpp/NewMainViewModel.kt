@@ -9,7 +9,9 @@ class NewMainViewModel(
 ) : ViewModel(), EventsDispatcherOwner<NewMainViewModel.EventsListener> {
 
     fun onAddPressed() {
-        eventsDispatcher.dispatchEvent { routeToEditServer() }
+        eventsDispatcher.dispatchEvent {
+            routeToEditServer()
+        }
     }
 
     interface EventsListener {
