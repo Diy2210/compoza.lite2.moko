@@ -6,6 +6,7 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
+import dev.icerock.moko.resources.desc.desc
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
@@ -19,9 +20,15 @@ class ServerViewModel(
         val title = serverTitleField.data.value
         val url = serverUrlField.data.value
         val token = serverTokenField.data.value
-        println("server title: $title , server url: $url , server token: $token")
+        if(title.isBlank() || url.isBlank() || token.isBlank()) {
+            eventsDispatcher.dispatchEvent {
+                showError("All fields are required".desc())
+            }
+            return
+        }
         eventsDispatcher.dispatchEvent {
 //            routeInputCode(title, url, token)
+            println("server title: $title , server url: $url , server token: $token")
             routeToMain()
         }
     }
@@ -35,5 +42,6 @@ class ServerViewModel(
     interface EventsListener {
 //        fun routeInputCode(title: String, url: String, token: String)
         fun routeToMain()
+        fun showError(error: StringDesc)
     }
 }

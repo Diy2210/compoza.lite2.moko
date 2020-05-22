@@ -6,6 +6,7 @@ import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.NavigationScreen
+import dev.icerock.moko.widgets.screen.navigation.createPushRoute
 import dev.icerock.moko.widgets.screen.navigation.createReplaceRoute
 import dev.icerock.moko.widgets.screen.navigation.createRouter
 
@@ -29,8 +30,8 @@ class App : BaseApplication() {
             }
 
             val newMainScreen = registerScreen(NewMainScreen::class) {
-                navigationFactory.createMainScreenScreen(
-                    routeEditServer = rootNavigationRouter.createReplaceRoute(editServerScreen)
+                navigationFactory.createMainScreen(
+                    routeEditServer = rootNavigationRouter.createPushRoute(editServerScreen)
                 )
             }
 

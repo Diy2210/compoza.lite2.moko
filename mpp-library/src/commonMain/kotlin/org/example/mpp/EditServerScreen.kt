@@ -1,6 +1,7 @@
 package org.example.mpp
 
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
+import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
@@ -112,6 +113,10 @@ class EditServerScreen(
 
     override fun routeToMain() {
         routeToMain.route()
+    }
+
+    override fun showError(error: StringDesc) {
+        showToast(error)
     }
 
 //    override fun routeInputCode(title: String, url: String, token: String) {

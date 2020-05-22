@@ -14,7 +14,7 @@ class MainScreen(
     private val theme: Theme
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "".desc())
+    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Main Screen".desc())
 
     override fun createContentWidget() = with(theme) {
         container(size = WidgetSize.AsParent) {

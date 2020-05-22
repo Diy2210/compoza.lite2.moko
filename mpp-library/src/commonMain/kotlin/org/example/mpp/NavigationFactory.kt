@@ -4,7 +4,7 @@ import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.navigation.Route
 
 class NavigationFactory(private val theme: Theme) {
-    fun createMainScreenScreen(routeEditServer: Route<Unit>): NewMainScreen {
+    fun createMainScreen(routeEditServer: Route<Unit>): NewMainScreen {
         return NewMainScreen(
             theme = theme,
             viewModelFactory = {
