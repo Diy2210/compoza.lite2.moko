@@ -6,6 +6,8 @@ import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
+import dev.icerock.moko.widgets.screen.navigation.NavigationBar
+import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
@@ -13,16 +15,14 @@ import org.example.library.MR
 
 class EditServerScreen(
     private val theme: Theme,
-    private val editServerRoute: Route<Unit>,
+    private val routeToMain: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
     -> ServerViewModel
-//    private val routeEditServer: Route<String>
-) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener {
+) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
-//    override var screenResult: Result? = null
+    override val navigationBar: NavigationBar get() = NavigationBar.Normal("Add new server".desc())
 
     override fun createContentWidget() = with(theme) {
-
         val viewModel = getViewModel {
             viewModelFactory(createEventsDispatcher())
         }
@@ -31,10 +31,10 @@ class EditServerScreen(
 
         constraint(size = WidgetSize.AsParent) {
 
-            val title = +text(
-                size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("Add New Server")
-            )
+//            val title = +text(
+//                size = WidgetSize.WidthAsParentHeightWrapContent,
+//                text = const("Add New Server")
+//            )
 
             val serverTitleInput = +input(
                 id = Ids.ServerTitle,
@@ -80,10 +80,11 @@ class EditServerScreen(
 //            }
 
             constraints {
-                title topToTop root offset 16
-                title leftToRight root offset 150
+//                title topToTop root offset 16
+//                title leftToRight root offset 150
 
-                serverTitleInput topToBottom title offset 32
+//                serverTitleInput topToBottom title offset 32
+                serverTitleInput topToTop root offset 16
                 serverTitleInput leftRightToLeftRight root offset 16
 
                 serverUrlInput topToBottom serverTitleInput offset 8

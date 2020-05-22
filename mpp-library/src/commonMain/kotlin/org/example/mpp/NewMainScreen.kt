@@ -14,7 +14,7 @@ import dev.icerock.moko.widgets.style.view.WidgetSize
 
 class NewMainScreen(
     private val theme: Theme,
-    private val routeNewMain: Route<Unit>,
+    private val routeEditServer: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<NewMainViewModel.EventsListener>)
     -> NewMainViewModel
 ) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener, NavigationItem {
@@ -22,7 +22,6 @@ class NewMainScreen(
     override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Servers".desc())
 
     override fun createContentWidget() = with(theme) {
-
         val viewModel = getViewModel {
             viewModelFactory(createEventsDispatcher())
         }
@@ -50,7 +49,6 @@ class NewMainScreen(
     }
 
     override fun routeToEditServer() {
-//        routeToEditServer()
-        routeNewMain.route()
+        routeEditServer.route()
     }
 }

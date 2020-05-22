@@ -22,17 +22,18 @@ class App : BaseApplication() {
                 MainScreen(theme)
             }
 
-            val newMainScreen = registerScreen(NewMainScreen::class) {
-                navigationFactory.createMainScreenScreen(
-                    routeNewMain = rootNavigationRouter.createReplaceRoute(mainScreen)
+            val editServerScreen = registerScreen(EditServerScreen::class) {
+                navigationFactory.createEditServerScreen(
+                    routeToMain = rootNavigationRouter.createReplaceRoute(mainScreen)
                 )
             }
 
-            val editServerScreen = registerScreen(EditServerScreen::class) {
-                navigationFactory.createEditServerScreen(
-                    editServerRoute = rootNavigationRouter.createReplaceRoute(mainScreen)
+            val newMainScreen = registerScreen(NewMainScreen::class) {
+                navigationFactory.createMainScreenScreen(
+                    routeEditServer = rootNavigationRouter.createReplaceRoute(editServerScreen)
                 )
             }
+
 
             RootNavigationScreen(
                 initialScreen = newMainScreen,
