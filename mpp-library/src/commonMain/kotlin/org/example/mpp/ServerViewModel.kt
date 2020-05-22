@@ -21,7 +21,8 @@ class ServerViewModel(
         val token = serverTokenField.data.value
         println("server title: $title , server url: $url , server token: $token")
         eventsDispatcher.dispatchEvent {
-            routeInputCode(title, url, token)
+//            routeInputCode(title, url, token)
+            routeToMain()
         }
     }
 
@@ -32,7 +33,7 @@ class ServerViewModel(
     }
 
     interface EventsListener {
-        fun routeInputCode(title: String, url: String, token: String)
+//        fun routeInputCode(title: String, url: String, token: String)
         fun routeToMain()
     }
 }
