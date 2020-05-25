@@ -35,6 +35,7 @@ class App : BaseApplication() {
                 )
             }
 
+
             RootNavigationScreen(
                 initialScreen = newMainScreen,
                 router = rootNavigationRouter
