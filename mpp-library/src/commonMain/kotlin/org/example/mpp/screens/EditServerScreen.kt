@@ -12,14 +12,14 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import org.example.mpp.models.ServerViewModel
+import org.example.mpp.models.EditServerViewModel
 
 class EditServerScreen(
     private val theme: Theme,
     private val routeToMain: Route<Unit>,
-    private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
-    -> ServerViewModel
-) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
+    private val viewModelFactory: (EventsDispatcher<EditServerViewModel.EventsListener>)
+    -> EditServerViewModel
+) : WidgetScreen<Args.Empty>(), EditServerViewModel.EventsListener, NavigationItem {
 
     override val navigationBar: NavigationBar = NavigationBar.Normal("Add new server".desc())
 

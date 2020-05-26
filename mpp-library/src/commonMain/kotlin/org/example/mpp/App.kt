@@ -12,6 +12,7 @@ import dev.icerock.moko.widgets.screen.navigation.createRouter
 import org.example.mpp.screens.DetailsScreen
 import org.example.mpp.screens.EditServerScreen
 import org.example.mpp.screens.NewMainScreen
+import org.example.mpp.screens.ServerListScreen
 
 class App : BaseApplication() {
     override fun setup(): ScreenDesc<Args.Empty> {
@@ -36,10 +37,14 @@ class App : BaseApplication() {
                 DetailsScreen(theme)
             }
 
+            val serverListScreen = registerScreen(ServerListScreen::class) {
+                ServerListScreen(theme)
+            }
+
             val newMainScreen = registerScreen(NewMainScreen::class) {
                 navigationFactory.createMainScreen(
-                    routeEditServer = rootNavigationRouter.createPushRoute(editServerScreen),
-                    routeDetails = rootNavigationRouter.createPushRoute(detailsScreen)
+                    routeEditServer = rootNavigationRouter.createPushRoute(editServerScreen)
+//                    routeDetails = rootNavigationRouter.createPushRoute(detailsScreen)
                 )
             }
 

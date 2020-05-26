@@ -14,14 +14,14 @@ class NewMainViewModel(
         }
     }
 
-    fun onDetailsPressed() {
-        eventsDispatcher.dispatchEvent {
-            routeToDetails()
-        }
-    }
+//    fun onDetailsPressed() {
+//        eventsDispatcher.dispatchEvent {
+//            routeToDetails()
+//        }
+//    }
 
     interface EventsListener {
         fun routeToEditServer()
-        fun routeToDetails()
+//        fun routeToDetails()
     }
 }

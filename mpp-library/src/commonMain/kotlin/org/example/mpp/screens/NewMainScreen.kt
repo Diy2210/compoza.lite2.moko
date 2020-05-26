@@ -16,7 +16,7 @@ import org.example.mpp.models.NewMainViewModel
 class NewMainScreen(
     private val theme: Theme,
     private val routeEditServer: Route<Unit>,
-    private val routeDetails: Route<Unit>,
+//    private val routeDetails: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<NewMainViewModel.EventsListener>)
     -> NewMainViewModel
 ) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener, NavigationItem {
@@ -31,6 +31,13 @@ class NewMainScreen(
         viewModel.eventsDispatcher.listen(this@NewMainScreen, this@NewMainScreen)
 
         constraint(size = WidgetSize.AsParent) {
+//            val list = +list(
+//                id = Ids.list,
+//                items = "1, 2, 3",
+//                size = WidgetSize.WrapContent,
+//
+//            )
+
             val createNewServer = +button(
                 id = Ids.createNewServer,
                 size = WidgetSize.WrapContent,
@@ -38,18 +45,21 @@ class NewMainScreen(
                 onTap = viewModel::onAddPressed
             )
 
-            val viewDetails = +button(
-                size = WidgetSize.WrapContent,
-                content = ButtonWidget.Content.Text(Value.data("details".desc())),
-                onTap = viewModel::onDetailsPressed
-            )
+//            val viewDetails = +button(
+//                size = WidgetSize.WrapContent,
+//                content = ButtonWidget.Content.Text(Value.data("details".desc())),
+//                onTap = viewModel::onDetailsPressed
+//            )
 
             constraints {
+//                List bottomToBottom root offset 16
+//                List leftToRight root offset 16
+
                 createNewServer bottomToBottom root offset 16
                 createNewServer rightToRight root offset 16
 
-                viewDetails bottomToBottom root offset 16
-                viewDetails leftToLeft  root offset 16
+//                viewDetails bottomToBottom root offset 16
+//                viewDetails leftToLeft  root offset 16
             }
         }
     }
@@ -62,7 +72,7 @@ class NewMainScreen(
         routeEditServer.route()
     }
 
-    override fun routeToDetails() {
-        routeDetails.route()
-    }
+//    override fun routeToDetails() {
+//        routeDetails.route()
+//    }
 }
