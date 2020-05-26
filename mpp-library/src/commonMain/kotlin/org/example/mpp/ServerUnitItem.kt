@@ -2,6 +2,7 @@ package org.example.mpp
 
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.constraint
 import dev.icerock.moko.widgets.core.Theme
@@ -22,13 +23,14 @@ class ServerUnitItem(
     override fun createWidget(data: LiveData<Server>): UnitItemRoot {
         return with(theme) {
             constraint(size = WidgetSize.WidthAsParentHeightWrapContent) {
+
                 val title = +text(
                     size = WidgetSize.Const(
                         width = SizeSpec.MatchConstraint,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
-                        it.title.desc()
+                        it.title.desc() as StringDesc
                     }
                 )
 
@@ -38,7 +40,7 @@ class ServerUnitItem(
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
-                        it.url.desc()
+                        it.url.desc() as StringDesc
                     }
                 )
 
@@ -52,6 +54,8 @@ class ServerUnitItem(
                     title centerYToCenterY root
                 }
             }
-        }.let { UnitItemRoot.from(it) }
+        }.let {
+            UnitItemRoot.from(it)
+        }
     }
 }

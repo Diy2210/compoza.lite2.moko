@@ -23,8 +23,8 @@ class App : BaseApplication() {
         return registerScreen(RootNavigationScreen::class) {
             val rootNavigationRouter = createRouter()
 
-            val mainScreen = registerScreen(MainScreen::class) {
-                MainScreen(theme)
+            val mainScreen = registerScreen(ServerListScreen::class) {
+                ServerListScreen(theme)
             }
 
             val editServerScreen = registerScreen(EditServerScreen::class) {
@@ -37,9 +37,9 @@ class App : BaseApplication() {
                 DetailsScreen(theme)
             }
 
-            val serverListScreen = registerScreen(ServerListScreen::class) {
-                ServerListScreen(theme)
-            }
+//            val serverListScreen = registerScreen(ServerListScreen::class) {
+//                ServerListScreen(theme)
+//            }
 
             val newMainScreen = registerScreen(NewMainScreen::class) {
                 navigationFactory.createMainScreen(
