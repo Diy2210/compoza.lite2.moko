@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.models
 
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
@@ -14,7 +14,14 @@ class NewMainViewModel(
         }
     }
 
+    fun onDetailsPressed() {
+        eventsDispatcher.dispatchEvent {
+            routeToDetails()
+        }
+    }
+
     interface EventsListener {
         fun routeToEditServer()
+        fun routeToDetails()
     }
 }

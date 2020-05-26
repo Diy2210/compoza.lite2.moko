@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.screens
 
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.resources.desc.StringDesc
@@ -12,7 +12,7 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import org.example.library.MR
+import org.example.mpp.models.ServerViewModel
 
 class EditServerScreen(
     private val theme: Theme,

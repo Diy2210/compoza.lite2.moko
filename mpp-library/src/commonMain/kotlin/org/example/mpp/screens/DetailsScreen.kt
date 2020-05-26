@@ -1,5 +1,6 @@
-package org.example.mpp
+package org.example.mpp.screens
 
+import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.constraint
 import dev.icerock.moko.widgets.core.Theme
@@ -7,6 +8,7 @@ import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
+import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 

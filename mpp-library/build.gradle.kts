@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("dev.icerock.mobile.multiplatform")
     id("dev.icerock.mobile.multiplatform-resources")
+    id("com.squareup.sqldelight")
 }
 
 android {
@@ -13,6 +14,13 @@ android {
         targetSdkVersion(Versions.Android.targetSdk)
     }
 }
+
+sqldelight {
+    database("ServerDB") {
+        packageName = "org.example.app"
+    }
+}
+
 
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,

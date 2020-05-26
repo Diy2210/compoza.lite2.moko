@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.models
 
 import dev.icerock.moko.fields.FormField
 import dev.icerock.moko.fields.liveBlock
