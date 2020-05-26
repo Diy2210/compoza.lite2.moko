@@ -39,6 +39,7 @@ class ServerListScreen(
             )
         }
     }
+
     private fun serversToTableUnits(servers: List<Server>): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(

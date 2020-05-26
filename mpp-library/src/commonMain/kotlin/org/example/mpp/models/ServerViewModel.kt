@@ -16,5 +16,6 @@ class ServerViewModel: ViewModel() {
                 )
             }
         )
+
     val servers: LiveData<List<Server>> = _servers
 }

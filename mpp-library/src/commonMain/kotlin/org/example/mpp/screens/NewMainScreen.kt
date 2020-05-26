@@ -31,12 +31,6 @@ class NewMainScreen(
         viewModel.eventsDispatcher.listen(this@NewMainScreen, this@NewMainScreen)
 
         constraint(size = WidgetSize.AsParent) {
-//            val list = +list(
-//                id = Ids.list,
-//                items = "1, 2, 3",
-//                size = WidgetSize.WrapContent,
-//
-//            )
 
             val createNewServer = +button(
                 id = Ids.createNewServer,
@@ -52,9 +46,6 @@ class NewMainScreen(
 //            )
 
             constraints {
-//                List bottomToBottom root offset 16
-//                List leftToRight root offset 16
-
                 createNewServer bottomToBottom root offset 16
                 createNewServer rightToRight root offset 16
 

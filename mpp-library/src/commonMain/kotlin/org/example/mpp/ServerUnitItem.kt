@@ -18,10 +18,12 @@ class ServerUnitItem(
     itemId = itemId,
     data = server
 ) {
+
     override val reuseId: String = "serverCell"
 
     override fun createWidget(data: LiveData<Server>): UnitItemRoot {
         return with(theme) {
+
             constraint(size = WidgetSize.WidthAsParentHeightWrapContent) {
 
                 val title = +text(
