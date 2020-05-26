@@ -33,7 +33,9 @@ class ServerListScreen(
             list(
                 size = WidgetSize.AsParent,
                 id = Ids.List,
-                items = viewModel.servers.map { serversToTableUnits(it) }
+                items = viewModel.servers.map {
+                    serversToTableUnits(it)
+                }
             )
         }
     }

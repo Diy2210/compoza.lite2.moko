@@ -45,13 +45,11 @@ class ServerUnitItem(
                 )
 
                 constraints {
-                    url.top pin root.top offset 16
-                    url.left pin root.left offset 16
-                    url.bottom pin root.bottom offset 16
+                    title topToTop root offset 16
+                    title leftRightToLeftRight root offset 16
 
-                    title.left pin url.right offset 8
-                    title.right pin root.right offset 16
-                    title centerYToCenterY root
+                    url topToBottom title offset 8
+                    url leftRightToLeftRight root offset 16
                 }
             }
         }.let {

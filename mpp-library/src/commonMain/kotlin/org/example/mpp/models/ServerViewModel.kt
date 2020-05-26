@@ -8,7 +8,7 @@ import org.example.mpp.Server
 class ServerViewModel: ViewModel() {
     private val _servers: MutableLiveData<List<Server>> =
         MutableLiveData(
-            initialValue = List(10) {
+            initialValue = List(20) {
                 Server(
                     id = it,
                     title = "Test",
