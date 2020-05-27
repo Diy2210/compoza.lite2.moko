@@ -1,43 +1,100 @@
 package org.example.mpp.screens
 
+import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
-import dev.icerock.moko.widgets.ListWidget
+import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
+import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.core.Widget
-import dev.icerock.moko.widgets.list
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
 import dev.icerock.moko.widgets.screen.getViewModel
+import dev.icerock.moko.widgets.screen.listen
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
+import dev.icerock.moko.widgets.screen.navigation.Route
+import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import org.example.mpp.Server
+import org.example.library.MR
+import org.example.mpp.models.Server
 import org.example.mpp.ServerUnitItem
+import org.example.mpp.models.NewMainViewModel
 import org.example.mpp.models.ServerViewModel
 
 class ServerListScreen(
-    private val theme: Theme
-) : WidgetScreen<Args.Empty>(), NavigationItem {
+    private val theme: Theme,
+    private val routeEditServer: Route<Unit>,
+    private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
+    -> ServerViewModel
+) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem,
+    NewMainViewModel.EventsListener {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Compoza Lite".desc())
+    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
 
-    override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
+//    override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
+//
+//        val viewModel = getViewModel {
+////            ServerViewModel()
+//            viewModelFactory(createEventsDispatcher())
+//        }
+//
+//        viewModel.eventsDispatcher.listen(this@ServerListScreen, this@ServerListScreen)
+//
+//        return with(theme) {
+//            list(
+//                size = WidgetSize.AsParent,
+//                id = Ids.List,
+//                items = viewModel.servers.map {
+//                    serversToTableUnits(it)
+//                }
+//            )
+//        }
+//    }
+
+    override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {
-            ServerViewModel()
+            viewModelFactory(createEventsDispatcher())
         }
 
-        return with(theme) {
-            list(
+        viewModel.eventsDispatcher.listen(this@ServerListScreen, this@ServerListScreen)
+
+        constraint(size = WidgetSize.AsParent) {
+            val list = +list(
                 size = WidgetSize.AsParent,
                 id = Ids.List,
                 items = viewModel.servers.map {
                     serversToTableUnits(it)
                 }
             )
+
+            val createNewServer = +button(
+                id = Ids.createNewServer,
+                size = WidgetSize.WrapContent,
+                content = ButtonWidget.Content.Text(Value.data("+".desc())),
+                onTap = viewModel::onAddPressed
+            )
+
+            constraints {
+                list topToTop root offset 8
+                list leftToRight root offset 8
+
+                createNewServer bottomToBottom root offset 16
+                createNewServer rightToRight root offset 16
+            }
         }
+
+    }
+
+    object Ids {
+        object List : ListWidget.Id
+        object createNewServer : ButtonWidget.Id
+    }
+
+    override fun routeToEditServer() {
+        routeEditServer.route()
     }
 
     private fun serversToTableUnits(servers: List<Server>): List<TableUnitItem> {
@@ -48,9 +105,5 @@ class ServerListScreen(
                 server = server
             )
         }
-    }
-
-    object Ids {
-        object List : ListWidget.Id
     }
 }

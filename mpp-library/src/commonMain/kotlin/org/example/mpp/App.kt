@@ -5,10 +5,7 @@ import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
-import dev.icerock.moko.widgets.screen.navigation.NavigationScreen
-import dev.icerock.moko.widgets.screen.navigation.createPushRoute
-import dev.icerock.moko.widgets.screen.navigation.createReplaceRoute
-import dev.icerock.moko.widgets.screen.navigation.createRouter
+import dev.icerock.moko.widgets.screen.navigation.*
 import org.example.mpp.screens.DetailsScreen
 import org.example.mpp.screens.EditServerScreen
 import org.example.mpp.screens.NewMainScreen
@@ -23,23 +20,30 @@ class App : BaseApplication() {
         return registerScreen(RootNavigationScreen::class) {
             val rootNavigationRouter = createRouter()
 
-            val mainScreen = registerScreen(ServerListScreen::class) {
-                ServerListScreen(theme)
+            val mainScreen = registerScreen(MainScreen::class) {
+                MainScreen(theme)
             }
 
-            val editServerScreen = registerScreen(EditServerScreen::class) {
-                navigationFactory.createEditServerScreen(
+            val detailsScreen = registerScreen(DetailsScreen::class) {
+//                DetailsScreen(theme)
+                navigationFactory.createDetailsScreen(
                     routeToMain = rootNavigationRouter.createReplaceRoute(mainScreen)
                 )
             }
 
-            val detailsScreen = registerScreen(DetailsScreen::class) {
-                DetailsScreen(theme)
+
+            val editServerScreen = registerScreen(EditServerScreen::class) {
+                navigationFactory.createEditServerScreen(
+                    routeToMain = rootNavigationRouter.createPushRoute(detailsScreen)
+                )
             }
 
-//            val serverListScreen = registerScreen(ServerListScreen::class) {
+            val serverListScreen = registerScreen(ServerListScreen::class) {
 //                ServerListScreen(theme)
-//            }
+                navigationFactory.createServerListScreen(
+                    routeToMain = rootNavigationRouter.createPushRoute(editServerScreen)
+                )
+            }
 
             val newMainScreen = registerScreen(NewMainScreen::class) {
                 navigationFactory.createMainScreen(
@@ -49,15 +53,15 @@ class App : BaseApplication() {
             }
 
             RootNavigationScreen(
-                initialScreen = newMainScreen,
+                initialScreen = serverListScreen,
                 router = rootNavigationRouter
             )
         }
     }
 
     class RootNavigationScreen(
-        initialScreen: TypedScreenDesc<Args.Empty, NewMainScreen>,
+        initialScreen: TypedScreenDesc<Args.Empty, ServerListScreen>,
         router: Router
-    ) : NavigationScreen<NewMainScreen>(initialScreen, router)
+    ) : NavigationScreen<ServerListScreen>(initialScreen, router)
 }
 

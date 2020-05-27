@@ -21,7 +21,6 @@ sqldelight {
     }
 }
 
-
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,
     Deps.Libs.MultiPlatform.mokoWidgets

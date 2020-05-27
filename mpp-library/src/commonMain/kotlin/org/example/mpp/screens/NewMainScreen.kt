@@ -11,6 +11,7 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
+import org.example.library.MR
 import org.example.mpp.models.NewMainViewModel
 
 class NewMainScreen(
@@ -21,9 +22,10 @@ class NewMainScreen(
     -> NewMainViewModel
 ) : WidgetScreen<Args.Empty>(), NewMainViewModel.EventsListener, NavigationItem {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(title = "Compoza Lite".desc())
+    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
 
     override fun createContentWidget() = with(theme) {
+
         val viewModel = getViewModel {
             viewModelFactory(createEventsDispatcher())
         }

@@ -11,6 +11,7 @@ import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
+import org.example.mpp.models.Server
 
 class ServerUnitItem(
     private val theme: Theme, itemId: Long, server: Server

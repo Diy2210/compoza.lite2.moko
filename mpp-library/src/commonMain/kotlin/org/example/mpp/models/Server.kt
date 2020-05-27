@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.models
 
 data class Server(
     val id: Int,
