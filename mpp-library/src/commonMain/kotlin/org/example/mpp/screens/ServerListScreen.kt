@@ -7,7 +7,6 @@ import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
-import dev.icerock.moko.widgets.core.Widget
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
 import dev.icerock.moko.widgets.screen.getViewModel
@@ -16,12 +15,10 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
-import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
 import org.example.mpp.models.Server
 import org.example.mpp.ServerUnitItem
-import org.example.mpp.models.NewMainViewModel
 import org.example.mpp.models.ServerViewModel
 
 class ServerListScreen(
@@ -29,30 +26,9 @@ class ServerListScreen(
     private val routeEditServer: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
     -> ServerViewModel
-) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem,
-    NewMainViewModel.EventsListener {
+) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
-
-//    override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
-//
-//        val viewModel = getViewModel {
-////            ServerViewModel()
-//            viewModelFactory(createEventsDispatcher())
-//        }
-//
-//        viewModel.eventsDispatcher.listen(this@ServerListScreen, this@ServerListScreen)
-//
-//        return with(theme) {
-//            list(
-//                size = WidgetSize.AsParent,
-//                id = Ids.List,
-//                items = viewModel.servers.map {
-//                    serversToTableUnits(it)
-//                }
-//            )
-//        }
-//    }
 
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {

@@ -7,8 +7,8 @@ import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 
 class ServerViewModel(
-    override val eventsDispatcher: EventsDispatcher<NewMainViewModel.EventsListener>
-): ViewModel(), EventsDispatcherOwner<NewMainViewModel.EventsListener> {
+    override val eventsDispatcher: EventsDispatcher<ServerViewModel.EventsListener>
+): ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
     private val _servers: MutableLiveData<List<Server>> =
         MutableLiveData(
