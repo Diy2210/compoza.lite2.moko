@@ -1,6 +1,8 @@
 package org.example.mpp.screens
 
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.widgets.ButtonWidget
+import dev.icerock.moko.widgets.TextWidget
 import dev.icerock.moko.widgets.constraint
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.Args
@@ -22,14 +24,19 @@ class DetailsScreen(
 
         constraint(size = WidgetSize.AsParent) {
             val title = +text(
+                id = Ids.ServerName,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("Add New Server")
+                text = const("Server Name")
             )
 
             constraints {
                 title topToTop root offset 16
-                title leftToRight root offset 150
+                title leftToLeft root offset 16
             }
         }
+    }
+
+    object Ids {
+        object ServerName : TextWidget.Id
     }
 }

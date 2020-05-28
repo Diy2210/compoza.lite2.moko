@@ -11,18 +11,18 @@ import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
-import org.example.mpp.models.Server
+import org.example.mpp.models.ServerModel
 
 class ServerUnitItem(
-    private val theme: Theme, itemId: Long, server: Server
-) : WidgetsTableUnitItem<Server>(
+    private val theme: Theme, itemId: Long, server: ServerModel
+) : WidgetsTableUnitItem<ServerModel>(
     itemId = itemId,
     data = server
 ) {
 
     override val reuseId: String = "serverCell"
 
-    override fun createWidget(data: LiveData<Server>): UnitItemRoot {
+    override fun createWidget(data: LiveData<ServerModel>): UnitItemRoot {
         return with(theme) {
 
             constraint(size = WidgetSize.WidthAsParentHeightWrapContent) {

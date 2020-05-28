@@ -17,7 +17,7 @@ import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
-import org.example.mpp.models.Server
+import org.example.mpp.models.ServerModel
 import org.example.mpp.ServerUnitItem
 import org.example.mpp.models.ServerViewModel
 
@@ -73,11 +73,11 @@ class ServerListScreen(
         routeEditServer.route()
     }
 
-    private fun serversToTableUnits(servers: List<Server>): List<TableUnitItem> {
+    private fun serversToTableUnits(servers: List<ServerModel>): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(
                 theme = theme,
-                itemId = server.id.toLong(),
+                itemId = server.ID.toLong(),
                 server = server
             )
         }

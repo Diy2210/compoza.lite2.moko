@@ -10,18 +10,19 @@ class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<ServerViewModel.EventsListener>
 ): ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
-    private val _servers: MutableLiveData<List<Server>> =
+    private val _servers: MutableLiveData<List<ServerModel>> =
         MutableLiveData(
             initialValue = List(5) {
-                Server(
-                    id = it,
+                ServerModel(
+                    ID = it,
                     title = "Test",
-                    url = "test.com"
+                    url = "test.com",
+                    token = ""
                 )
             }
         )
 
-    val servers: LiveData<List<Server>> = _servers
+    val servers: LiveData<List<ServerModel>> = _servers
 
     fun onAddPressed() {
         eventsDispatcher.dispatchEvent {

@@ -1,8 +1,5 @@
 package org.example.mpp
 
-import com.squareup.sqldelight.ColumnAdapter
-import com.squareup.sqldelight.db.SqlDriver
-
 class ServerBase {
 
 //    fun createDatabase(driver: SqlDriver): ServerBase {
@@ -19,9 +16,8 @@ class ServerBase {
 //        }
 //    }
 
+//    val database = Server(driver)
 //    val database = driver.ServerDB
-//
-//    val servers: ServerDB = database.database
 //
 //    println(ser.selectAll().executeAsList())
 //// Prints [HockeyPlayer.Impl(15, "Ryan Getzlaf")]

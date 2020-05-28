@@ -16,6 +16,11 @@ android {
 }
 
 sqldelight {
+//    database("ServerDB") {
+//        packageName = "org.example.app"
+//        sourceFolders = (listOf("sqldelight"))
+//        schemaOutputDirectory = file("src/commonMain/sqldelight/databases")
+//    }
     database("ServerDB") {
         packageName = "org.example.app"
     }

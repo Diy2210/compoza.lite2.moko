@@ -44,13 +44,6 @@ class App : BaseApplication() {
                 )
             }
 
-//            val newMainScreen = registerScreen(NewMainScreen::class) {
-//                navigationFactory.createMainScreen(
-//                    routeEditServer = rootNavigationRouter.createPushRoute(editServerScreen)
-////                    routeDetails = rootNavigationRouter.createPushRoute(detailsScreen)
-//                )
-//            }
-
             RootNavigationScreen(
                 initialScreen = serverListScreen,
                 router = rootNavigationRouter
