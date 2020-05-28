@@ -26,14 +26,13 @@ class App : BaseApplication() {
             val detailsScreen = registerScreen(DetailsScreen::class) {
 //                DetailsScreen(theme)
                 navigationFactory.createDetailsScreen(
-                    routeToMain = rootNavigationRouter.createReplaceRoute(mainScreen)
+                    routeToMain = rootNavigationRouter.createPopToRootRoute()
                 )
             }
 
-
             val editServerScreen = registerScreen(EditServerScreen::class) {
                 navigationFactory.createEditServerScreen(
-                    routeToMain = rootNavigationRouter.createPushRoute(detailsScreen)
+                    routeToMain = rootNavigationRouter.createPopToRootRoute()
                 )
             }
 
