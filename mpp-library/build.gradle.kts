@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("dev.icerock.mobile.multiplatform")
     id("dev.icerock.mobile.multiplatform-resources")
+    id("dev.icerock.mobile.multiplatform-network-generator")
     id("com.squareup.sqldelight")
 }
 
@@ -23,12 +24,14 @@ sqldelight {
 //    }
     database("ServerDB") {
         packageName = "org.example.app"
+        schemaOutputDirectory = file("src/commonMain/Schema/")
     }
 }
 
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoWidgets
+    Deps.Libs.MultiPlatform.mokoWidgets,
+    Deps.Libs.MultiPlatform.mokoNetwork
 )
 
 setupFramework(

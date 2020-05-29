@@ -40,4 +40,6 @@
     <string name="disk_free">Free</string>
     <string name="free_size">%s%% (%s)</string>
 
+    <string name="api_url">https://xray.instamaven.com/api/info/</string>
+
 </resources>

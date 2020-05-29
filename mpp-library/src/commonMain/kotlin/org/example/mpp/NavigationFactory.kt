@@ -15,9 +15,6 @@ class NavigationFactory(
     fun createServerListScreen(routeToMain: Route<Unit>) : ServerListScreen {
         return ServerListScreen(
             theme = theme,
-//            viewModelFactory = {
-//                ServerViewModel(it)
-//            },
             viewModelFactory = {
                 ServerViewModel(EventsDispatcher())
             },
@@ -31,9 +28,6 @@ class NavigationFactory(
             viewModelFactory = {
                 EditServerViewModel(it)
             },
-//            viewModelFactory = { eventsDispatcher ->
-//                ServerViewModel(eventsDispatcher)
-//            },
             routeToMain = routeToMain
         )
     }
