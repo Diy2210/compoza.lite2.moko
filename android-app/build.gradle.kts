@@ -26,7 +26,7 @@ android {
         val url = "https://newsapi.org/v2/"
         buildConfigField("String", "BASE_URL", "\"$url\"")
 
-        val apiUrl = "https://status.rompos.com/api/info/"
+        val apiUrl = "https://status.rompos.com/org.example.mpp.api/info/"
         val apiToken = "LY4aMRHZOTnXrufrEm8Dq8AAebFAgNUaq3k9MgsYetJxwcoR7C2USP6bkfZk"
     }
 

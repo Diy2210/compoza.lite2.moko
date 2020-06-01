@@ -1,8 +1,12 @@
 package org.example.mpp
 
-class ServerBase {
+import com.squareup.sqldelight.db.SqlDriver
 
-//    fun createDatabase(driver: SqlDriver): ServerBase {
+class ServerBase {
+    fun createDatabase(driver: SqlDriver): ServerBase {
+    return ServerBase()
+    }
+}
 //        val coordinateAdapter = object : ColumnAdapter<Server, String> {
 //
 //        }
@@ -17,8 +21,6 @@ class ServerBase {
 //    }
 
 //    val database = Server(driver)
-//    val database = driver.ServerDB
-//
 //    println(ser.selectAll().executeAsList())
 //// Prints [HockeyPlayer.Impl(15, "Ryan Getzlaf")]
 //
@@ -28,4 +30,4 @@ class ServerBase {
 //
 //    val player = HockeyPlayer(10, "Ronald McDonald")
 //    playerQueries.insertFullPlayerObject(player)
-}
+//}
