@@ -3,24 +3,11 @@ package org.example.mpp
 import com.squareup.sqldelight.db.SqlDriver
 
 class ServerBase {
-    fun createDatabase(driver: SqlDriver): ServerBase {
-    return ServerBase()
-    }
-}
-//        val coordinateAdapter = object : ColumnAdapter<Server, String> {
-//
-//        }
-//
-//        override fun decode(databaseValue: String): Coordinate {
-//            TODO("Not yet implemented")
-//        }
-//
-//        override fun encode(value: Coordinate): String {
-//            TODO("Not yet implemented")
-//        }
-//    }
 
-//    val database = Server(driver)
+//    val driver: SqlDriver = Sql(ServerBase.Shema, "Server.db")
+
+}
+//    val database = ServerBase(driver)
 //    println(ser.selectAll().executeAsList())
 //// Prints [HockeyPlayer.Impl(15, "Ryan Getzlaf")]
 //

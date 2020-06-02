@@ -22,12 +22,6 @@ android {
         versionName = "1.0"
 
         vectorDrawables.useSupportLibrary = true
-
-        val url = "https://newsapi.org/v2/"
-        buildConfigField("String", "BASE_URL", "\"$url\"")
-
-        val apiUrl = "https://status.rompos.com/org.example.mpp.api/info/"
-        val apiToken = "LY4aMRHZOTnXrufrEm8Dq8AAebFAgNUaq3k9MgsYetJxwcoR7C2USP6bkfZk"
     }
 
     buildTypes {
@@ -58,6 +52,7 @@ dependencies {
     implementation(project(":mpp-library"))
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation ("com.squareup.sqldelight:android-driver:1.3.0")
 }
 
 multiplatformUnits {

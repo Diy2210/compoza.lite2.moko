@@ -9,7 +9,7 @@ object Versions {
         const val minSdk = 16
     }
 
-    const val kotlin = "1.3.70"
+    const val kotlin = "1.3.72"
 
     private const val mokoResources = "0.9.0"
     private const val mokoNetwork = "0.6.0"
