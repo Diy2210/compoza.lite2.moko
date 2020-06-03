@@ -15,6 +15,7 @@ object Versions {
     private const val mokoNetwork = "0.6.0"
     private const val mokoUnits = "0.3.1"
     private const val mokoWidgets = "0.1.0-dev-19"
+    private const val sqlDelight = "1.3.0"
 
     object Plugins {
         const val kotlin = Versions.kotlin
@@ -24,6 +25,7 @@ object Versions {
         const val mokoNetwork = Versions.mokoNetwork
         const val mokoUnits = Versions.mokoUnits
         const val mokoWidgets = Versions.mokoWidgets
+        const val sqlDelight = Versions.sqlDelight
     }
 
     object Libs {
@@ -58,6 +60,8 @@ object Versions {
 
             const val napier = "1.2.0"
             const val settings = "0.5.1"
+
+            const val sqlDelight = "1.3.0"
         }
     }
 }

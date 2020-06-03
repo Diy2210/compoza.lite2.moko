@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("dev.icerock.mobile.multiplatform-units")
     id("kotlin-android-extensions")
+    id("com.squareup.sqldelight")
 }
 
 android {
@@ -52,7 +53,7 @@ dependencies {
     implementation(project(":mpp-library"))
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation ("com.squareup.sqldelight:android-driver:1.3.0")
+//    implementation ("com.squareup.sqldelight:android-driver:1.3.0")
 }
 
 multiplatformUnits {

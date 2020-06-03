@@ -19,15 +19,12 @@ sqldelight {
     database("ServerBase") {
         packageName = "org.example.mpp"
         sourceFolders = listOf("sqldelight")
-        schemaOutputDirectory = file("build/dbs")
     }
-//    linkSqlite = false
 }
 
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,
     Deps.Libs.MultiPlatform.mokoWidgets
-//    Deps.Libs.MultiPlatform.mokoNetwork
 )
 
 setupFramework(
@@ -37,11 +34,8 @@ setupFramework(
 dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
-
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
-
     androidLibrary(Deps.Libs.Android.lifecycle)
-
     mppLibs.forEach { mppLibrary(it) }
 }
 
