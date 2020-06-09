@@ -53,7 +53,6 @@ dependencies {
     implementation(project(":mpp-library"))
     implementation("androidx.appcompat:appcompat:1.1.0")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation ("com.squareup.sqldelight:android-driver:1.3.0")
 }
 
 multiplatformUnits {

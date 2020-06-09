@@ -14,8 +14,8 @@ object Deps {
             "dev.icerock.moko:units-generator:${Versions.Plugins.mokoUnits}"
         const val mokoWidgets =
             "dev.icerock.moko.widgets:gradle-plugin:${Versions.Plugins.mokoWidgets}"
-        const val sqlDelight =
-            "com.squareup.sqldelight:gradle-plugin:${Versions.Plugins.sqlDelight}"
+//        const val sqlDelight =
+//            "com.squareup.sqldelight:gradle-plugin:${Versions.Plugins.sqlDelight}"
     }
 
     object Libs {
@@ -38,17 +38,17 @@ object Deps {
             val lifecycle = AndroidLibrary(
                 name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
             )
-            val sqlDelight = AndroidLibrary(
-                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqlDelight}"
-            )
+//            val sqlDelight = AndroidLibrary(
+//                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqlDelight}"
+//            )
         }
 
-        object iosX64 {
-            val sqlDelight = KaptLibrary(
-                name = "com.squareup.sqldelight:native-driver:${Versions.Libs.iOS.sqlDelight}"
-            )
-        }
-
+//        object iosX64 {
+//            val sqlDelight = KaptLibrary(
+//                name = "com.squareup.sqldelight:native-driver:${Versions.Libs.iOS.sqlDelight}"
+//            )
+//        }
+//
         object MultiPlatform {
             val kotlinStdLib = MultiPlatformLibrary(
                 android = Android.kotlinStdLib.name,
@@ -155,7 +155,7 @@ object Deps {
         "dev.icerock.mobile.multiplatform-resources" to Plugins.mokoResources,
         "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork,
         "dev.icerock.mobile.multiplatform-units" to Plugins.mokoUnits,
-        "dev.icerock.mobile.multiplatform-widgets-generator" to Plugins.mokoWidgets,
-        "com.squareup.sqldelight" to Plugins.sqlDelight
+        "dev.icerock.mobile.multiplatform-widgets-generator" to Plugins.mokoWidgets
+//        "com.squareup.sqldelight" to Plugins.sqlDelight
     )
 }
