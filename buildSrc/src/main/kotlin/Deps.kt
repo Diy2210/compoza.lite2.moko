@@ -1,6 +1,4 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
+import org.jetbrains.kotlin.konan.target.Family
 
 object Deps {
     object Plugins {
@@ -39,6 +37,15 @@ object Deps {
             )
             val lifecycle = AndroidLibrary(
                 name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
+            )
+            val sqlDelight = AndroidLibrary(
+                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqlDelight}"
+            )
+        }
+
+        object iosX64 {
+            val sqlDelight = KaptLibrary(
+                name = "com.squareup.sqldelight:native-driver:${Versions.Libs.iOS.sqlDelight}"
             )
         }
 
@@ -136,7 +143,7 @@ object Deps {
 //            val sqlDelight = MultiPlatformLibrary(
 //                android = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}",
 //                iosX64 = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}",
-//                iosArm64 = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}",
+//                iosArm64 = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}"
 //                common = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}"
 //            )
         }

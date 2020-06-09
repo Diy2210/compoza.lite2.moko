@@ -1,7 +1,3 @@
-/*
- * Copyright 2019 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
- */
-
 object Versions {
     object Android {
         const val compileSdk = 28
@@ -36,7 +32,20 @@ object Versions {
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
             const val recyclerView = "1.0.0"
+            const val sqlDelight = "1.3.0"
         }
+
+        object iOS {
+            const val sqlDelight = "1.3.0"
+        }
+
+//        object iosx64 {
+//            const val sqlDelight = "1.3.0"
+//        }
+//
+//        object iosArm64 {
+//            const val sqlDelight = "1.3.0"
+//        }
 
         object MultiPlatform {
             const val kotlinStdLib = Versions.kotlin

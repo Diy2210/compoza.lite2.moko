@@ -18,7 +18,7 @@ android {
 sqldelight {
     database("ServerBase") {
         packageName = "org.example.mpp"
-        sourceFolders = listOf("sqldelight")
+//        sourceFolders = listOf("sqldelight")
     }
 }
 
@@ -35,10 +35,21 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
+//    mppLibrary(Deps.Libs.MultiPlatform.sqlDelight)
     androidLibrary(Deps.Libs.Android.lifecycle)
+    androidLibrary(Deps.Libs.Android.sqlDelight)
+
     mppLibs.forEach { mppLibrary(it) }
 }
 
 multiplatformResources {
     multiplatformResourcesPackage = "org.example.library"
+}
+
+sourceSets {
+    val iosX64Main by getting {
+        dependencies {
+            implementation("com.squareup.sqldelight:native-driver:${Deps.Libs.iosX64.sqlDelight}")
+        }
+    }
 }
