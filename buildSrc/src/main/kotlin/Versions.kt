@@ -54,6 +54,8 @@ object Versions {
 
             const val napier = "1.2.0"
             const val settings = "0.5.1"
+
+            const val firebase = "0.1.0"
         }
     }
 }

@@ -3,7 +3,6 @@ plugins {
     id("kotlin-android")
     id("dev.icerock.mobile.multiplatform-units")
     id("kotlin-android-extensions")
-    id("com.squareup.sqldelight")
 }
 
 android {

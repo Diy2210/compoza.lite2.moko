@@ -7,15 +7,12 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import org.example.mpp.helpers.Helper
 
 class EditServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<EditServerViewModel.EventsListener> {
 
 //    val c = CompozaApi()
-
-    val helper = Helper()
 
     val serverTitleField = FormField<String, StringDesc>("", liveBlock { null })
     val serverUrlField = FormField<String, StringDesc>("", liveBlock { null })
@@ -45,9 +42,6 @@ class EditServerViewModel(
 //            }
 
             println("server title: $title , server url: $url , server token: $token")
-            helper.insertServer(title, url, token)
-            println(helper)
-
             routeToMain()
         }
     }

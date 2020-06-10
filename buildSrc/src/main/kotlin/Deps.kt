@@ -14,8 +14,6 @@ object Deps {
             "dev.icerock.moko:units-generator:${Versions.Plugins.mokoUnits}"
         const val mokoWidgets =
             "dev.icerock.moko.widgets:gradle-plugin:${Versions.Plugins.mokoWidgets}"
-//        const val sqlDelight =
-//            "com.squareup.sqldelight:gradle-plugin:${Versions.Plugins.sqlDelight}"
     }
 
     object Libs {
@@ -38,17 +36,8 @@ object Deps {
             val lifecycle = AndroidLibrary(
                 name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
             )
-//            val sqlDelight = AndroidLibrary(
-//                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqlDelight}"
-//            )
         }
 
-//        object iosX64 {
-//            val sqlDelight = KaptLibrary(
-//                name = "com.squareup.sqldelight:native-driver:${Versions.Libs.iOS.sqlDelight}"
-//            )
-//        }
-//
         object MultiPlatform {
             val kotlinStdLib = MultiPlatformLibrary(
                 android = Android.kotlinStdLib.name,
@@ -140,12 +129,11 @@ object Deps {
                 iosX64 = "com.github.aakira:napier-iosX64:${Versions.Libs.MultiPlatform.napier}",
                 iosArm64 = "com.github.aakira:napier-iosArm64:${Versions.Libs.MultiPlatform.napier}"
             )
-//            val sqlDelight = MultiPlatformLibrary(
-//                android = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}",
-//                iosX64 = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}",
-//                iosArm64 = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}"
-//                common = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqlDelight}"
-//            )
+            val firebase = MultiPlatformLibrary(
+//                android = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}",
+//                ios = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}",
+                common = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}"
+            )
         }
     }
 
@@ -156,6 +144,5 @@ object Deps {
         "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork,
         "dev.icerock.mobile.multiplatform-units" to Plugins.mokoUnits,
         "dev.icerock.mobile.multiplatform-widgets-generator" to Plugins.mokoWidgets
-//        "com.squareup.sqldelight" to Plugins.sqlDelight
     )
 }
