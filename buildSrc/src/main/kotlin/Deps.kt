@@ -129,10 +129,8 @@ object Deps {
                 iosX64 = "com.github.aakira:napier-iosX64:${Versions.Libs.MultiPlatform.napier}",
                 iosArm64 = "com.github.aakira:napier-iosArm64:${Versions.Libs.MultiPlatform.napier}"
             )
-            val firebase = MultiPlatformLibrary(
-//                android = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}",
-//                ios = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}",
-                common = "dev.gitlive:firebase-firestore:${Versions.Libs.MultiPlatform.firebase}"
+            val multiplatformSettings = MultiPlatformLibrary(
+                common = "com.russhwolf:multiplatform-settings-no-arg:${Versions.Libs.MultiPlatform.multiplatformSettings}"
             )
         }
     }

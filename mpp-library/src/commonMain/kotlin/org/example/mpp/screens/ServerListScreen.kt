@@ -18,7 +18,7 @@ import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
 import org.example.mpp.models.ServerModel
-import org.example.mpp.ServerUnitItem
+import org.example.mpp.units.ServerUnitItem
 import org.example.mpp.models.ServerViewModel
 
 class ServerListScreen(

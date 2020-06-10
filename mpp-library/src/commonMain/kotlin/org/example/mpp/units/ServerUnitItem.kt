@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.units
 
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.map
@@ -24,9 +24,7 @@ class ServerUnitItem(
 
     override fun createWidget(data: LiveData<ServerModel>): UnitItemRoot {
         return with(theme) {
-
             constraint(size = WidgetSize.WidthAsParentHeightWrapContent) {
-
                 val title = +text(
                     size = WidgetSize.Const(
                         width = SizeSpec.MatchConstraint,

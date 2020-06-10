@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.navigation
 
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.widgets.core.Theme

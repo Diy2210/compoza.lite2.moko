@@ -1,5 +1,7 @@
 package org.example.mpp.models
 
+import com.russhwolf.settings.Settings
+import com.russhwolf.settings.invoke
 import dev.icerock.moko.fields.FormField
 import dev.icerock.moko.fields.liveBlock
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -13,6 +15,7 @@ class EditServerViewModel(
 ) : ViewModel(), EventsDispatcherOwner<EditServerViewModel.EventsListener> {
 
 //    val c = CompozaApi()
+    val settings: Settings = Settings()
 
     val serverTitleField = FormField<String, StringDesc>("", liveBlock { null })
     val serverUrlField = FormField<String, StringDesc>("", liveBlock { null })
@@ -42,6 +45,11 @@ class EditServerViewModel(
 //            }
 
             println("server title: $title , server url: $url , server token: $token")
+//            settings.remove("Server Title")
+//            settings.remove("Server Url")
+            settings.putInt("Server ID", 0)
+            settings.putString("Server Title", title)
+            settings.putString("Server Url", url)
             routeToMain()
         }
     }

@@ -6,6 +6,7 @@ import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.*
+import org.example.mpp.navigation.NavigationFactory
 import org.example.mpp.screens.DetailsScreen
 import org.example.mpp.screens.EditServerScreen
 import org.example.mpp.screens.ServerListScreen
@@ -24,7 +25,6 @@ class App : BaseApplication() {
             }
 
             val detailsScreen = registerScreen(DetailsScreen::class) {
-//                DetailsScreen(theme)
                 navigationFactory.createDetailsScreen(
                     routeToMain = rootNavigationRouter.createPopToRootRoute()
                 )
@@ -37,7 +37,6 @@ class App : BaseApplication() {
             }
 
             val serverListScreen = registerScreen(ServerListScreen::class) {
-//                ServerListScreen(theme)
                 navigationFactory.createServerListScreen(
                     routeToMain = rootNavigationRouter.createPushRoute(editServerScreen)
                 )

@@ -3,7 +3,6 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("dev.icerock.mobile.multiplatform")
     id("dev.icerock.mobile.multiplatform-resources")
-//    id("dev.gitlive.firebase-firestore")
 }
 
 android {
@@ -18,7 +17,7 @@ android {
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,
     Deps.Libs.MultiPlatform.mokoWidgets,
-    Deps.Libs.MultiPlatform.firebase
+    Deps.Libs.MultiPlatform.multiplatformSettings
 )
 
 setupFramework(
@@ -29,7 +28,8 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
-    mppLibrary(Deps.Libs.MultiPlatform.firebase)
+    mppLibrary(Deps.Libs.MultiPlatform.multiplatformSettings)
+
     androidLibrary(Deps.Libs.Android.lifecycle)
 
     mppLibs.forEach { mppLibrary(it) }
