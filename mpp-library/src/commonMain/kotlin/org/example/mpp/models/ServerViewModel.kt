@@ -17,7 +17,7 @@ class ServerViewModel(
 
     private val _servers: MutableLiveData<List<ServerModel>> =
         MutableLiveData(
-            initialValue = List(1) {
+            initialValue = List(3) {
                 ServerModel(
 //                    ID = settings.getInt("Server ID"),
                     ID = it,
@@ -34,6 +34,10 @@ class ServerViewModel(
         eventsDispatcher.dispatchEvent {
             routeToEditServer()
         }
+    }
+
+    fun onClickToItem(model: ServerModel) {
+        println("click to item $model")
     }
 
     interface EventsListener {

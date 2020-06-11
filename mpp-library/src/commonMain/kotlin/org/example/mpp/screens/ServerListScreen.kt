@@ -24,8 +24,7 @@ import org.example.mpp.models.ServerViewModel
 class ServerListScreen(
     private val theme: Theme,
     private val routeEditServer: Route<Unit>,
-    private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>)
-    -> ServerViewModel
+    private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>) -> ServerViewModel
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
@@ -42,7 +41,7 @@ class ServerListScreen(
                 size = WidgetSize.AsParent,
                 id = Ids.List,
                 items = viewModel.servers.map {
-                    serversToTableUnits(it)
+                    serversToTableUnits(it, viewModel)
                 }
             )
 
@@ -61,7 +60,6 @@ class ServerListScreen(
                 createNewServer rightToRight root offset 16
             }
         }
-
     }
 
     object Ids {
@@ -73,12 +71,15 @@ class ServerListScreen(
         routeEditServer.route()
     }
 
-    private fun serversToTableUnits(servers: List<ServerModel>): List<TableUnitItem> {
+    private fun serversToTableUnits(servers: List<ServerModel>, viewModel: ServerViewModel): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(
                 theme = theme,
                 itemId = server.ID.toLong(),
-                server = server
+                server = server,
+                clickListener = {
+                    viewModel.onClickToItem(it)
+                }
             )
         }
     }
