@@ -13,12 +13,14 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import org.example.library.MR
+import org.example.mpp.api.CompozaApi
 
 class DetailsScreen(
     private val theme: Theme
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
 
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+
     val settings: Settings = Settings()
 
     override fun createContentWidget() = with(theme) {

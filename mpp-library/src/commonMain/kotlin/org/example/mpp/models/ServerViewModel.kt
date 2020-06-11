@@ -10,23 +10,31 @@ import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.widgets.ClickableWidget
+import kotlinx.coroutines.launch
+import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.ServerModel as ServerModel1
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
-): ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
+) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
     val settings: Settings = Settings()
+    val client = CompozaApi()
+
+    var id = settings.getInt("Server ID")
+    var title = settings.getString("Server Title")
+    var url = settings.getString("Server Url")
+    var token = settings.getString("Server Token")
 
     private val _servers: MutableLiveData<List<ServerModel1>> =
         MutableLiveData(
             initialValue = List(1) {
                 ServerModel1(
 //                    ID = it,
-                    ID = settings.getInt("Server ID"),
-                    title = settings.getString("Server Title"),
-                    url = settings.getString("Server Url"),
-                    token = settings.getString("Server Token")
+                    ID = id,
+                    title = title,
+                    url = url,
+                    token = token
                 )
             }
         )
@@ -41,7 +49,16 @@ class ServerViewModel(
 
     fun onClickToItem(model: ServerModel1) {
         eventsDispatcher.dispatchEvent {
-            routeToDetails()
+            viewModelScope.launch {
+                try {
+                    client.getStatusServer(url, "/api/info", token).also { response ->
+                        println(response)
+                        routeToDetails()
+                    }
+                } catch (e: Exception) {
+                    println(e)
+                }
+            }
         }
     }
 
