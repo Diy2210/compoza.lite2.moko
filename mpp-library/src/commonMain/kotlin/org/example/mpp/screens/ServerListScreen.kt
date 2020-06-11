@@ -24,6 +24,7 @@ import org.example.mpp.models.ServerViewModel
 class ServerListScreen(
     private val theme: Theme,
     private val routeEditServer: Route<Unit>,
+    private val routeDetails: Route<Unit>,
     private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>) -> ServerViewModel
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
@@ -69,6 +70,10 @@ class ServerListScreen(
 
     override fun routeToEditServer() {
         routeEditServer.route()
+    }
+
+    override fun routeToDetails() {
+        routeDetails.route()
     }
 
     private fun serversToTableUnits(servers: List<ServerModel>, viewModel: ServerViewModel): List<TableUnitItem> {

@@ -12,7 +12,7 @@ import org.example.mpp.screens.ServerListScreen
 class NavigationFactory(
     private val theme: Theme) {
 
-    fun createServerListScreen(routeToMain: Route<Unit>) : ServerListScreen {
+    fun createServerListScreen(routeToMain: Route<Unit>, routeToDetails: Route<Unit>) : ServerListScreen {
         return ServerListScreen(
             theme = theme,
 //            viewModelFactory = {
@@ -21,7 +21,8 @@ class NavigationFactory(
             viewModelFactory = {
                 ServerViewModel(EventsDispatcher())
             },
-            routeEditServer = routeToMain
+            routeEditServer = routeToMain,
+            routeDetails = routeToDetails
         )
     }
 

@@ -1,7 +1,6 @@
 package org.example.mpp.models
 
-import com.russhwolf.settings.Settings
-import com.russhwolf.settings.invoke
+import com.russhwolf.settings.*
 import dev.icerock.moko.fields.FormField
 import dev.icerock.moko.fields.liveBlock
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -44,12 +43,20 @@ class EditServerViewModel(
 //                println(r.desc())
 //            }
 
-            println("server title: $title , server url: $url , server token: $token")
-//            settings.remove("Server Title")
-//            settings.remove("Server Url")
+//            println("server title: $title , server url: $url , server token: $token")
+//            settings["Server"] = "$title $url $token"
+
+//            val a: String by settings.string(defaultValue = token)
+//            println("///////////////////////////////" + a)
+//            println(settings.getString("Server"))
+
+//            val keys: Set<String> = settings.keys
+//            println(keys)
+//
             settings.putInt("Server ID", 0)
             settings.putString("Server Title", title)
             settings.putString("Server Url", url)
+            settings.putString("Server Token", token)
             routeToMain()
         }
     }

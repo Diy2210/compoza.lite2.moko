@@ -38,7 +38,8 @@ class App : BaseApplication() {
 
             val serverListScreen = registerScreen(ServerListScreen::class) {
                 navigationFactory.createServerListScreen(
-                    routeToMain = rootNavigationRouter.createPushRoute(editServerScreen)
+                    routeToMain = rootNavigationRouter.createPushRoute(editServerScreen),
+                    routeToDetails = rootNavigationRouter.createPushRoute(detailsScreen)
                 )
             }
 

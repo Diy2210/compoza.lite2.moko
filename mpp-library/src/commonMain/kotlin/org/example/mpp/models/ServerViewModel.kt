@@ -1,13 +1,16 @@
 package org.example.mpp.models
 
 import com.russhwolf.settings.Settings
+import com.russhwolf.settings.get
 import com.russhwolf.settings.invoke
+import com.russhwolf.settings.string
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.widgets.ClickableWidget
+import org.example.mpp.models.ServerModel as ServerModel1
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
@@ -15,20 +18,20 @@ class ServerViewModel(
 
     val settings: Settings = Settings()
 
-    private val _servers: MutableLiveData<List<ServerModel>> =
+    private val _servers: MutableLiveData<List<ServerModel1>> =
         MutableLiveData(
-            initialValue = List(3) {
-                ServerModel(
-//                    ID = settings.getInt("Server ID"),
-                    ID = it,
+            initialValue = List(1) {
+                ServerModel1(
+//                    ID = it,
+                    ID = settings.getInt("Server ID"),
                     title = settings.getString("Server Title"),
                     url = settings.getString("Server Url"),
-                    token = ""
+                    token = settings.getString("Server Token")
                 )
             }
         )
 
-    val servers: LiveData<List<ServerModel>> = _servers
+    val servers: LiveData<List<ServerModel1>> = _servers
 
     fun onAddPressed() {
         eventsDispatcher.dispatchEvent {
@@ -36,12 +39,14 @@ class ServerViewModel(
         }
     }
 
-    fun onClickToItem(model: ServerModel) {
-        println("click to item $model")
+    fun onClickToItem(model: ServerModel1) {
+        eventsDispatcher.dispatchEvent {
+            routeToDetails()
+        }
     }
 
     interface EventsListener {
         fun routeToEditServer()
-//        fun routeToDetails()
+        fun routeToDetails()
     }
 }
