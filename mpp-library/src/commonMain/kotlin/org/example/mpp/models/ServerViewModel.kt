@@ -57,10 +57,10 @@ class ServerViewModel(
                         if(response.contains("success")) {
                             val json = Json(JsonConfiguration.Stable)
                             val res = json.parseJson(response)
-                            val data: JsonObject = res.jsonObject.get("data") as JsonObject
-                            val host: JsonObject = data.jsonObject.get("host") as JsonObject
+                            val data: JsonObject = res.jsonObject["data"] as JsonObject
+                            val host: JsonObject = data.jsonObject["host"] as JsonObject
 
-                            println("////-" + host)
+                            println("////-$host")
 
 //                            settings.putString("response", response)
 //                            println("SUCCESS")

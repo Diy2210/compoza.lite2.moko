@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1130"
+   LastUpgradeVersion = "1140"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "287627FE1F319065007FA12B"
-               BuildableName = "mokoApp.app"
+               BuildableName = "Compoza Lite 2 MOKO.app"
                BlueprintName = "ios-app"
                ReferencedContainer = "container:ios-app.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "287627FE1F319065007FA12B"
-            BuildableName = "mokoApp.app"
+            BuildableName = "Compoza Lite 2 MOKO.app"
             BlueprintName = "ios-app"
             ReferencedContainer = "container:ios-app.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "287627FE1F319065007FA12B"
-            BuildableName = "mokoApp.app"
+            BuildableName = "Compoza Lite 2 MOKO.app"
             BlueprintName = "ios-app"
             ReferencedContainer = "container:ios-app.xcodeproj">
          </BuildableReference>
