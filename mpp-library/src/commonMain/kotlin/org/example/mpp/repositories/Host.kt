@@ -8,42 +8,42 @@ class Host {
     companion object {
         private lateinit var items: ArrayList<TableRowModel>
 
-        fun collect(json: JsonPrimitive): ArrayList<TableRowModel> {
+        fun collect(jsonObject: JsonObject): ArrayList<TableRowModel> {
             items = ArrayList()
             items.add(
                 TableRowModel(
                     MR.strings.system_hostname.toString(),
-                    JsonPrimitive("hostname").toString()
+                    jsonObject.get("hostname").toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_os.toString(),
-                    JsonPrimitive("os").toString()
+                    jsonObject.get("os").toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.public_ip.toString(),
-                    JsonPrimitive("ip").toString()
+                    jsonObject.get("ip").toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.kernel_cpu.toString(),
-                    JsonPrimitive("kernel").toString()
+                    jsonObject.get("kernel").toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_uptime.toString(),
-                    JsonPrimitive("uptime").toString()
+                    jsonObject.get("uptime").toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_date.toString(),
-                    JsonPrimitive("date").toString()
+                    jsonObject.get("date").toString()
                 )
             )
 //            val updates = JsonPrimitive("updates").toString()

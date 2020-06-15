@@ -58,7 +58,9 @@ class ServerViewModel(
                             val json = Json(JsonConfiguration.Stable)
                             val res = json.parseJson(response)
                             val data: JsonObject = res.jsonObject["data"] as JsonObject
-                            val host: JsonObject = data.jsonObject["host"] as JsonObject
+                            val host = Host.collect(data.jsonObject["host"] as JsonObject)
+//                            val host: JsonObject = data.jsonObject["host"] as JsonObject
+//                            val hostname: JsonObject = host.jsonObject["hostname"] as JsonObject
 
                             println("////-$host")
 
