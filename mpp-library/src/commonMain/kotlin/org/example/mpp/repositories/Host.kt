@@ -13,37 +13,37 @@ class Host {
             items.add(
                 TableRowModel(
                     MR.strings.system_hostname.toString(),
-                    jsonObject.get("hostname").toString()
+                    jsonObject["hostname"].toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_os.toString(),
-                    jsonObject.get("os").toString()
+                    jsonObject["os"].toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.public_ip.toString(),
-                    jsonObject.get("ip").toString()
+                    jsonObject["ip"].toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.kernel_cpu.toString(),
-                    jsonObject.get("kernel").toString()
+                    jsonObject["kernel"].toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_uptime.toString(),
-                    jsonObject.get("uptime").toString()
+                    jsonObject["uptime"].toString()
                 )
             )
             items.add(
                 TableRowModel(
                     MR.strings.system_date.toString(),
-                    jsonObject.get("date").toString()
+                    jsonObject["date"].toString()
                 )
             )
 //            val updates = JsonPrimitive("updates").toString()

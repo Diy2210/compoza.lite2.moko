@@ -32,22 +32,6 @@ class DetailsScreen(
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
 
-//            if(res.contains("success")) {
-//                println("SUCCESS")
-
-//                val data = JsonPrimitive(res.contains("data"))
-//                val host = JsonPrimitive(data.contains("host"))
-//                hostname = host.contains("hostname").toString()
-//                os = host.contains("os").toString()
-//                ip = host.contains("ip").toString()
-//                kernel = host.contains("kernel").toString()
-//                uptime = host.contains("uptime").toString()
-//                date = host.contains("date").toString()
-
-//            } else {
-//                println("SERVER ERROR")
-//            }
-
             val serverName = +text(
                 id = Ids.ServerName,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -60,7 +44,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const(settings.getString("hostname"))
+                text = const("-")
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
