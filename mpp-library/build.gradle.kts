@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("dev.icerock.mobile.multiplatform")
     id("dev.icerock.mobile.multiplatform-resources")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -28,6 +29,7 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
+    mppLibrary(Deps.Libs.MultiPlatform.serialization)
     mppLibrary(Deps.Libs.MultiPlatform.multiplatformSettings)
 
     androidLibrary(Deps.Libs.Android.lifecycle)

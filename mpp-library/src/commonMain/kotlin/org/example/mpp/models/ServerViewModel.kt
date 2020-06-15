@@ -1,36 +1,35 @@
 package org.example.mpp.models
 
 import com.russhwolf.settings.Settings
-import com.russhwolf.settings.get
 import com.russhwolf.settings.invoke
-import com.russhwolf.settings.string
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import dev.icerock.moko.widgets.ClickableWidget
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.*
+import kotlinx.serialization.parse
 import org.example.mpp.api.CompozaApi
-import org.example.mpp.models.ServerModel as ServerModel1
+import org.example.mpp.repositories.Host
+import org.example.mpp.models.ServerItem as ServerModel1
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
     val settings: Settings = Settings()
-    val client = CompozaApi()
-
     var id = settings.getInt("Server ID")
     var title = settings.getString("Server Title")
     var url = settings.getString("Server Url")
     var token = settings.getString("Server Token")
 
+    val client = CompozaApi()
+
     private val _servers: MutableLiveData<List<ServerModel1>> =
         MutableLiveData(
             initialValue = List(1) {
                 ServerModel1(
-//                    ID = it,
                     ID = id,
                     title = title,
                     url = url,
@@ -53,6 +52,24 @@ class ServerViewModel(
                 try {
                     client.getStatusServer(url, "/api/info", token).also { response ->
                         println(response)
+//                        settings.putString("response", response)
+
+                        if(response.contains("success")) {
+                            val json = Json(JsonConfiguration.Stable)
+                            val res = json.parseJson(response)
+                            val data: JsonObject = res.jsonObject.get("data") as JsonObject
+                            val host: JsonObject = data.jsonObject.get("host") as JsonObject
+
+                            println("////-" + host)
+
+//                            settings.putString("response", response)
+//                            println("SUCCESS")
+
+//                            println("/////////$obj")
+//                            settings.putString("hostname", hostname)
+                        } else {
+                            println("SERVER ERROR")
+                        }
                         routeToDetails()
                     }
                 } catch (e: Exception) {
@@ -61,6 +78,10 @@ class ServerViewModel(
             }
         }
     }
+
+//    fun toObject(stringValue: String): ServerInfoModel {
+//        return data.parse(ServerInfoModel.serializer(), stringValue)
+//    }
 
     interface EventsListener {
         fun routeToEditServer()

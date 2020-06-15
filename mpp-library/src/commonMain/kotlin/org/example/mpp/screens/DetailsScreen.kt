@@ -13,7 +13,6 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import org.example.library.MR
-import org.example.mpp.api.CompozaApi
 
 class DetailsScreen(
     private val theme: Theme
@@ -22,9 +21,33 @@ class DetailsScreen(
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
 
     val settings: Settings = Settings()
+//    val res = JsonPrimitive(settings.getString("response"))
+//    var hostname: String = ""
+//    var os: String = ""
+//    var ip: String = ""
+//    var kernel: String = ""
+//    var uptime: String = ""
+//    var date: String = ""
 
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
+
+//            if(res.contains("success")) {
+//                println("SUCCESS")
+
+//                val data = JsonPrimitive(res.contains("data"))
+//                val host = JsonPrimitive(data.contains("host"))
+//                hostname = host.contains("hostname").toString()
+//                os = host.contains("os").toString()
+//                ip = host.contains("ip").toString()
+//                kernel = host.contains("kernel").toString()
+//                uptime = host.contains("uptime").toString()
+//                date = host.contains("date").toString()
+
+//            } else {
+//                println("SERVER ERROR")
+//            }
+
             val serverName = +text(
                 id = Ids.ServerName,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -37,7 +60,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const(settings.getString("Server Url"))
+                text = const(settings.getString("hostname"))
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -46,16 +69,16 @@ class DetailsScreen(
             val system = +text(
                 id = Ids.System,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const("os")
             )
             val ipLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
                 text = const("Public IP")
             )
-            val ip = +text(
+            val IP = +text(
                 id = Ids.IP,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const("ip")
             )
             val cpuLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -64,7 +87,7 @@ class DetailsScreen(
             val cpu = +text(
                 id = Ids.CPU,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const("kernel")
             )
             val systemUptimeLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -73,7 +96,7 @@ class DetailsScreen(
             val systemUptime = +text(
                 id = Ids.SystemUptime,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const("uptime")
             )
             val systemDateLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -82,7 +105,7 @@ class DetailsScreen(
             val systemDate = +text(
                 id = Ids.SystemDate,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const("date")
             )
 
             constraints {
@@ -104,10 +127,10 @@ class DetailsScreen(
                 ipLabel topToBottom system offset 16
                 ipLabel leftRightToLeftRight root offset 16
 
-                ip topToBottom ipLabel offset 0
-                ip leftRightToLeftRight root offset 16
+                IP topToBottom ipLabel offset 0
+                IP leftRightToLeftRight root offset 16
 
-                cpuLabel topToBottom ip offset 16
+                cpuLabel topToBottom IP offset 16
                 cpuLabel leftRightToLeftRight root offset 16
 
                 cpu topToBottom cpuLabel offset 0

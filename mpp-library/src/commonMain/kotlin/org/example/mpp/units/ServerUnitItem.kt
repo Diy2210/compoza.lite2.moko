@@ -10,16 +10,16 @@ import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
-import org.example.mpp.models.ServerModel
+import org.example.mpp.models.ServerItem
 
 class ServerUnitItem(
-    private val theme: Theme, itemId: Long, server: ServerModel,
-    private val clickListener: (ServerModel) -> Unit
-) : WidgetsTableUnitItem<ServerModel>(itemId, server) {
+    private val theme: Theme, itemId: Long, server: ServerItem,
+    private val clickListener: (ServerItem) -> Unit
+) : WidgetsTableUnitItem<ServerItem>(itemId, server) {
 
     override val reuseId: String = "serverCell"
 
-    override fun createWidget(data: LiveData<ServerModel>): UnitItemRoot {
+    override fun createWidget(data: LiveData<ServerItem>): UnitItemRoot {
         return with(theme) {
             clickable(
                 onClick = {

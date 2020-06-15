@@ -1,7 +1,5 @@
 package org.example.mpp.screens
 
-import com.russhwolf.settings.Settings
-import com.russhwolf.settings.invoke
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
@@ -19,8 +17,7 @@ import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
-import org.example.mpp.api.CompozaApi
-import org.example.mpp.models.ServerModel
+import org.example.mpp.models.ServerItem
 import org.example.mpp.units.ServerUnitItem
 import org.example.mpp.models.ServerViewModel
 
@@ -32,16 +29,6 @@ class ServerListScreen(
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
-
-    //
-//    val settings: Settings = Settings()
-//    val client = CompozaApi()
-//
-//    var id = settings.getInt("Server ID")
-//    var title = settings.getString("Server Title")
-//    var url = settings.getString("Server Url")
-//    var token = settings.getString("Server Token")
-
 
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {
@@ -89,7 +76,7 @@ class ServerListScreen(
         routeDetails.route()
     }
 
-    private fun serversToTableUnits(servers: List<ServerModel>, viewModel: ServerViewModel): List<TableUnitItem> {
+    private fun serversToTableUnits(servers: List<ServerItem>, viewModel: ServerViewModel): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(
                 theme = theme,

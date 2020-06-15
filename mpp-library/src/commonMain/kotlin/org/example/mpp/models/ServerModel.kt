@@ -1,8 +1,14 @@
 package org.example.mpp.models
 
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
+
+@Serializable
 data class ServerModel(
-    val ID: Int,
-    val title: String,
-    val url: String,
-    val token: String
+    val hostname: String = "",
+    val os: String = "",
+    val ip: String = "",
+    val kernel: String = "",
+    val uptime: String = "",
+    val date: String = ""
 )
