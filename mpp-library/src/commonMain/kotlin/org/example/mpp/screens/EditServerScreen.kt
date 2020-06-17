@@ -1,5 +1,6 @@
 package org.example.mpp.screens
 
+import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
@@ -11,6 +12,8 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
+import dev.icerock.moko.widgets.style.view.FontStyle
+import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
 import org.example.mpp.api.CompozaApi
@@ -23,7 +26,20 @@ class EditServerScreen(
     -> EditServerViewModel
 ) : WidgetScreen<Args.Empty>(), EditServerViewModel.EventsListener, NavigationItem {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+    //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+    override val navigationBar
+        get() = NavigationBar.Normal(
+            title = MR.strings.compoza_lite.desc(),
+            styles = NavigationBar.Styles(
+                backgroundColor = Color(0x3155ABFF),
+                tintColor = Color(0xffffffffFF),
+                textStyle = TextStyle(
+                    color = Color(0xffffffffFF),
+                    size = 18,
+                    fontStyle = FontStyle.BOLD
+                )
+            )
+        )
 
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {

@@ -2,6 +2,7 @@ package org.example.mpp.screens
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
+import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.TextWidget
 import dev.icerock.moko.widgets.constraint
@@ -10,6 +11,8 @@ import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
+import dev.icerock.moko.widgets.style.view.FontStyle
+import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import kotlinx.serialization.ImplicitReflectionSerializer
@@ -25,7 +28,21 @@ class DetailsScreen(
     private val theme: Theme
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
 
-    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+    //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+    override val navigationBar
+        get() = NavigationBar.Normal(
+            title = MR.strings.compoza_lite.desc(),
+            styles = NavigationBar.Styles(
+                backgroundColor = Color(0x3155ABFF),
+                tintColor = Color(0xffffffffFF),
+                textStyle = TextStyle(
+                    color = Color(0xffffffffFF),
+                    size = 18,
+                    fontStyle = FontStyle.BOLD
+                )
+            )
+        )
+
 
     val settings: Settings = Settings()
 
@@ -53,7 +70,7 @@ class DetailsScreen(
 //    @ImplicitReflectionSerializer
 //    val hostname = Json.parse<ServerModel>(hosts)
 
-//    @ImplicitReflectionSerializer
+    //    @ImplicitReflectionSerializer
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
 
@@ -121,7 +138,7 @@ class DetailsScreen(
                 serverName topToTop root offset 8
                 serverName leftToLeft root offset 16
 
-                hostnameLabel topToBottom  serverName offset 16
+                hostnameLabel topToBottom serverName offset 16
                 hostnameLabel leftRightToLeftRight root offset 16
 
                 url topToBottom hostnameLabel offset 0
