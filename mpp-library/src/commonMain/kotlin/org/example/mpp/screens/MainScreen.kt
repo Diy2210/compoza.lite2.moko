@@ -1,4 +1,4 @@
-package org.example.mpp
+package org.example.mpp.screens
 
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc

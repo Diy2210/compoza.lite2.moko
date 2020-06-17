@@ -8,6 +8,7 @@ import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.launch
+import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.json.*
 import kotlinx.serialization.parse
 import org.example.mpp.api.CompozaApi
@@ -52,16 +53,16 @@ class ServerViewModel(
                 try {
                     client.getStatusServer(url, "/api/info", token).also { response ->
                         println(response)
-//                        settings.putString("response", response)
 
                         if(response.contains("success")) {
                             val json = Json(JsonConfiguration.Stable)
                             val res = json.parseJson(response)
                             val data: JsonObject = res.jsonObject["data"] as JsonObject
                             val host = Host.collect(data.jsonObject["host"] as JsonObject)
-//                            val hostname: JsonObject = host.jsonObject["hostname"] as JsonObject
 
-                            println("////-$host")
+                            settings.putString("host", data.jsonObject["host"].toString())
+
+                            println("//////////-$host")
                         } else {
                             println("SERVER ERROR")
                         }
@@ -73,10 +74,6 @@ class ServerViewModel(
             }
         }
     }
-
-//    fun toObject(stringValue: String): ServerInfoModel {
-//        return data.parse(ServerInfoModel.serializer(), stringValue)
-//    }
 
     interface EventsListener {
         fun routeToEditServer()

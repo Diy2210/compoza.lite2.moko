@@ -12,7 +12,14 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
+import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.json
+import kotlinx.serialization.parse
 import org.example.library.MR
+import org.example.mpp.models.ServerModel
+import org.example.mpp.models.TableRowModel
+import org.example.mpp.repositories.Host
 
 class DetailsScreen(
     private val theme: Theme
@@ -21,7 +28,7 @@ class DetailsScreen(
     override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
 
     val settings: Settings = Settings()
-//    val res = JsonPrimitive(settings.getString("response"))
+
 //    var hostname: String = ""
 //    var os: String = ""
 //    var ip: String = ""
@@ -29,6 +36,24 @@ class DetailsScreen(
 //    var uptime: String = ""
 //    var date: String = ""
 
+    val item = TableRowModel(title = Host.equals("hostname").toString(), value = "", icon = 0, options = "")
+    val hostname = item.value
+
+    @ImplicitReflectionSerializer
+    val hosts = settings.getString("host")
+//    val item = ServerModel(
+//        hostname = Host.equals("hostname").toString(),
+//        os = Host.equals("os").toString(),
+//        ip = Host.equals("ip").toString(),
+//        kernel = Host.equals("kernel").toString(),
+//        uptime = Host.equals("uptime").toString(),
+//        date = Host.equals("date").toString()
+//    )
+
+//    @ImplicitReflectionSerializer
+//    val hostname = Json.parse<ServerModel>(hosts)
+
+//    @ImplicitReflectionSerializer
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
 
@@ -44,7 +69,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const(item.title)
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -96,37 +121,37 @@ class DetailsScreen(
                 serverName topToTop root offset 8
                 serverName leftToLeft root offset 16
 
-                hostnameLabel topToBottom  serverName offset 32
+                hostnameLabel topToBottom  serverName offset 16
                 hostnameLabel leftRightToLeftRight root offset 16
 
                 url topToBottom hostnameLabel offset 0
                 url leftRightToLeftRight root offset 16
 
-                systemLabel topToBottom url offset 16
+                systemLabel topToBottom url offset 8
                 systemLabel leftRightToLeftRight root offset 16
 
                 system topToBottom systemLabel offset 0
                 system leftRightToLeftRight root offset 16
 
-                ipLabel topToBottom system offset 16
+                ipLabel topToBottom system offset 8
                 ipLabel leftRightToLeftRight root offset 16
 
                 IP topToBottom ipLabel offset 0
                 IP leftRightToLeftRight root offset 16
 
-                cpuLabel topToBottom IP offset 16
+                cpuLabel topToBottom IP offset 8
                 cpuLabel leftRightToLeftRight root offset 16
 
                 cpu topToBottom cpuLabel offset 0
                 cpu leftRightToLeftRight root offset 16
 
-                systemUptimeLabel topToBottom cpu offset 16
+                systemUptimeLabel topToBottom cpu offset 8
                 systemUptimeLabel leftRightToLeftRight root offset 16
 
                 systemUptime topToBottom systemUptimeLabel offset 0
                 systemUptime leftRightToLeftRight root offset 16
 
-                systemDateLabel topToBottom systemUptime offset 16
+                systemDateLabel topToBottom systemUptime offset 8
                 systemDateLabel leftRightToLeftRight root offset 16
 
                 systemDate topToBottom systemDateLabel offset 0

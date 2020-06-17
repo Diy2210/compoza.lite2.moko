@@ -83,10 +83,6 @@ class EditServerScreen(
 //            }
 
             constraints {
-//                title topToTop root offset 16
-//                title leftToRight root offset 150
-
-//                serverTitleInput topToBottom title offset 32
                 serverTitleInput topToTop root offset 16
                 serverTitleInput leftRightToLeftRight root offset 16
 

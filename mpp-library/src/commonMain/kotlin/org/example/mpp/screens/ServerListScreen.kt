@@ -1,5 +1,6 @@
 package org.example.mpp.screens
 
+import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
@@ -47,7 +48,7 @@ class ServerListScreen(
             )
 
             val createNewServer = +button(
-                id = Ids.createNewServer,
+                id = Ids.CreateNewServer,
                 size = WidgetSize.WrapContent,
                 content = ButtonWidget.Content.Text(Value.data("+".desc())),
                 onTap = viewModel::onAddPressed
@@ -65,7 +66,7 @@ class ServerListScreen(
 
     object Ids {
         object List : ListWidget.Id
-        object createNewServer : ButtonWidget.Id
+        object CreateNewServer : ButtonWidget.Id
     }
 
     override fun routeToEditServer() {

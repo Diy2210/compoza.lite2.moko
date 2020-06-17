@@ -3,6 +3,7 @@ package org.example.mpp.repositories
 import org.example.mpp.models.TableRowModel
 import kotlinx.serialization.json.*
 import org.example.library.MR
+import org.example.mpp.models.ServerModel
 
 class Host {
     companion object {
@@ -12,38 +13,51 @@ class Host {
             items = ArrayList()
             items.add(
                 TableRowModel(
-                    MR.strings.system_hostname.toString(),
+//                    MR.strings.system_hostname.toString(),
+                    "System Hostname",
                     jsonObject["hostname"].toString()
+//                    hostname = jsonObject["hostname"].toString()
                 )
             )
             items.add(
                 TableRowModel(
-                    MR.strings.system_os.toString(),
+//                    MR.strings.system_os.toString(),
+                    "System OS",
                     jsonObject["os"].toString()
+//                      os = jsonObject["os"].toString()
                 )
             )
             items.add(
                 TableRowModel(
-                    MR.strings.public_ip.toString(),
+//                    MR.strings.public_ip.toString(),
+                    "IP",
                     jsonObject["ip"].toString()
+//                      ip = jsonObject["ip"].toString()
+
                 )
             )
             items.add(
                 TableRowModel(
-                    MR.strings.kernel_cpu.toString(),
+//                    MR.strings.kernel_cpu.toString(),
+                    "Kernel",
                     jsonObject["kernel"].toString()
+//                    kernel = jsonObject["kernel"].toString()
                 )
             )
             items.add(
                 TableRowModel(
-                    MR.strings.system_uptime.toString(),
+//                    MR.strings.system_uptime.toString(),
+                    "System Uptime",
                     jsonObject["uptime"].toString()
+//                    uptime = jsonObject["uptime"].toString()
                 )
             )
             items.add(
                 TableRowModel(
-                    MR.strings.system_date.toString(),
+//                    MR.strings.system_date.toString(),
+                    "System Date",
                     jsonObject["date"].toString()
+//                    date = jsonObject["date"].toString()
                 )
             )
 //            val updates = JsonPrimitive("updates").toString()
