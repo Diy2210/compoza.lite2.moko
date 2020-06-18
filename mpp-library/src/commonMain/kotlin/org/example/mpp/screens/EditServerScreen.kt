@@ -16,7 +16,6 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
-import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.EditServerViewModel
 
 class EditServerScreen(
@@ -27,6 +26,7 @@ class EditServerScreen(
 ) : WidgetScreen<Args.Empty>(), EditServerViewModel.EventsListener, NavigationItem {
 
     //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+
     override val navigationBar
         get() = NavigationBar.Normal(
             title = MR.strings.compoza_lite.desc(),

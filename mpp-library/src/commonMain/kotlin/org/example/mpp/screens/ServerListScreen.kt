@@ -32,6 +32,7 @@ class ServerListScreen(
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
     //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+
     override val navigationBar
         get() = NavigationBar.Normal(
             title = MR.strings.compoza_lite.desc(),

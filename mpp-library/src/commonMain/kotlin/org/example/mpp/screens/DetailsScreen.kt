@@ -16,11 +16,7 @@ import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import kotlinx.serialization.ImplicitReflectionSerializer
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.json
-import kotlinx.serialization.parse
 import org.example.library.MR
-import org.example.mpp.models.ServerModel
 import org.example.mpp.models.TableRowModel
 import org.example.mpp.repositories.Host
 
@@ -29,6 +25,7 @@ class DetailsScreen(
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
 
     //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
+
     override val navigationBar
         get() = NavigationBar.Normal(
             title = MR.strings.compoza_lite.desc(),
