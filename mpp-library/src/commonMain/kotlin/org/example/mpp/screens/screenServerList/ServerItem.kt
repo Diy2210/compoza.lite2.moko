@@ -1,4 +1,4 @@
-package org.example.mpp.models
+package org.example.mpp.screens.screenServerList
 
 data class ServerItem(
     val ID: Int,

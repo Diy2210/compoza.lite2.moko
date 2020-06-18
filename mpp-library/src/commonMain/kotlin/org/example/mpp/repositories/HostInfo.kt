@@ -1,11 +1,11 @@
 package org.example.mpp.repositories
 
+import kotlinx.serialization.Serializable
 import org.example.mpp.models.TableRowModel
 import kotlinx.serialization.json.*
-import org.example.library.MR
-import org.example.mpp.models.ServerModel
 
-class Host {
+@Serializable
+class HostInfo {
     companion object {
         private lateinit var items: ArrayList<TableRowModel>
 

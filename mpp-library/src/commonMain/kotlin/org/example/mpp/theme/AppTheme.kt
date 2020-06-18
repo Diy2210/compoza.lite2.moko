@@ -3,13 +3,12 @@ package org.example.mpp.theme
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.core.Theme
-import dev.icerock.moko.widgets.factory.ButtonWithIconViewFactory
 import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState
 import dev.icerock.moko.widgets.style.view.TextStyle
-import org.example.mpp.screens.EditServerScreen
-import org.example.mpp.screens.ServerListScreen
+import org.example.mpp.screens.screenEditServer.EditServerScreen
+import org.example.mpp.screens.screenServerList.ServerListScreen
 
 val main get() = Color(0x1BBCACFF)
 val transparent get() = Color(0x00000000)

@@ -1,9 +1,11 @@
 package org.example.mpp.repositories
 
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import org.example.mpp.models.TableRowModel
 
-class Service {
+@Serializable
+class DiskInfo {
     companion object {
         private lateinit var items: ArrayList<TableRowModel>
 
@@ -11,14 +13,16 @@ class Service {
             items = ArrayList()
             for (element in jsonObject) {
                 val data = element as JsonObject
-                val status = data["status"].toString()
-//                var icon = R.drawable.ic_empty;
-                if (status.toInt() > 0) {
-//                    icon = R.drawable.ic_tick
-                }
+                val total = data["total"].toString().toLong()
+                val totalSize = total.toString()
+                val free = data["free"].toString().toLong()
+                val freeSize = free
+                val freePerCents = (free * 100) / total
                 items.add(
                     TableRowModel(
-                        data["name"].toString(), "", 0
+                        title = data["dir"].toString(),
+                        value = freePerCents.toString() + freeSize.toString(),
+                        options = totalSize
                     )
                 )
             }

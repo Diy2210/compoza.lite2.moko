@@ -1,4 +1,4 @@
-package org.example.mpp.units
+package org.example.mpp.screens.screenServerList
 
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.map
@@ -10,7 +10,6 @@ import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
-import org.example.mpp.models.ServerItem
 
 class ServerUnitItem(
     private val theme: Theme, itemId: Long, server: ServerItem,

@@ -1,4 +1,4 @@
-package org.example.mpp.screens
+package org.example.mpp.screens.screenDetails
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
@@ -15,16 +15,11 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
-import kotlinx.serialization.ImplicitReflectionSerializer
 import org.example.library.MR
-import org.example.mpp.models.TableRowModel
-import org.example.mpp.repositories.Host
 
 class DetailsScreen(
     private val theme: Theme
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
-
-    //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
 
     override val navigationBar
         get() = NavigationBar.Normal(
@@ -40,34 +35,8 @@ class DetailsScreen(
             )
         )
 
+    private val settings: Settings = Settings()
 
-    val settings: Settings = Settings()
-
-//    var hostname: String = ""
-//    var os: String = ""
-//    var ip: String = ""
-//    var kernel: String = ""
-//    var uptime: String = ""
-//    var date: String = ""
-
-    val item = TableRowModel(title = Host.equals("hostname").toString(), value = "", icon = 0, options = "")
-    val hostname = item.value
-
-    @ImplicitReflectionSerializer
-    val hosts = settings.getString("host")
-//    val item = ServerModel(
-//        hostname = Host.equals("hostname").toString(),
-//        os = Host.equals("os").toString(),
-//        ip = Host.equals("ip").toString(),
-//        kernel = Host.equals("kernel").toString(),
-//        uptime = Host.equals("uptime").toString(),
-//        date = Host.equals("date").toString()
-//    )
-
-//    @ImplicitReflectionSerializer
-//    val hostname = Json.parse<ServerModel>(hosts)
-
-    //    @ImplicitReflectionSerializer
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
 
@@ -83,7 +52,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const(item.title)
+                text = const("hostname")
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,

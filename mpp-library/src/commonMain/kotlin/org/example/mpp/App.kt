@@ -1,6 +1,5 @@
 package org.example.mpp
 
-import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
@@ -8,9 +7,9 @@ import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.*
 import org.example.mpp.theme.AppTheme
 import org.example.mpp.navigation.NavigationFactory
-import org.example.mpp.screens.DetailsScreen
-import org.example.mpp.screens.EditServerScreen
-import org.example.mpp.screens.ServerListScreen
+import org.example.mpp.screens.screenDetails.DetailsScreen
+import org.example.mpp.screens.screenEditServer.EditServerScreen
+import org.example.mpp.screens.screenServerList.ServerListScreen
 
 class App : BaseApplication() {
     override fun setup(): ScreenDesc<Args.Empty> {

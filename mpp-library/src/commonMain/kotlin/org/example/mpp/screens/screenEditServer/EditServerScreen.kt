@@ -1,4 +1,4 @@
-package org.example.mpp.screens
+package org.example.mpp.screens.screenEditServer
 
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -16,7 +16,6 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
-import org.example.mpp.models.EditServerViewModel
 
 class EditServerScreen(
     private val theme: Theme,

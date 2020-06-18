@@ -1,4 +1,4 @@
-package org.example.mpp.models
+package org.example.mpp.screens.screenEditServer
 
 import com.russhwolf.settings.*
 import dev.icerock.moko.fields.FormField

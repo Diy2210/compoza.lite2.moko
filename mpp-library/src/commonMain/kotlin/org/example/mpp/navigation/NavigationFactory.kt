@@ -3,11 +3,11 @@ package org.example.mpp.navigation
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.navigation.Route
-import org.example.mpp.models.EditServerViewModel
-import org.example.mpp.models.ServerViewModel
-import org.example.mpp.screens.DetailsScreen
-import org.example.mpp.screens.EditServerScreen
-import org.example.mpp.screens.ServerListScreen
+import org.example.mpp.screens.screenEditServer.EditServerViewModel
+import org.example.mpp.screens.screenServerList.ServerViewModel
+import org.example.mpp.screens.screenDetails.DetailsScreen
+import org.example.mpp.screens.screenEditServer.EditServerScreen
+import org.example.mpp.screens.screenServerList.ServerListScreen
 
 class NavigationFactory(
     private val theme: Theme) {

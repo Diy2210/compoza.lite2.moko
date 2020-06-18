@@ -1,4 +1,4 @@
-package org.example.mpp.screens
+package org.example.mpp.screens.screenServerList
 
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -19,10 +19,8 @@ import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
+import kotlinx.serialization.ImplicitReflectionSerializer
 import org.example.library.MR
-import org.example.mpp.models.ServerItem
-import org.example.mpp.units.ServerUnitItem
-import org.example.mpp.models.ServerViewModel
 
 class ServerListScreen(
     private val theme: Theme,
@@ -47,6 +45,7 @@ class ServerListScreen(
             )
         )
 
+    @ImplicitReflectionSerializer
     override fun createContentWidget() = with(theme) {
         val viewModel = getViewModel {
             viewModelFactory(createEventsDispatcher())
@@ -93,6 +92,7 @@ class ServerListScreen(
         routeDetails.route()
     }
 
+    @ImplicitReflectionSerializer
     private fun serversToTableUnits(servers: List<ServerItem>, viewModel: ServerViewModel): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(
