@@ -3,8 +3,9 @@ package org.example.mpp.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ServiceInfoModel(
+data class StatusModel (
     val name: String,
-    val status: Int
-
+    val status: String,
+    val feature: String,
+    val id: String
 )

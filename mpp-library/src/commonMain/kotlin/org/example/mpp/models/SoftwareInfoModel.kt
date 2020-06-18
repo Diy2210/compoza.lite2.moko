@@ -16,6 +16,6 @@ data class SoftwareInfoModel (
     val logrotateVersion: Float,
     val mySQLVersion: Float,
     val proFTPDVersion: Float,
-    val spamAssasinVersion: Float,
+    val spamAssassinVersion: Float,
     val clamAVVersion: Float
 )

@@ -4,7 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DiskInfoModel(
-    val dir: String = "",
-    val free: String = "",
-    val total: String = ""
+    val itotal: String,
+    val device: String,
+    val type: String,
+    val dir: String,
+    val free: String,
+    val total: String
 )
