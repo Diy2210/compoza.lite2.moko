@@ -3,7 +3,7 @@ package org.example.mpp.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProgsInfoModel(
-    val name: String,
-    val status: Int
+data class ProgsModel(
+    val title: String,
+    val value: String
 )

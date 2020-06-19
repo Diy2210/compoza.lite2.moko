@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ResponseModel(
     val success: Boolean,
-    val data: String
+    val data: DataModel
 )

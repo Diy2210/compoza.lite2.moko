@@ -3,7 +3,8 @@ package org.example.mpp.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DiskInfoModel(
+data class DiskModel(
+    val ifree: String,
     val itotal: String,
     val device: String,
     val type: String,

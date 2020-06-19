@@ -68,7 +68,7 @@ class ServerListScreen(
                 id = Ids.CreateNewServer,
                 category = AppTheme.CreateNewServerBtn,
                 size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
-                content = ButtonWidget.Content.Text(Value.data("+".desc())),
+                content = ButtonWidget.Content.Text(Value.data("".desc())),
                 onTap = viewModel::onAddPressed
             )
 

@@ -1,6 +1,7 @@
 package org.example.mpp.screens.screenDetails
 
 import com.russhwolf.settings.Settings
+import com.russhwolf.settings.get
 import com.russhwolf.settings.invoke
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.resources.desc.desc
@@ -15,7 +16,11 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
+import kotlinx.serialization.builtins.set
 import org.example.library.MR
+import org.example.mpp.models.DataModel
+import org.example.mpp.models.HostModel
+import org.example.mpp.models.ResponseModel
 
 class DetailsScreen(
     private val theme: Theme
@@ -52,7 +57,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("hostname")
+                text = const("-")
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -141,6 +146,16 @@ class DetailsScreen(
                 systemDate leftRightToLeftRight root offset 16
             }
         }
+    }
+
+    fun getHost(host: HostModel) {
+        host.hostname
+        host.date
+        host.ip
+        host.kernel
+        host.os
+        host.updates
+        host.uptime
     }
 
     object Ids {

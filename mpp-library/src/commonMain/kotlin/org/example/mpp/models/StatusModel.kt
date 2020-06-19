@@ -7,5 +7,5 @@ data class StatusModel (
     val name: String,
     val status: String,
     val feature: String,
-    val id: String
+    val id: String? = null
 )

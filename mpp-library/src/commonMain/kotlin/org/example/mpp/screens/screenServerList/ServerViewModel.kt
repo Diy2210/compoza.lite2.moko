@@ -11,9 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.*
-import kotlinx.serialization.parse
 import org.example.mpp.api.CompozaApi
-import org.example.mpp.models.HostInfoModel
 import org.example.mpp.models.ResponseModel
 import org.example.mpp.screens.screenServerList.ServerItem as ServerModel1
 
@@ -55,25 +53,12 @@ class ServerViewModel(
         eventsDispatcher.dispatchEvent {
             viewModelScope.launch {
                 try {
-                    client.getStatusServer(url, "/api/info", token).also { response ->
+                    client.getStatusServer(url, "/api/v1.1/info", token).also { response ->
                         println(response)
                         if(response.contains("success")) {
-                            val json = Json(JsonConfiguration(isLenient = true))
-                            val res = json.parseJson(response)
-
-                            val resToString = json.parse(ResponseModel.serializer(), response)
-//                            println("//////////$resToString")
-
-//                            val data: JsonObject = res.jsonObject["data"] as JsonObject
-//                            val disk = DiskInfo.collect(data.jsonObject["disk"] as JsonObject)
-//                            val host = HostInfo.collect(data.jsonObject["host"] as JsonObject)
-//                            val service = ServiceInfo.collect(data.jsonObject["service"] as JsonObject)
-//                            val software = SoftwareInfo.collect(data.jsonObject["software"] as JsonObject)
-//                            val h = data.jsonObject["host"] as JsonObject
-//                            val hostToString = json.parse(HostInfoModel.serializer(), h.toString())
-//                            println("//////////$hostToString")
-//                            val resToString = Json.parse<ResponseModel>(res.toString())
-//                            settings.putString("host", data.jsonObject["host"].toString())
+                            val json = Json(JsonConfiguration.Default)
+                            val resObject = json.parse(ResponseModel.serializer(), response)
+                            println(resObject)
                         } else {
                             println("SERVER ERROR")
                         }

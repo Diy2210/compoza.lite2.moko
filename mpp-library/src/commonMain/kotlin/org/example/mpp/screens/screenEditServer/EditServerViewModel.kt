@@ -33,26 +33,6 @@ class EditServerViewModel(
         }
 
         eventsDispatcher.dispatchEvent {
-//            routeInputCode(title, url, token)
-//            try {
-//                c.getStatusServer(url, title, token).also { response ->
-//                    r = response
-//                    println(r.desc())
-//                }
-//            } catch (e: Exception) {
-//                println(r.desc())
-//            }
-
-//            println("server title: $title , server url: $url , server token: $token")
-//            settings["Server"] = "$title $url $token"
-
-//            val a: String by settings.string(defaultValue = token)
-//            println("///////////////////////////////" + a)
-//            println(settings.getString("Server"))
-
-//            val keys: Set<String> = settings.keys
-//            println(keys)
-//
             settings.putInt("Server ID", 0)
             settings.putString("Server Title", title)
             settings.putString("Server Url", url)

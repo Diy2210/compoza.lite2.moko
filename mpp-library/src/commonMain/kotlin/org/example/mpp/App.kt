@@ -5,6 +5,7 @@ import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.*
+import org.example.mpp.models.ResponseModel
 import org.example.mpp.theme.AppTheme
 import org.example.mpp.navigation.NavigationFactory
 import org.example.mpp.screens.screenDetails.DetailsScreen
@@ -13,8 +14,6 @@ import org.example.mpp.screens.screenServerList.ServerListScreen
 
 class App : BaseApplication() {
     override fun setup(): ScreenDesc<Args.Empty> {
-//        val theme = Theme() {
-
         val navigationFactory = NavigationFactory(AppTheme.baseTheme)
 
         return registerScreen(RootNavigationScreen::class) {

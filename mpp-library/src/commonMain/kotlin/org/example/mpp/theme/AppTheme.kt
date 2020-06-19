@@ -4,11 +4,15 @@ import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.widgets.ButtonWidget
 import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.core.Theme
+import dev.icerock.moko.widgets.factory.ButtonWithIconViewFactory
+import dev.icerock.moko.widgets.factory.IconGravity
 import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState
 import dev.icerock.moko.widgets.style.view.Colors
+import dev.icerock.moko.widgets.style.view.PaddingValues
 import dev.icerock.moko.widgets.style.view.TextStyle
+import org.example.library.MR
 import org.example.mpp.screens.screenEditServer.EditServerScreen
 import org.example.mpp.screens.screenServerList.ServerListScreen
 
@@ -20,7 +24,8 @@ val white get() = Color(0xffffffffFF)
 object AppTheme {
     object CreateNewServerBtn : ButtonWidget.Category
     val baseTheme = Theme {
-        factory[CreateNewServerBtn] = SystemButtonViewFactory(
+        factory[CreateNewServerBtn] = ButtonWithIconViewFactory(
+            icon = PressableState(all = MR.images.plus_icon_png),
             background = PressableState(
                 all = Background(
                     fill = Fill.Solid(color = main),
