@@ -103,6 +103,15 @@ class DetailsScreen(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
                 text = const(settings.getString("date"))
             )
+            val updatesLabel = +text(
+                size = WidgetSize.WidthAsParentHeightWrapContent,
+                text = const("Updates")
+            )
+            val updates = +text(
+                id = Ids.Updates,
+                size = WidgetSize.WidthAsParentHeightWrapContent,
+                text = const("Available: " + settings.getInt("updates").toString())
+            )
 
             constraints {
                 serverName topToTop root offset 8
@@ -143,6 +152,12 @@ class DetailsScreen(
 
                 systemDate topToBottom systemDateLabel offset 0
                 systemDate leftRightToLeftRight root offset 16
+
+                updatesLabel topToBottom systemDate offset 8
+                updatesLabel leftRightToLeftRight root offset 16
+
+                updates topToBottom updatesLabel offset 0
+                updates leftRightToLeftRight root offset 16
             }
         }
     }
@@ -155,5 +170,6 @@ class DetailsScreen(
         object CPU : TextWidget.Id
         object SystemUptime : TextWidget.Id
         object SystemDate : TextWidget.Id
+        object Updates : TextWidget.Id
     }
 }

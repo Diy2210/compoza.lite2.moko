@@ -12,12 +12,3 @@ data class HostModel(
     val updates: Int,
     val date: String
 )
-//{
-//    val hostnameValue = hostname
-//    val osValue = os
-//    val ipValue = ip
-//    val kernelValue = kernel
-//    val uptimeValue = uptime
-//    val updatesValue = updates
-//    val dateValue = date
-//}

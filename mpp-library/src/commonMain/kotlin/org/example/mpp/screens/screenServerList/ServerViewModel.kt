@@ -65,6 +65,7 @@ class ServerViewModel(
                             settings.putString("kernel", resObject.data.host.kernel)
                             settings.putString("os", resObject.data.host.os)
                             settings.putString("uptime", resObject.data.host.uptime)
+                            settings.putInt("updates", resObject.data.host.updates)
                         } else {
                             println("SERVER ERROR")
                         }
