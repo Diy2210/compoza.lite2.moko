@@ -1,11 +1,13 @@
 package org.example.mpp.theme
 
 import dev.icerock.moko.graphics.Color
+import dev.icerock.moko.widgets.ButtonWidget
 import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState
+import dev.icerock.moko.widgets.style.view.Colors
 import dev.icerock.moko.widgets.style.view.TextStyle
 import org.example.mpp.screens.screenEditServer.EditServerScreen
 import org.example.mpp.screens.screenServerList.ServerListScreen
@@ -16,28 +18,20 @@ val white get() = Color(0xffffffffFF)
 
 
 object AppTheme {
+    object CreateNewServerBtn : ButtonWidget.Category
     val baseTheme = Theme {
-        factory[ServerListScreen.Ids.CreateNewServer] = SystemButtonViewFactory(
-//            icon = PressableState(all = MR.images.plus_icon_png),
+        factory[CreateNewServerBtn] = SystemButtonViewFactory(
             background = PressableState(
-                normal = Background(
+                all = Background(
                     fill = Fill.Solid(color = main),
-                    cornerRadius = 100f
-                ),
-                disabled = Background(
-                    fill = Fill.Solid(color = main)
-                ),
-                pressed = Background(
-                    fill = Fill.Solid(color = transparent)
+                    cornerRadius = 50f
                 )
             ),
-            textStyle  = TextStyle(
+            textStyle = TextStyle(
                 color = PressableState(
-                    normal = white,
-                    pressed = main,
-                    disabled = white
+                    all = Colors.white
                 ),
-                size = 25
+                size = 15
             )
         )
         factory[EditServerScreen.Ids.CancelBtn] = SystemButtonViewFactory(

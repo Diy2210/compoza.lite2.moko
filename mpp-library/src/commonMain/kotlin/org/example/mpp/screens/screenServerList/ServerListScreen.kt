@@ -17,10 +17,12 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
 import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.FontStyle
+import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import kotlinx.serialization.ImplicitReflectionSerializer
 import org.example.library.MR
+import org.example.mpp.theme.AppTheme
 
 class ServerListScreen(
     private val theme: Theme,
@@ -64,7 +66,8 @@ class ServerListScreen(
 
             val createNewServer = +button(
                 id = Ids.CreateNewServer,
-                size = WidgetSize.WrapContent,
+                category = AppTheme.CreateNewServerBtn,
+                size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
                 content = ButtonWidget.Content.Text(Value.data("+".desc())),
                 onTap = viewModel::onAddPressed
             )
@@ -73,8 +76,8 @@ class ServerListScreen(
                 list topToTop root offset 8
                 list leftToRight root offset 8
 
-                createNewServer bottomToBottom root offset 16
-                createNewServer rightToRight root offset 16
+                createNewServer bottomToBottom root offset 20
+                createNewServer rightToRight root offset 20
             }
         }
     }
