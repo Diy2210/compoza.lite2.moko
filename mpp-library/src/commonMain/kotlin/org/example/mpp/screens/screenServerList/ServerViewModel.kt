@@ -9,6 +9,7 @@ import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.StructureKind
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.*
 import org.example.mpp.api.CompozaApi
@@ -58,7 +59,12 @@ class ServerViewModel(
                         if(response.contains("success")) {
                             val json = Json(JsonConfiguration.Default)
                             val resObject = json.parse(ResponseModel.serializer(), response)
-                            println(resObject)
+                            settings.putString("hostname", resObject.data.host.hostname)
+                            settings.putString("date", resObject.data.host.date)
+                            settings.putString("ip", resObject.data.host.ip)
+                            settings.putString("kernel", resObject.data.host.kernel)
+                            settings.putString("os", resObject.data.host.os)
+                            settings.putString("uptime", resObject.data.host.uptime)
                         } else {
                             println("SERVER ERROR")
                         }

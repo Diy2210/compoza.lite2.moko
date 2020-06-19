@@ -44,7 +44,6 @@ class DetailsScreen(
 
     override fun createContentWidget() = with(theme) {
         constraint(size = WidgetSize.AsParent) {
-
             val serverName = +text(
                 id = Ids.ServerName,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -57,7 +56,7 @@ class DetailsScreen(
             val url = +text(
                 id = Ids.Url,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("-")
+                text = const(settings.getString("hostname"))
             )
             val systemLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -66,7 +65,7 @@ class DetailsScreen(
             val system = +text(
                 id = Ids.System,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("os")
+                text = const(settings.getString("os"))
             )
             val ipLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -75,7 +74,7 @@ class DetailsScreen(
             val IP = +text(
                 id = Ids.IP,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("ip")
+                text = const(settings.getString("ip"))
             )
             val cpuLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -84,7 +83,7 @@ class DetailsScreen(
             val cpu = +text(
                 id = Ids.CPU,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("kernel")
+                text = const(settings.getString("kernel"))
             )
             val systemUptimeLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -93,7 +92,7 @@ class DetailsScreen(
             val systemUptime = +text(
                 id = Ids.SystemUptime,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("uptime")
+                text = const(settings.getString("uptime"))
             )
             val systemDateLabel = +text(
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -102,7 +101,7 @@ class DetailsScreen(
             val systemDate = +text(
                 id = Ids.SystemDate,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
-                text = const("date")
+                text = const(settings.getString("date"))
             )
 
             constraints {
@@ -146,16 +145,6 @@ class DetailsScreen(
                 systemDate leftRightToLeftRight root offset 16
             }
         }
-    }
-
-    fun getHost(host: HostModel) {
-        host.hostname
-        host.date
-        host.ip
-        host.kernel
-        host.os
-        host.updates
-        host.uptime
     }
 
     object Ids {
