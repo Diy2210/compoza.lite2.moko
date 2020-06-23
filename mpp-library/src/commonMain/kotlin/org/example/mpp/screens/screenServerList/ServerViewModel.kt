@@ -7,14 +7,13 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import kotlinx.coroutines.launch
-import kotlinx.serialization.ImplicitReflectionSerializer
-import kotlinx.serialization.StructureKind
-import kotlinx.serialization.UnstableDefault
-import kotlinx.serialization.json.*
 import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.ResponseModel
 import org.example.mpp.screens.screenServerList.ServerItem as ServerModel1
+import kotlinx.coroutines.launch
+import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.UnstableDefault
+import kotlinx.serialization.json.*
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
