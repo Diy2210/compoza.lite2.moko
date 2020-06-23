@@ -1,18 +1,21 @@
 package org.example.mpp.theme
 
 import dev.icerock.moko.graphics.Color
+import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.ButtonWidget
 import dev.icerock.moko.widgets.TextWidget
 import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.factory.ButtonWithIconViewFactory
 import dev.icerock.moko.widgets.factory.SystemTextViewFactory
+import dev.icerock.moko.widgets.screen.navigation.NavigationBar
+import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState
 import dev.icerock.moko.widgets.style.view.*
 import org.example.library.MR
-import org.example.mpp.screens.screenDetails.DetailsScreen
+import org.example.mpp.navigation.NavigationFactory
 import org.example.mpp.screens.screenEditServer.EditServerScreen
 
 val colorAccent get() = Color(0x1BBCACFF)
@@ -24,17 +27,44 @@ val white get() = Color(0xffffffffFF)
 object AppTheme {
     object CreateNewServerBtn : ButtonWidget.Category
     object TextStyleCategory : TextWidget.Category
-    object TextStyleValue : TextWidget.Category
+    object TextStyleHostTitle : TextWidget.Category
+    object TextStyleHostValue : TextWidget.Category
+    object TextStyleDefaultValue : TextWidget.Category
     val baseTheme = Theme {
+//        factory[NavigationStyle] = NavigationBar.Normal(
+//            title = MR.strings.compoza_lite.desc(),
+//            styles = NavigationBar.Styles(
+//                backgroundColor = Color(0x3155ABFF),
+//                tintColor = Color(0xffffffffFF),
+//                textStyle = TextStyle(
+//                    color = Color(0xffffffffFF),
+//                    size = 18,
+//                    fontStyle = FontStyle.BOLD
+//                )
+//            )
+//        )
+
         // Style Text Category
         factory[TextStyleCategory] = SystemTextViewFactory (
             textStyle = TextStyle(15, color = colorPrimary, fontStyle = FontStyle.BOLD),
             margins = MarginValues(8f)
         )
 
-        // Style Text Value
-        factory[TextStyleValue] = SystemTextViewFactory (
+        // Style Text Value Title
+        factory[TextStyleHostTitle] = SystemTextViewFactory (
             textStyle = TextStyle(14),
+            margins = MarginValues(8f, 0f, 0f, 0f)
+        )
+
+        // Style Text Value Host
+        factory[TextStyleHostValue] = SystemTextViewFactory (
+            textStyle = TextStyle(12),
+            margins = MarginValues(8f, 0f, 0f, 0f)
+        )
+
+        // Style Text Value Default
+        factory[TextStyleDefaultValue] = SystemTextViewFactory (
+            textStyle = TextStyle(11),
             margins = MarginValues(8f, 0f, 0f, 0f)
         )
 
