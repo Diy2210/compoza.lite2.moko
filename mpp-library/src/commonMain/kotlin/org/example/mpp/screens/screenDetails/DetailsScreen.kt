@@ -3,8 +3,10 @@ package org.example.mpp.screens.screenDetails
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
 import dev.icerock.moko.graphics.Color
+import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
+import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
@@ -12,6 +14,7 @@ import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.style.background.Orientation
 import dev.icerock.moko.widgets.style.view.FontStyle
+import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import org.example.library.MR
@@ -250,10 +253,15 @@ class DetailsScreen(
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("Title")
                     )
-                    val softwareTitleValue = +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("-")
+//                    val softwareValue = +text(
+//                        category = AppTheme.TextStyleDefaultValue,
+//                        size = WidgetSize.WidthAsParentHeightWrapContent,
+//                        text = const("-")
+//                    )
+                    val imageValue = +image(
+                        image = const(Image.resource(MR.images.tick_png)),
+                        size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
+                        scaleType = ImageWidget.ScaleType.FIT
                     )
 
                     constraints {
@@ -263,8 +271,8 @@ class DetailsScreen(
                         softwareTitle topToBottom software offset 8
                         softwareTitle leftToLeft root offset 8
 
-                        softwareTitleValue topToBottom software offset 8
-                        softwareTitleValue leftToLeft softwareTitle offset 300
+                        imageValue topToBottom software offset 8
+                        imageValue leftToLeft softwareTitle offset 300
                     }
                 }
             }
