@@ -138,159 +138,135 @@ class DetailsScreen(
                     )
                 }
 
-                // Disk Linear
-                +linear(
-                    id = Ids.DiskUsageLinearId,
-                    size = WidgetSize.WrapContent
-                ) {
+                // Disk Constraint
+                +constraint(size = WidgetSize.AsParent) {
+                    val diskUsage = +text(
+                        id = Ids.DiskUsageId,
+                        category = AppTheme.TextStyleCategory,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("Disk Usage")
+                    )
 
                     // Disk Info Content
-                    +constraint(size = WidgetSize.WrapContent) {
-                        val mountPoint = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidgetSize.WidthAsParentHeightWrapContent,
-                            text = const(settings.getString("Mount Point"))
-                        )
-                        val free = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidgetSize.WidthAsParentHeightWrapContent,
-                            text = const(settings.getString("Free"))
-                        )
-                        val total = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidgetSize.WidthAsParentHeightWrapContent,
-                            text = const(settings.getString("Total"))
-                        )
+                    val mountPoint = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("Mount Point")
+                    )
+                    val mountPointValue = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("-")
+                    )
+                    val free = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("Free")
+                    )
+                    val freeValue = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("-")
+                    )
+                    val total = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("Total")
+                    )
+                    val totalValue = +text(
+                        category = AppTheme.TextStyleDefaultValue,
+                        size = WidgetSize.WidthAsParentHeightWrapContent,
+                        text = const("-")
+                    )
 
-                        constraints {
-                            mountPoint topToBottom root offset 8
-                            mountPoint leftToLeft root offset 16
+                    constraints {
+                        diskUsage topToTop root offset 8
+                        diskUsage leftRightToLeftRight root offset 8
 
-                            free topToTop root offset 8
-                            free rightToRight root offset 16
+                        mountPoint topToBottom diskUsage offset 8
+                        mountPoint leftToLeft root offset 8
 
-                            total topToTop root offset 8
-                            total rightToRight root offset 16
+                        mountPointValue topToBottom mountPoint offset 8
+                        mountPointValue leftToLeft root offset 8
 
-                        }
+                        free topToBottom diskUsage offset 8
+                        free leftToLeft mountPoint offset 250
+
+                        freeValue topToBottom free offset 8
+                        freeValue leftToLeft mountPoint offset 250
+
+                        total topToBottom diskUsage offset 8
+                        total leftToLeft mountPoint offset 300
+
+                        totalValue topToBottom total offset 8
+                        totalValue leftToLeft mountPoint offset 300
                     }
                 }
 
-                // Server Status Linear
-                +linear(
-                    id = Ids.ServerStatusLinearId,
-                    size = WidgetSize.WrapContent
-                ) {
+                // Server Status Constraint
+                +constraint(size = WidgetSize.AsParent) {
 
                     // Server Status Content
-                    +text(
+                    val serverStatusTitle = +text(
                         category = AppTheme.TextStyleCategory,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("Server Status")
                     )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("id")
-                    )
-                    +text(
+                    val serverNameValue = +text(
                         category = AppTheme.TextStyleDefaultValue,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("-")
                     )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("Name")
-                    )
-                    +text(
+                    val serverStatusValue = +text(
                         category = AppTheme.TextStyleDefaultValue,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("-")
                     )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("Status")
-                    )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("-")
-                    )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("Future")
-                    )
-                    +text(
-                        category = AppTheme.TextStyleDefaultValue,
-                        size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("-")
-                    )
+                    constraints {
+                        serverStatusTitle topToTop root offset 8
+                        serverStatusTitle leftRightToLeftRight root offset 8
+
+                        serverNameValue topToBottom serverStatusTitle offset 8
+                        serverNameValue leftToLeft root offset 8
+
+                        serverStatusValue topToBottom serverStatusTitle offset 8
+                        serverStatusValue leftToLeft serverNameValue offset 300
+                    }
                 }
 
-                // Software Linear
-                +linear(
-                    id = Ids.SoftwareInfoLinearId,
-                    size = WidgetSize.WrapContent
+                // Software Constraint
+                +constraint(
+                    size = WidgetSize.AsParent
                 ) {
 
                     // Software Versions Content
-                    +text(
+                    val software = +text(
                         category = AppTheme.TextStyleCategory,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("Software Versions")
                     )
-                    +text(
+                    val softwareTitle = +text(
                         category = AppTheme.TextStyleDefaultValue,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
-                        text = const("id")
+                        text = const("Title")
                     )
-                    +text(
+                    val softwareTitleValue = +text(
                         category = AppTheme.TextStyleDefaultValue,
                         size = WidgetSize.WidthAsParentHeightWrapContent,
                         text = const("-")
                     )
+
+                    constraints {
+                        software topToTop root offset 8
+                        software leftRightToLeftRight root offset 8
+
+                        softwareTitle topToBottom software offset 8
+                        softwareTitle leftToLeft root offset 8
+
+                        softwareTitleValue topToBottom software offset 8
+                        softwareTitleValue leftToLeft softwareTitle offset 300
+                    }
                 }
-
-                // Disk Usage
-//                val diskUsage = +text(
-//                    category = AppTheme.TextStyleCategory,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("Disk Usage")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("Mount Point")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("/ Directory")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("Free")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("-")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("Total")
-//                )
-//                +text(
-//                    category = AppTheme.TextStyleDefaultValue,
-//                    size = WidgetSize.WidthAsParentHeightWrapContent,
-//                    text = const("-")
-//                )
-
             }
         )
     }
@@ -303,6 +279,7 @@ class DetailsScreen(
         object SoftwareInfoLinearId : LinearWidget.Id
         object RootScroll : ScrollWidget.Id
         object ServerName : TextWidget.Id
+        object DiskUsageId : TextWidget.Id
         object Url : TextWidget.Id
         object System : TextWidget.Id
         object IP : TextWidget.Id

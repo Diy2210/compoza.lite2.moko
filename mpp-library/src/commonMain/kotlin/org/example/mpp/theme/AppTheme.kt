@@ -31,18 +31,6 @@ object AppTheme {
     object TextStyleHostValue : TextWidget.Category
     object TextStyleDefaultValue : TextWidget.Category
     val baseTheme = Theme {
-//        factory[NavigationStyle] = NavigationBar.Normal(
-//            title = MR.strings.compoza_lite.desc(),
-//            styles = NavigationBar.Styles(
-//                backgroundColor = Color(0x3155ABFF),
-//                tintColor = Color(0xffffffffFF),
-//                textStyle = TextStyle(
-//                    color = Color(0xffffffffFF),
-//                    size = 18,
-//                    fontStyle = FontStyle.BOLD
-//                )
-//            )
-//        )
 
         // Style Text Category
         factory[TextStyleCategory] = SystemTextViewFactory (
