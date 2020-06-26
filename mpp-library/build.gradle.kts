@@ -4,6 +4,7 @@ plugins {
     id("dev.icerock.mobile.multiplatform")
     id("dev.icerock.mobile.multiplatform-resources")
     id("kotlinx-serialization")
+    id("kotlin-android-extensions")
 }
 
 android {

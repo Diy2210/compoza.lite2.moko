@@ -13,7 +13,6 @@ class EditServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<EditServerViewModel.EventsListener> {
 
-//    val c = CompozaApi()
     val settings: Settings = Settings()
 
     val serverTitleField = FormField<String, StringDesc>("", liveBlock { null })
@@ -48,7 +47,6 @@ class EditServerViewModel(
     }
 
     interface EventsListener {
-//        fun routeInputCode(title: String, url: String, token: String)
         fun routeToMain()
         fun showError(error: StringDesc)
     }
