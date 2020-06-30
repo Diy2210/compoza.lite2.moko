@@ -37,10 +37,9 @@ class DetailsModel : ViewModel() {
     private val widgetData = MutableLiveData("")
 
     // Host Live Data
-    private val _hostLiveData = MutableLiveData(HostModel(
-        hostname = "", os = "", ip = "", kernel = "", uptime = "", date = "", updates = 0))
-
-    var hostname: LiveData<StringDesc> = _hostLiveData.map { it.hostname.desc() }
+//    private val _hostLiveData = MutableLiveData(HostModel(
+//        hostname = "", os = "", ip = "", kernel = "", uptime = "", date = "", updates = 0))
+//    var hostname: LiveData<StringDesc> = _hostLiveData.map { it.hostname.desc() }
 
 
 //    val hostLiveData: LiveData<HostModel> = _hostLiveData
@@ -57,6 +56,9 @@ class DetailsModel : ViewModel() {
 //    private val _diskLiveData = MutableLiveData(DiskModel)
 //    val diskLiveData: LiveData<DiskModel.Companion> = _diskLiveData
 
+    private val _hostName = MutableLiveData("initString")
+    val hostName: LiveData<StringDesc> = _hostName.map { it.desc() }
+
     init {
         launchAsyncRequest()
     }
@@ -71,7 +73,9 @@ class DetailsModel : ViewModel() {
                         val json = Json(JsonConfiguration.Default)
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
-                        _hostLiveData.value = resObject.data.host
+//                        _hostLiveData.value = resObject.data.host
+
+                        _hostName.value = resObject.data.host.hostname
 
 //                        _hostLiveData.value.hostname = resObject.data.host.hostname
 //                        _hostLiveData.value.os = resObject.data.host.os

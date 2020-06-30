@@ -73,7 +73,8 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                                 size = WidthAsParentHeightWrapContent,
 //                                text = viewModel.hostname
 //                                text = const(viewModel.hostLiveData.value.hostname)
-                                text = const(title)
+//                                text = const(title)
+                                text = viewModel.hostName
                             )
                         }
                     }
