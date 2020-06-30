@@ -5,6 +5,7 @@ import dev.icerock.moko.widgets.screen.BaseApplication
 import dev.icerock.moko.widgets.screen.ScreenDesc
 import dev.icerock.moko.widgets.screen.TypedScreenDesc
 import dev.icerock.moko.widgets.screen.navigation.*
+import kotlinx.serialization.ImplicitReflectionSerializer
 import org.example.mpp.models.ResponseModel
 import org.example.mpp.theme.AppTheme
 import org.example.mpp.navigation.NavigationFactory
@@ -13,6 +14,7 @@ import org.example.mpp.screens.screenEditServer.EditServerScreen
 import org.example.mpp.screens.screenServerList.ServerListScreen
 
 class App : BaseApplication() {
+    @ImplicitReflectionSerializer
     override fun setup(): ScreenDesc<Args.Empty> {
         val navigationFactory = NavigationFactory(AppTheme.baseTheme)
 

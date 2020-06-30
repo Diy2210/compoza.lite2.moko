@@ -4,11 +4,11 @@ import kotlinx.serialization.*
 
 @Serializable
 data class HostModel(
-    val hostname: String,
-    val os: String,
-    val ip: String,
-    val kernel: String,
-    val uptime: String,
-    val updates: Int,
-    val date: String
+    var hostname: String,
+    var os: String,
+    var ip: String,
+    var kernel: String,
+    var uptime: String,
+    var updates: Int,
+    var date: String
 )

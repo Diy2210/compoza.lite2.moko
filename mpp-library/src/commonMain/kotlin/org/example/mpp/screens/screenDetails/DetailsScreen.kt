@@ -1,19 +1,10 @@
 package org.example.mpp.screens.screenDetails
 
 import com.russhwolf.settings.Settings
-import com.russhwolf.settings.get
 import com.russhwolf.settings.invoke
-import com.russhwolf.settings.set
-import dev.icerock.moko.fields.FormField
-import dev.icerock.moko.fields.liveBlock
 import dev.icerock.moko.graphics.Color
-import dev.icerock.moko.mvvm.livedata.MutableLiveData
-import dev.icerock.moko.mvvm.livedata.map
-import dev.icerock.moko.parcelize.Parcelable
-import dev.icerock.moko.parcelize.Parcelize
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
-import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Widget
 import dev.icerock.moko.widgets.screen.Args
@@ -25,22 +16,13 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import dev.icerock.moko.widgets.utils.asLiveData
-import kotlinx.coroutines.*
+import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.AsParent
+import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHeightWrapContent
 import kotlinx.serialization.*
-import kotlinx.serialization.builtins.list
-import kotlinx.serialization.builtins.set
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonConfiguration
 import org.example.library.MR
-import org.example.mpp.api.CompozaApi
-import org.example.mpp.models.DataModel
-import org.example.mpp.models.DiskModel
-import org.example.mpp.models.ResponseModel
-import org.example.mpp.screens.screenEditServer.EditServerScreen
 import org.example.mpp.theme.AppTheme
 
-class DetailsScreen(
+class DetailsScreen @ImplicitReflectionSerializer constructor(
     private val theme: Theme,
     private val viewModelFactory: () -> DetailsModel
 //    private val resObject: ResponseModel
@@ -65,58 +47,57 @@ class DetailsScreen(
     var url = settings.getString("Server Url")
     var token = settings.getString("Server Token")
 
-//    val client = CompozaApi()
-
-//    private var widgetData = MutableLiveData<ResponseModel>("")
-//    var resObject = ResponseModel.serializer()
-
-//    @UnstableDefault
-//    @ImplicitReflectionSerializer
-//    private fun launchAsyncRequest() {
-//        MainScope().launch {
-//            try {
-//                client.getStatusServer(url, "/api/v1.1/info", token).also { response ->
-//                    if (response.contains("success")) {
-////                        widgetData.value = response
-//
-//                        val json = Json(JsonConfiguration.Default)
-////                        val resObject = json.parse(ResponseModel.serializer(), response)
-//                        resObject = json.parse(response)
-////                        widgetData = json.parse(response)
-//                        println("////////${resObject}")
-//                    } else {
-////                        widgetData.value = "Error"
-//                        println("SERVER ERROR")
-//                    }
-//                }
-//            } catch (e: Exception) {
-//                println(e)
-//            }
-//        }
-//    }
-
-    //    override fun createContentWidget() = with(theme) {
-
     @UnstableDefault
     @ImplicitReflectionSerializer
-//    override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
-    override fun createContentWidget() = with(theme) {
+    override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
+//    override fun createContentWidget() = with(theme) {
+
         val viewModel = getViewModel {
             viewModelFactory()
         }
 
-        viewModel.launchAsyncRequest()
+        return with(theme) {
+//            container(size = WidgetSize.AsParent) {
+                scroll(
+                    id = Ids.RootScroll,
+                    size = AsParent,
+                    child = linear(
+                        id = Ids.RootLinearId,
+                        size = WidthAsParentHeightWrapContent
+                    ) {
 
-//        return with(theme) {
-            linear(
-                size = WidgetSize.AsParent
-            ) {
-                +text(
-                    size = WidgetSize.WidthAsParentHeightWrapContent,
-                    text = const(viewModel.hostname)
+                        +linear(size = AsParent) {
+                            +text(
+                                id = Ids.ServerName,
+                                category = AppTheme.TextStyleCategory,
+                                size = WidthAsParentHeightWrapContent,
+//                                text = viewModel.hostname
+//                                text = const(viewModel.hostLiveData.value.hostname)
+                                text = const(title)
+                            )
+                        }
+                    }
                 )
-//            }
+            }
         }
+
+
+    object Ids {
+        object RootLinearId : LinearWidget.Id
+        object HostLinearId : LinearWidget.Id
+        object DiskUsageLinearId : LinearWidget.Id
+        object ServerStatusLinearId : LinearWidget.Id
+        object SoftwareInfoLinearId : LinearWidget.Id
+        object RootScroll : ScrollWidget.Id
+        object ServerName : TextWidget.Id
+        object DiskUsageId : TextWidget.Id
+        object Url : TextWidget.Id
+        object System : TextWidget.Id
+        object IP : TextWidget.Id
+        object CPU : TextWidget.Id
+        object SystemUptime : TextWidget.Id
+        object SystemDate : TextWidget.Id
+        object Updates : TextWidget.Id
     }
 }
 
