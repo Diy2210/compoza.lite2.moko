@@ -149,7 +149,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = const("Avalaible: " + viewModel.updates)
+                            text = const("Avalaible: " + viewModel.updates.value.length)
                         )
                     }
 
