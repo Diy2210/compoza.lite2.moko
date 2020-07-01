@@ -9,6 +9,6 @@ data class HostModel(
     var ip: String,
     var kernel: String,
     var uptime: String,
-    var updates: Int,
+    var updates: Int?,
     var date: String
 )

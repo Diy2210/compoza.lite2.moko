@@ -27,37 +27,27 @@ class DetailsModel : ViewModel() {
 
     val client = CompozaApi()
 
-//    var os: String = ""
-//    var ip: String = ""
-//    var kernel: String = ""
-//    var uptime: String = ""
-//    var date: String = ""
-//    var updates: Int?
-
-    private val widgetData = MutableLiveData("")
+    // Host Mutable Live Data
+    private val _hostname = MutableLiveData("initString")
+    private val _os = MutableLiveData("initString")
+    private val _ip = MutableLiveData("initString")
+    private val _kernel = MutableLiveData("initString")
+    private val _uptime = MutableLiveData("initString")
+    private val _date = MutableLiveData("initString")
+    private val _updates = MutableLiveData(0)
 
     // Host Live Data
-//    private val _hostLiveData = MutableLiveData(HostModel(
-//        hostname = "", os = "", ip = "", kernel = "", uptime = "", date = "", updates = 0))
-//    var hostname: LiveData<StringDesc> = _hostLiveData.map { it.hostname.desc() }
+    val hostname: LiveData<StringDesc> = _hostname.map { it.desc() }
+    val os: LiveData<StringDesc> = _os.map { it.desc() }
+    val ip: LiveData<StringDesc> = _ip.map { it.desc() }
+    val kernel: LiveData<StringDesc> = _kernel.map { it.desc() }
+    val uptime: LiveData<StringDesc> = _uptime.map { it.desc() }
+    val date: LiveData<StringDesc> = _date.map { it.desc() }
+    val updates: LiveData<String> = _updates.map { it.toString() }
 
-
-//    val hostLiveData: LiveData<HostModel> = _hostLiveData
-
-//    // Status Live Data
-//    private val _statusLiveData = MutableLiveData<Array<StatusModel>>()
-//    val statusLiveData: LiveData<Array<StatusModel>> = _statusLiveData
-//
-//    // Progs Live Data
-//    private val _progsLiveData = MutableLiveData(ProgsModel)
-//    val progsLiveData: LiveData<ProgsModel.Companion> = _progsLiveData
-//
-//    // Disk Live Data
-//    private val _diskLiveData = MutableLiveData(DiskModel)
-//    val diskLiveData: LiveData<DiskModel.Companion> = _diskLiveData
-
-    private val _hostName = MutableLiveData("initString")
-    val hostName: LiveData<StringDesc> = _hostName.map { it.desc() }
+    // Status Live Data
+    // Progs Live Data
+    // Disk Live Data
 
     init {
         launchAsyncRequest()
@@ -73,31 +63,22 @@ class DetailsModel : ViewModel() {
                         val json = Json(JsonConfiguration.Default)
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
-//                        _hostLiveData.value = resObject.data.host
+                        // Host Value
+                        _hostname.value = resObject.data.host.hostname
+                        _os.value = resObject.data.host.os
+                        _ip.value = resObject.data.host.ip
+                        _kernel.value = resObject.data.host.kernel
+                        _uptime.value = resObject.data.host.uptime
+                        _date.value = resObject.data.host.date
+                        _updates.value = resObject.data.host.updates!!
+                        println(updates.value)
 
-                        _hostName.value = resObject.data.host.hostname
-
-//                        _hostLiveData.value.hostname = resObject.data.host.hostname
-//                        _hostLiveData.value.os = resObject.data.host.os
-//                        _hostLiveData.value.ip = resObject.data.host.ip
-//                        _hostLiveData.value.kernel = resObject.data.host.kernel
-//                        _hostLiveData.value.uptime = resObject.data.host.uptime
-//                        _hostLiveData.value.date = resObject.data.host.date
-//                        _hostLiveData.value.updates = resObject.data.host.updates
-
-//                        _statusLiveData.value = resObject.data.status
-
-//                        println(hostLiveData.value)
-//                        println(hostLiveData.value.hostname)
-//                        println(hostLiveData.value.os)
-//                        println(hostLiveData.value.ip)
-//                        println(hostLiveData.value.kernel)
                     } else {
-                        widgetData.value = "Error"
+                        println("Error")
                     }
                 }
             } catch (exception: Exception) {
-                widgetData.value = "Error"
+                println("Server Error")
             }
         }
     }
