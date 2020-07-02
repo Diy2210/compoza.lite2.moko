@@ -20,6 +20,7 @@ import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.AsParent
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHeightWrapContent
+import dev.icerock.moko.widgets.utils.asLiveData
 import kotlinx.serialization.*
 import org.example.library.MR
 import org.example.mpp.theme.AppTheme
@@ -306,11 +307,16 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             imageValue leftToLeft softwareTitle offset 300
                         }
                     }
+//                        +progressBar(
+//                            size = WidgetSize.Const(
+//                                width = SizeSpec.Exact(24f),
+//                                height = SizeSpec.Exact(24f)
+//                            )
+//                        )
                 }
             )
         }
     }
-
 
     object Ids {
         object RootLinearId : LinearWidget.Id

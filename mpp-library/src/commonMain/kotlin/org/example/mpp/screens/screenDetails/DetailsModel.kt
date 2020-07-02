@@ -34,7 +34,6 @@ class DetailsModel : ViewModel() {
     private val _kernel = MutableLiveData("initString")
     private val _uptime = MutableLiveData("initString")
     private val _date = MutableLiveData("initString")
-//    private val _updates = MutableLiveData(0)
     private val _updates = MutableLiveData("initString")
 
     // Host Live Data
@@ -44,13 +43,7 @@ class DetailsModel : ViewModel() {
     val kernel: LiveData<StringDesc> = _kernel.map { it.desc() }
     val uptime: LiveData<StringDesc> = _uptime.map { it.desc() }
     val date: LiveData<StringDesc> = _date.map { it.desc() }
-//    val updates: LiveData<String> = _updates.map { it.toString() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
-
-    val g: LiveData<List<StringDesc>> = MutableLiveData(
-        initialValue = listOf("1".desc(), "2".desc()
-        )
-    )
 
     // Status Live Data
     // Progs Live Data
@@ -77,7 +70,7 @@ class DetailsModel : ViewModel() {
                         _kernel.value = resObject.data.host.kernel
                         _uptime.value = resObject.data.host.uptime
                         _date.value = resObject.data.host.date
-                        _updates.value = resObject.data.host.updates!!.toString()
+                        _updates.value = resObject.data.host.updates.toString()
                         println(_updates.value)
 
                     } else {
