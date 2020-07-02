@@ -3,6 +3,7 @@ package org.example.mpp.screens.screenDetails
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
 import dev.icerock.moko.graphics.Color
+import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Image
@@ -140,17 +141,37 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.date
                         )
-                        +text(
+                    }
+
+                    +constraint(size = AsParent) {
+                        val updates = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("Updates")
                         )
-                        +text(
+                        val updatesAvalaible = +text(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = const("Avalaible: " + viewModel.updates.value.length)
+                            text = const("Avalaible: ")
                         )
+                        val updatesValue = +text(
+                            id = Ids.Updates,
+                            category = AppTheme.TextStyleHostValue,
+                            size = WidthAsParentHeightWrapContent,
+                            text = viewModel.updates.map{it}
+                        )
+
+                        constraints {
+                            updates topToTop root offset 0
+                            updates leftRightToLeftRight root offset 8
+
+                            updatesAvalaible topToBottom updates offset 0
+                            updatesAvalaible leftToLeft root offset 8
+
+                            updatesValue topToBottom updates offset 0
+                            updatesValue leftToLeft updatesAvalaible offset 60
+                        }
                     }
 
                     // Disk Constraint
