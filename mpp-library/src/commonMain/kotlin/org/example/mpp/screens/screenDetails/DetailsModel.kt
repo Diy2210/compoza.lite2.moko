@@ -28,6 +28,16 @@ class DetailsModel : ViewModel() {
 
     private val client = CompozaApi()
 
+    // Status Mutable Live Data
+    private val _statusMutableLiveData = MutableLiveData(
+        StatusModel(
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading"
+        )
+    )
+
     // Host Mutable Live Data
     private val _hostMutableLiveData = MutableLiveData(
         HostModel(
@@ -40,6 +50,7 @@ class DetailsModel : ViewModel() {
             "Loading"
         )
     )
+
     private val _updates = MutableLiveData("Loading")
 
     // Host Live Data
@@ -50,6 +61,14 @@ class DetailsModel : ViewModel() {
     val uptime: LiveData<StringDesc> = _hostMutableLiveData.map { it.uptime.desc() }
     val date: LiveData<StringDesc> = _hostMutableLiveData.map { it.date.desc() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
+
+    // Progs Live Data
+    private val _progsMutableLiveData = MutableLiveData(
+        ProgsModel(
+            "Loading",
+            "Loading"
+        )
+    )
 
     // Disk Mutable Live Data
     private val _diskMutableLiveData = MutableLiveData(
@@ -63,12 +82,6 @@ class DetailsModel : ViewModel() {
              "Loading"
         )
     )
-
-    // Disk Live Data
-//    val diskMutableLiveData: LiveData<Array<DiskModel>> = _diskMutableLiveData
-
-    // Status Live Data
-    // Progs Live Data
 
     init {
         launchAsyncRequest()
@@ -84,6 +97,10 @@ class DetailsModel : ViewModel() {
                         val json = Json(JsonConfiguration.Default)
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
+                        // Status Value
+                        _statusMutableLiveData.value = resObject.data.status[1]
+                        println("//////////STATUS-"+_statusMutableLiveData.value)
+
                         // Host Value
                         _hostMutableLiveData.value = HostModel(
                             hostname = resObject.data.host.hostname,
@@ -96,9 +113,13 @@ class DetailsModel : ViewModel() {
                         )
                         _updates.value = resObject.data.host.updates.toString()
 
+                        // Progs Value
+                        _progsMutableLiveData.value = resObject.data.progs[1]
+                        println("//////////PROGS-"+_progsMutableLiveData.value)
+
                         // Disk Value
                         _diskMutableLiveData.value = resObject.data.disk_fs[1]
-                        println(_diskMutableLiveData.value)
+                        println("//////////DISK-"+_diskMutableLiveData.value)
                     } else {
                         println("Error")
                     }
