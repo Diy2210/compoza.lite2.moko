@@ -20,7 +20,6 @@ import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.AsParent
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHeightWrapContent
-import dev.icerock.moko.widgets.utils.asLiveData
 import kotlinx.serialization.*
 import org.example.library.MR
 import org.example.mpp.theme.AppTheme
@@ -84,7 +83,6 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.Url,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-//                        text = const(settings.getString("hostname"))
                             text = viewModel.hostname
                         )
                         +text(
@@ -160,7 +158,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = viewModel.updates.map{it}
+                            text = viewModel.updates.map { it }
                         )
 
                         constraints {
