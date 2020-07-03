@@ -15,6 +15,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
 import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.*
+import org.example.mpp.screens.screenServerList.ServerItem
 
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer
@@ -28,14 +29,17 @@ class DetailsModel : ViewModel() {
     private val client = CompozaApi()
 
     // Host Mutable Live Data
-    private val _hostMutableLiveData = MutableLiveData(HostModel(
-        "Loading",
-        "Loading",
-        "Loading",
-        "Loading",
-        "Loading",
-        0,
-        "Loading"))
+    private val _hostMutableLiveData = MutableLiveData(
+        HostModel(
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading",
+            0,
+            "Loading"
+        )
+    )
     private val _updates = MutableLiveData("Loading")
 
     // Host Live Data
@@ -47,9 +51,24 @@ class DetailsModel : ViewModel() {
     val date: LiveData<StringDesc> = _hostMutableLiveData.map { it.date.desc() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
 
+    // Disk Mutable Live Data
+    private val _diskMutableLiveData = MutableLiveData(
+        DiskModel(
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading",
+            "Loading",
+             "Loading"
+        )
+    )
+
+    // Disk Live Data
+//    val diskMutableLiveData: LiveData<Array<DiskModel>> = _diskMutableLiveData
+
     // Status Live Data
     // Progs Live Data
-    // Disk Live Data
 
     init {
         launchAsyncRequest()
@@ -76,6 +95,10 @@ class DetailsModel : ViewModel() {
                             updates = resObject.data.host.updates
                         )
                         _updates.value = resObject.data.host.updates.toString()
+
+                        // Disk Value
+                        _diskMutableLiveData.value = resObject.data.disk_fs[1]
+                        println(_diskMutableLiveData.value)
                     } else {
                         println("Error")
                     }
