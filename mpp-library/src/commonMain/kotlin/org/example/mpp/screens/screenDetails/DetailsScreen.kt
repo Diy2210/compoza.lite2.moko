@@ -5,6 +5,7 @@ import com.russhwolf.settings.invoke
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
@@ -22,6 +23,9 @@ import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.AsParent
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHeightWrapContent
 import kotlinx.serialization.*
 import org.example.library.MR
+import org.example.mpp.models.DiskModel
+import org.example.mpp.screens.screenServerList.ServerUnitItem
+import org.example.mpp.screens.screenServerList.ServerViewModel
 import org.example.mpp.theme.AppTheme
 
 class DetailsScreen @ImplicitReflectionSerializer constructor(
@@ -178,63 +182,75 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                         val diskUsage = +text(
                             id = Ids.DiskUsageId,
                             category = AppTheme.TextStyleCategory,
-                            size = WidgetSize.WidthAsParentHeightWrapContent,
+                            size = WidthAsParentHeightWrapContent,
                             text = const("Disk Usage")
                         )
 
+                        val list = +list(
+                            size = AsParent,
+                            id = Ids.List,
+                            items = viewModel.diskInfoList.map {
+                                diskToTableUnits(it, viewModel)
+                            }
+                        )
+
                         // Disk Info Content
-                        val mountPoint = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("Mount Point")
-                        )
-                        val mountPointValue = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("-")
-                        )
-                        val free = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("Free")
-                        )
-                        val freeValue = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("-")
-                        )
-                        val total = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("Total")
-                        )
-                        val totalValue = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("-")
-                        )
+//                        val mountPoint = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("Mount Point")
+//                        )
+//                        val mountPointValue = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("-")
+//                        )
+//                        val free = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("Free")
+//                        )
+//                        val freeValue = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("-")
+//                        )
+//                        val total = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("Total")
+//                        )
+//                        val totalValue = +text(
+//                            category = AppTheme.TextStyleDefaultValue,
+//                            size = WidthAsParentHeightWrapContent,
+//                            text = const("-")
+//                        )
 
                         constraints {
                             diskUsage topToTop root offset 8
                             diskUsage leftRightToLeftRight root offset 8
 
-                            mountPoint topToBottom diskUsage offset 8
-                            mountPoint leftToLeft root offset 8
+                            list topToBottom diskUsage offset 0
+                            list leftRightToLeftRight root offset 8
 
-                            mountPointValue topToBottom mountPoint offset 8
-                            mountPointValue leftToLeft root offset 8
+//                            mountPoint topToBottom diskUsage offset 8
+//                            mountPoint leftToLeft root offset 8
+//
+//                            mountPointValue topToBottom mountPoint offset 8
+//                            mountPointValue leftToLeft root offset 8
+//
+//                            free topToBottom diskUsage offset 8
+//                            free leftToLeft mountPoint offset 250
+//
+//                            freeValue topToBottom free offset 8
+//                            freeValue leftToLeft mountPoint offset 250
+//
+//                            total topToBottom diskUsage offset 8
+//                            total leftToLeft mountPoint offset 300
+//
+//                            totalValue topToBottom total offset 8
+//                            totalValue leftToLeft mountPoint offset 300
 
-                            free topToBottom diskUsage offset 8
-                            free leftToLeft mountPoint offset 250
-
-                            freeValue topToBottom free offset 8
-                            freeValue leftToLeft mountPoint offset 250
-
-                            total topToBottom diskUsage offset 8
-                            total leftToLeft mountPoint offset 300
-
-                            totalValue topToBottom total offset 8
-                            totalValue leftToLeft mountPoint offset 300
                         }
                     }
 
@@ -305,12 +321,6 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             imageValue leftToLeft softwareTitle offset 300
                         }
                     }
-//                        +progressBar(
-//                            size = WidgetSize.Const(
-//                                width = SizeSpec.Exact(24f),
-//                                height = SizeSpec.Exact(24f)
-//                            )
-//                        )
                 }
             )
         }
@@ -325,6 +335,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object RootScroll : ScrollWidget.Id
         object ServerName : TextWidget.Id
         object DiskUsageId : TextWidget.Id
+        object List : ListWidget.Id
         object Url : TextWidget.Id
         object System : TextWidget.Id
         object IP : TextWidget.Id
@@ -332,5 +343,17 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object SystemUptime : TextWidget.Id
         object SystemDate : TextWidget.Id
         object Updates : TextWidget.Id
+    }
+
+    @ImplicitReflectionSerializer
+    private fun diskToTableUnits(disks: List<DiskModel>, viewModel: DetailsModel): List<TableUnitItem> {
+        var index: Long = 0
+        return disks.map { disk ->
+            DiskUnitItem(
+                theme = theme,
+                itemId = index++,
+                disk = disk
+            )
+        }
     }
 }

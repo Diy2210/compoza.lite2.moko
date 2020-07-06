@@ -27,13 +27,14 @@ class ServerViewModel(
     var token = settings.getString("Server Token")
 
     private val _servers: MutableLiveData<List<ServerModel>> =
-        MutableLiveData(initialValue = List(1) { ServerModel(
-                    ID = id,
-                    title = title,
-                    url = url,
-                    token = token
-                )
-            }
+        MutableLiveData(initialValue = List(1) {
+            ServerModel(
+                ID = id,
+                title = title,
+                url = url,
+                token = token
+            )
+        }
         )
 
     val servers: LiveData<List<ServerModel>> = _servers

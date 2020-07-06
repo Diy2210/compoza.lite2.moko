@@ -8,6 +8,7 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.units.TableUnitItem
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
@@ -30,11 +31,13 @@ class DetailsModel : ViewModel() {
 
     // Status Mutable Live Data
     private val _statusMutableLiveData = MutableLiveData(
-        StatusModel(
-            "Loading",
-            "Loading",
-            "Loading",
-            "Loading"
+        arrayOf(
+            StatusModel(
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading"
+            )
         )
     )
 
@@ -62,26 +65,48 @@ class DetailsModel : ViewModel() {
     val date: LiveData<StringDesc> = _hostMutableLiveData.map { it.date.desc() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
 
-    // Progs Live Data
+    // Progs Mutable Live Data
     private val _progsMutableLiveData = MutableLiveData(
-        ProgsModel(
-            "Loading",
-            "Loading"
+        arrayOf(
+            ProgsModel(
+                "Loading",
+                "Loading"
+            )
         )
     )
 
     // Disk Mutable Live Data
-    private val _diskMutableLiveData = MutableLiveData(
-        DiskModel(
-            "Loading",
-            "Loading",
-            "Loading",
-            "Loading",
-            "Loading",
-            "Loading",
-             "Loading"
+//    private val _diskMutableLiveData = MutableLiveData(
+//        listOf(
+//            DiskModel(
+//                "Loading",
+//                "Loading",
+//                "Loading",
+//                "Loading",
+//                "Loading",
+//                "Loading",
+//                "Loading"
+//            )
+//        )
+//    )
+
+    private val _diskMutableLiveData: MutableLiveData<List<DiskModel>> =
+        MutableLiveData(initialValue = List(1) {
+                DiskModel(
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading"
+            )
+        }
         )
-    )
+
+    val statusInfoArray: LiveData<Array<StatusModel>> = _statusMutableLiveData
+    val progsInfoArray: LiveData<Array<ProgsModel>> = _progsMutableLiveData
+    val diskInfoList: MutableLiveData<List<DiskModel>> = _diskMutableLiveData
 
     init {
         launchAsyncRequest()
@@ -98,8 +123,9 @@ class DetailsModel : ViewModel() {
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
                         // Status Value
-                        _statusMutableLiveData.value = resObject.data.status[1]
-                        println("//////////STATUS-"+_statusMutableLiveData.value)
+                        _statusMutableLiveData.value = resObject.data.status
+                        println("//////////STATUS-" + _statusMutableLiveData.value[0])
+                        println("//////////STATUS-" + _statusMutableLiveData.value[1])
 
                         // Host Value
                         _hostMutableLiveData.value = HostModel(
@@ -114,12 +140,14 @@ class DetailsModel : ViewModel() {
                         _updates.value = resObject.data.host.updates.toString()
 
                         // Progs Value
-                        _progsMutableLiveData.value = resObject.data.progs[1]
-                        println("//////////PROGS-"+_progsMutableLiveData.value)
+                        _progsMutableLiveData.value = resObject.data.progs
+                        println("//////////PROGS-" + _progsMutableLiveData.value[0])
+                        println("//////////PROGS-" + _progsMutableLiveData.value[1])
 
                         // Disk Value
-                        _diskMutableLiveData.value = resObject.data.disk_fs[1]
-                        println("//////////DISK-"+_diskMutableLiveData.value)
+                        _diskMutableLiveData.value = resObject.data.disk_fs.asList()
+                        println("//////////DISK-" + _diskMutableLiveData.value[0])
+                        println("//////////DISK-" + _diskMutableLiveData.value[1])
                     } else {
                         println("Error")
                     }

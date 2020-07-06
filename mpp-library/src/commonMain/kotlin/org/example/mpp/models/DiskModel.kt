@@ -1,9 +1,10 @@
 package org.example.mpp.models
 
+import dev.icerock.moko.units.TableUnitItem
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DiskModel(
+data class DiskModel (
     val ifree: String,
     val itotal: String,
     val device: String,
