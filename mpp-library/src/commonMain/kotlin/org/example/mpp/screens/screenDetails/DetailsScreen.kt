@@ -186,6 +186,23 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             text = const("Disk Usage")
                         )
 
+                        // Disk Info Content
+                        val mountPoint = +text(
+                            category = AppTheme.TextStyleDefaultValue,
+                            size = WidthAsParentHeightWrapContent,
+                            text = const("Mount Point")
+                        )
+                        val free = +text(
+                            category = AppTheme.TextStyleDefaultValue,
+                            size = WidthAsParentHeightWrapContent,
+                            text = const("Free")
+                        )
+                        val total = +text(
+                            category = AppTheme.TextStyleDefaultValue,
+                            size = WidthAsParentHeightWrapContent,
+                            text = const("Total")
+                        )
+
                         val list = +list(
                             size = AsParent,
                             id = Ids.List,
@@ -194,63 +211,21 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             }
                         )
 
-                        // Disk Info Content
-//                        val mountPoint = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("Mount Point")
-//                        )
-//                        val mountPointValue = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("-")
-//                        )
-//                        val free = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("Free")
-//                        )
-//                        val freeValue = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("-")
-//                        )
-//                        val total = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("Total")
-//                        )
-//                        val totalValue = +text(
-//                            category = AppTheme.TextStyleDefaultValue,
-//                            size = WidthAsParentHeightWrapContent,
-//                            text = const("-")
-//                        )
-
                         constraints {
                             diskUsage topToTop root offset 8
                             diskUsage leftRightToLeftRight root offset 8
 
-                            list topToBottom diskUsage offset 0
+                            mountPoint topToBottom diskUsage offset 8
+                            mountPoint leftToLeft root offset 8
+
+                            free topToBottom diskUsage offset 8
+                            free leftToLeft mountPoint offset 235
+
+                            total topToBottom diskUsage offset 8
+                            total leftToLeft mountPoint offset 315
+
+                            list topToBottom mountPoint offset 0
                             list leftRightToLeftRight root offset 8
-
-//                            mountPoint topToBottom diskUsage offset 8
-//                            mountPoint leftToLeft root offset 8
-//
-//                            mountPointValue topToBottom mountPoint offset 8
-//                            mountPointValue leftToLeft root offset 8
-//
-//                            free topToBottom diskUsage offset 8
-//                            free leftToLeft mountPoint offset 250
-//
-//                            freeValue topToBottom free offset 8
-//                            freeValue leftToLeft mountPoint offset 250
-//
-//                            total topToBottom diskUsage offset 8
-//                            total leftToLeft mountPoint offset 300
-//
-//                            totalValue topToBottom total offset 8
-//                            totalValue leftToLeft mountPoint offset 300
-
                         }
                     }
 

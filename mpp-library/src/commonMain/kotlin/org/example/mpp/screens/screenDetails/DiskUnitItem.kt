@@ -28,7 +28,7 @@ class DiskUnitItem(
                 val dir = +text(
                     category = AppTheme.TextStyleDefaultValue,
                     size = WidgetSize.Const(
-                        width = SizeSpec.MatchConstraint,
+                        width = SizeSpec.WrapContent,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
@@ -39,7 +39,7 @@ class DiskUnitItem(
                 val free = +text(
                     category = AppTheme.TextStyleDefaultValue,
                     size = WidgetSize.Const(
-                        width = SizeSpec.MatchConstraint,
+                        width = SizeSpec.WrapContent,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
@@ -50,7 +50,7 @@ class DiskUnitItem(
                 val total = +text(
                     category = AppTheme.TextStyleDefaultValue,
                     size = WidgetSize.Const(
-                        width = SizeSpec.MatchConstraint,
+                        width = SizeSpec.WrapContent,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
@@ -62,11 +62,11 @@ class DiskUnitItem(
                     dir topToTop root offset 8
                     dir leftToLeft root offset 8
 
-                    free topToBottom root offset 8
-                    free leftToLeft dir offset 16
+                    free topToTop root offset 8
+                    free leftToLeft dir offset 200
 
-                    total topToBottom root offset 8
-                    total leftToLeft free offset 16
+                    total topToTop root offset 8
+                    total leftToLeft free offset 80
                 }
             }
         }.let { UnitItemRoot.from(it) }
