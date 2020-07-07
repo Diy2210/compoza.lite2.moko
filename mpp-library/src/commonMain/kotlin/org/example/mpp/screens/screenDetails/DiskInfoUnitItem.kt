@@ -4,6 +4,7 @@ import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import dev.icerock.moko.resources.desc.plus
 import dev.icerock.moko.widgets.constraint
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.style.view.SizeSpec

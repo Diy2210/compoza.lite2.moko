@@ -7,7 +7,6 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
-import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Widget
 import dev.icerock.moko.widgets.screen.Args
@@ -30,7 +29,7 @@ import org.example.mpp.theme.AppTheme
 
 class DetailsScreen @ImplicitReflectionSerializer constructor(
     private val theme: Theme,
-    private val viewModelFactory: () -> DetailsModel
+    private val viewModelFactory: () -> DetailsViewModel
 ) : WidgetScreen<Args.Empty>(), NavigationItem {
 
     override val navigationBar
@@ -254,16 +253,15 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             serverStatusTitle topToTop root offset 8
                             serverStatusTitle leftRightToLeftRight root offset 8
 
-                            listStatus topToBottom  serverStatusTitle offset 0
+                            listStatus topToBottom serverStatusTitle offset 0
                             listStatus leftRightToLeftRight root offset 8
-                            listStatus bottomToBottom root offset 8
                         }
                     }
 
-                    // Software Constraint
+                    // Progs Constraint
                     +constraint(size = AsParent) {
 
-                        // Software Versions Content
+                        // Progs Versions Content
                         val software = +text(
                             category = AppTheme.TextStyleCategory,
                             size = WidthAsParentHeightWrapContent,
@@ -281,7 +279,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             software topToTop root offset 8
                             software leftRightToLeftRight root offset 8
 
-                            listProgs topToBottom  software offset 0
+                            listProgs topToBottom software offset 0
                             listProgs leftRightToLeftRight root offset 8
                             listProgs bottomToBottom root offset 16
                         }
@@ -293,7 +291,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
     // Disk Table Units
     @ImplicitReflectionSerializer
-    private fun diskToTableUnits(disks: List<DiskModel>, viewModel: DetailsModel): List<TableUnitItem> {
+    private fun diskToTableUnits(disks: List<DiskModel>, viewViewModel: DetailsViewModel): List<TableUnitItem> {
         var index: Long = 0
         return disks.map { disk ->
             DiskInfoUnitItem(
@@ -306,7 +304,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
     // Status Table Units
     @ImplicitReflectionSerializer
-    private fun statusToTableUnits(statuses: List<StatusModel>, viewModel: DetailsModel): List<TableUnitItem> {
+    private fun statusToTableUnits(statuses: List<StatusModel>, viewViewModel: DetailsViewModel): List<TableUnitItem> {
         var index: Long = 0
         return statuses.map { status ->
             StatusInfoUnitItem(
@@ -319,7 +317,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
     // Progs Table Units
     @ImplicitReflectionSerializer
-    private fun progsToTableUnits(progs: List<ProgsModel>, viewModel: DetailsModel): List<TableUnitItem> {
+    private fun progsToTableUnits(progs: List<ProgsModel>, viewViewModel: DetailsViewModel): List<TableUnitItem> {
         var index: Long = 0
         return progs.map { prog ->
             ProgsInfoUnitItem(

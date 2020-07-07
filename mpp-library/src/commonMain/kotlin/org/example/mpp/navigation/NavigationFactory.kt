@@ -4,7 +4,7 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.navigation.Route
 import kotlinx.serialization.ImplicitReflectionSerializer
-import org.example.mpp.screens.screenDetails.DetailsModel
+import org.example.mpp.screens.screenDetails.DetailsViewModel
 import org.example.mpp.screens.screenEditServer.EditServerViewModel
 import org.example.mpp.screens.screenServerList.ServerViewModel
 import org.example.mpp.screens.screenDetails.DetailsScreen
@@ -48,7 +48,7 @@ class NavigationFactory(
             theme = theme,
 //            resObject = ResponseModel(data = DataModel(disk_fs = , status = , host = , progs = ))
             viewModelFactory = {
-                DetailsModel()
+                DetailsViewModel()
             }
         )
     }

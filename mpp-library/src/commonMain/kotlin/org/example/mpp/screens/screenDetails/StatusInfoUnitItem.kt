@@ -28,8 +28,9 @@ class StatusInfoUnitItem(
 
     override fun createWidget(data: LiveData<StatusModel>): UnitItemRoot {
         return with(theme) {
+
             constraint(size = WidgetSize.WidthAsParentHeightWrapContent) {
-                val dir = +text(
+                val name = +text(
                     category = AppTheme.TextStyleDefaultValue,
                     size = WidgetSize.Const(
                         width = SizeSpec.WrapContent,
@@ -41,20 +42,26 @@ class StatusInfoUnitItem(
                 )
 
                 val imageValue = +image(
-                    image = const(Image.resource(MR.images.tick_png)),
                     size = WidgetSize.AspectByWidth(
                         width = SizeSpec.Exact(30f),
                         aspectRatio = 1.49f
                     ),
-                    scaleType = ImageWidget.ScaleType.FIT
+                    scaleType = ImageWidget.ScaleType.FIT,
+                    image = data.map {
+                        if (it.status == ("0")) {
+                            Image.resource(MR.images.empty_png)
+                        } else {
+                            Image.resource(MR.images.tick_png)
+                        }
+                    }
                 )
 
                 constraints {
-                    dir topToTop root offset 8
-                    dir leftToLeft root offset 8
+                    name topToTop root offset 8
+                    name leftToLeft root offset 8
 
                     imageValue topToTop root offset 8
-                    imageValue leftToLeft dir offset 300
+                    imageValue leftToLeft name offset 300
                 }
             }
         }.let { UnitItemRoot.from(it) }

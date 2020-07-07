@@ -9,18 +9,20 @@ import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
+import dev.icerock.moko.widgets.core.Image
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
+import org.example.library.MR
 import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.*
 import org.example.mpp.screens.screenServerList.ServerItem
 
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer
-class DetailsModel : ViewModel() {
+class DetailsViewModel : ViewModel() {
     val settings: Settings = Settings()
     var id = settings.getInt("Server ID")
     var title = settings.getString("Server Title")
@@ -28,27 +30,6 @@ class DetailsModel : ViewModel() {
     var token = settings.getString("Server Token")
 
     private val client = CompozaApi()
-
-    // Status Mutable Live Data
-//    private val _statusMutableLiveData = MutableLiveData(
-//        arrayOf(
-//            StatusModel(
-//                "Loading",
-//                "Loading",
-//                "Loading",
-//                "Loading"
-//            )
-//        )
-//    )
-    private val _statusMutableLiveData: MutableLiveData<List<StatusModel>> =
-        MutableLiveData(initialValue = List(1) {
-            StatusModel(
-                "Loading",
-                "Loading",
-                "Loading",
-                "Loading"
-            )
-        })
 
     // Host Mutable Live Data
     private val _hostMutableLiveData = MutableLiveData(
@@ -74,39 +55,7 @@ class DetailsModel : ViewModel() {
     val date: LiveData<StringDesc> = _hostMutableLiveData.map { it.date.desc() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
 
-    // Progs Mutable Live Data
-//    private val _progsMutableLiveData = MutableLiveData(
-//        arrayOf(
-//            ProgsModel(
-//                "Loading",
-//                "Loading"
-//            )
-//        )
-//    )
-    private val _progsMutableLiveData: MutableLiveData<List<ProgsModel>> =
-        MutableLiveData(initialValue = List(1) {
-            ProgsModel(
-                "Loading",
-                "Loading"
-            )
-        })
-
-
     // Disk Mutable Live Data
-//    private val _diskMutableLiveData = MutableLiveData(
-//        listOf(
-//            DiskModel(
-//                "Loading",
-//                "Loading",
-//                "Loading",
-//                "Loading",
-//                "Loading",
-//                "Loading",
-//                "Loading"
-//            )
-//        )
-//    )
-
     private val _diskMutableLiveData: MutableLiveData<List<DiskModel>> =
         MutableLiveData(initialValue = List(1) {
             DiskModel(
@@ -120,9 +69,29 @@ class DetailsModel : ViewModel() {
             )
         })
 
+    // Status Mutable Live Data
+    private val _statusMutableLiveData: MutableLiveData<List<StatusModel>> =
+        MutableLiveData(initialValue = List(1) {
+            StatusModel(
+                "Loading",
+                "Loading",
+                "Loading",
+                "Loading"
+            )
+        })
+
+    // Progs Mutable Live Data
+    private val _progsMutableLiveData: MutableLiveData<List<ProgsModel>> =
+        MutableLiveData(initialValue = List(1) {
+            ProgsModel(
+                "Loading",
+                "Loading"
+            )
+        })
+
+    val diskInfoList: MutableLiveData<List<DiskModel>> = _diskMutableLiveData
     val statusInfoArray: MutableLiveData<List<StatusModel>> = _statusMutableLiveData
     val progsInfoArray: MutableLiveData<List<ProgsModel>> = _progsMutableLiveData
-    val diskInfoList: MutableLiveData<List<DiskModel>> = _diskMutableLiveData
 
     init {
         launchAsyncRequest()
@@ -138,12 +107,6 @@ class DetailsModel : ViewModel() {
                         val json = Json(JsonConfiguration.Default)
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
-                        // Status Value
-                        _statusMutableLiveData.value = resObject.data.status.asList()
-                        println("//////////STATUS-" + _statusMutableLiveData.value[0])
-                        println("//////////STATUS-" + _statusMutableLiveData.value[1])
-                        println("//////////STATUS-" + _statusMutableLiveData.value[2])
-
                         // Host Value
                         _hostMutableLiveData.value = HostModel(
                             hostname = resObject.data.host.hostname,
@@ -156,17 +119,14 @@ class DetailsModel : ViewModel() {
                         )
                         _updates.value = resObject.data.host.updates.toString()
 
-                        // Progs Value
-                        _progsMutableLiveData.value = resObject.data.progs.asList()
-                        println("//////////PROGS-" + _progsMutableLiveData.value[0])
-                        println("//////////PROGS-" + _progsMutableLiveData.value[1])
-                        println("//////////PROGS-" + _progsMutableLiveData.value[2])
-
                         // Disk Value
                         _diskMutableLiveData.value = resObject.data.disk_fs.asList()
-                        println("//////////DISK-" + _diskMutableLiveData.value[0])
-                        println("//////////DISK-" + _diskMutableLiveData.value[1])
-                        println("//////////DISK-" + _diskMutableLiveData.value[2])
+
+                        // Status Value
+                        _statusMutableLiveData.value = resObject.data.status.asList()
+
+                        // Progs Value
+                        _progsMutableLiveData.value = resObject.data.progs.asList()
                     } else {
                         println("Error")
                     }
