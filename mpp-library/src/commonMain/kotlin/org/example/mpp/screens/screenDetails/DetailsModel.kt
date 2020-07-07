@@ -30,16 +30,25 @@ class DetailsModel : ViewModel() {
     private val client = CompozaApi()
 
     // Status Mutable Live Data
-    private val _statusMutableLiveData = MutableLiveData(
-        arrayOf(
+//    private val _statusMutableLiveData = MutableLiveData(
+//        arrayOf(
+//            StatusModel(
+//                "Loading",
+//                "Loading",
+//                "Loading",
+//                "Loading"
+//            )
+//        )
+//    )
+    private val _statusMutableLiveData: MutableLiveData<List<StatusModel>> =
+        MutableLiveData(initialValue = List(1) {
             StatusModel(
                 "Loading",
                 "Loading",
                 "Loading",
                 "Loading"
             )
-        )
-    )
+        })
 
     // Host Mutable Live Data
     private val _hostMutableLiveData = MutableLiveData(
@@ -66,14 +75,22 @@ class DetailsModel : ViewModel() {
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
 
     // Progs Mutable Live Data
-    private val _progsMutableLiveData = MutableLiveData(
-        arrayOf(
+//    private val _progsMutableLiveData = MutableLiveData(
+//        arrayOf(
+//            ProgsModel(
+//                "Loading",
+//                "Loading"
+//            )
+//        )
+//    )
+    private val _progsMutableLiveData: MutableLiveData<List<ProgsModel>> =
+        MutableLiveData(initialValue = List(1) {
             ProgsModel(
                 "Loading",
                 "Loading"
             )
-        )
-    )
+        })
+
 
     // Disk Mutable Live Data
 //    private val _diskMutableLiveData = MutableLiveData(
@@ -92,7 +109,7 @@ class DetailsModel : ViewModel() {
 
     private val _diskMutableLiveData: MutableLiveData<List<DiskModel>> =
         MutableLiveData(initialValue = List(1) {
-                DiskModel(
+            DiskModel(
                 "Loading",
                 "Loading",
                 "Loading",
@@ -101,11 +118,10 @@ class DetailsModel : ViewModel() {
                 "Loading",
                 "Loading"
             )
-        }
-        )
+        })
 
-    val statusInfoArray: LiveData<Array<StatusModel>> = _statusMutableLiveData
-    val progsInfoArray: LiveData<Array<ProgsModel>> = _progsMutableLiveData
+    val statusInfoArray: MutableLiveData<List<StatusModel>> = _statusMutableLiveData
+    val progsInfoArray: MutableLiveData<List<ProgsModel>> = _progsMutableLiveData
     val diskInfoList: MutableLiveData<List<DiskModel>> = _diskMutableLiveData
 
     init {
@@ -123,9 +139,10 @@ class DetailsModel : ViewModel() {
                         val resObject = json.parse(ResponseModel.serializer(), response)
 
                         // Status Value
-                        _statusMutableLiveData.value = resObject.data.status
+                        _statusMutableLiveData.value = resObject.data.status.asList()
                         println("//////////STATUS-" + _statusMutableLiveData.value[0])
                         println("//////////STATUS-" + _statusMutableLiveData.value[1])
+                        println("//////////STATUS-" + _statusMutableLiveData.value[2])
 
                         // Host Value
                         _hostMutableLiveData.value = HostModel(
@@ -140,14 +157,16 @@ class DetailsModel : ViewModel() {
                         _updates.value = resObject.data.host.updates.toString()
 
                         // Progs Value
-                        _progsMutableLiveData.value = resObject.data.progs
+                        _progsMutableLiveData.value = resObject.data.progs.asList()
                         println("//////////PROGS-" + _progsMutableLiveData.value[0])
                         println("//////////PROGS-" + _progsMutableLiveData.value[1])
+                        println("//////////PROGS-" + _progsMutableLiveData.value[2])
 
                         // Disk Value
                         _diskMutableLiveData.value = resObject.data.disk_fs.asList()
                         println("//////////DISK-" + _diskMutableLiveData.value[0])
                         println("//////////DISK-" + _diskMutableLiveData.value[1])
+                        println("//////////DISK-" + _diskMutableLiveData.value[2])
                     } else {
                         println("Error")
                     }

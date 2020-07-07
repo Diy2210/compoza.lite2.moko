@@ -24,8 +24,8 @@ import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHei
 import kotlinx.serialization.*
 import org.example.library.MR
 import org.example.mpp.models.DiskModel
-import org.example.mpp.screens.screenServerList.ServerUnitItem
-import org.example.mpp.screens.screenServerList.ServerViewModel
+import org.example.mpp.models.ProgsModel
+import org.example.mpp.models.StatusModel
 import org.example.mpp.theme.AppTheme
 
 class DetailsScreen @ImplicitReflectionSerializer constructor(
@@ -68,10 +68,14 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                     id = Ids.RootLinearId,
                     size = WidthAsParentHeightWrapContent
                 ) {
+
+                    // Host Linear
                     +linear(
                         id = Ids.HostLinearId,
                         size = WidthAsParentHeightWrapContent
                     ) {
+
+                        // Hist Info Content
                         +text(
                             id = Ids.ServerName,
                             category = AppTheme.TextStyleCategory,
@@ -203,9 +207,9 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             text = const("Total")
                         )
 
-                        val list = +list(
+                        val listDisk = +list(
                             size = AsParent,
-                            id = Ids.List,
+                            id = Ids.ListDisk,
                             items = viewModel.diskInfoList.map {
                                 diskToTableUnits(it, viewModel)
                             }
@@ -224,8 +228,8 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             total topToBottom diskUsage offset 8
                             total leftToLeft mountPoint offset 315
 
-                            list topToBottom mountPoint offset 0
-                            list leftRightToLeftRight root offset 8
+                            listDisk topToBottom mountPoint offset 0
+                            listDisk leftRightToLeftRight root offset 8
                         }
                     }
 
@@ -238,32 +242,26 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             size = WidthAsParentHeightWrapContent,
                             text = const("Server Status")
                         )
-                        val serverNameValue = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("-")
+                        val listStatus = +list(
+                            size = AsParent,
+                            id = Ids.ListStatus,
+                            items = viewModel.statusInfoArray.map {
+                                statusToTableUnits(it, viewModel)
+                            }
                         )
-                        val serverStatusValue = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("-")
-                        )
+
                         constraints {
                             serverStatusTitle topToTop root offset 8
                             serverStatusTitle leftRightToLeftRight root offset 8
 
-                            serverNameValue topToBottom serverStatusTitle offset 8
-                            serverNameValue leftToLeft root offset 8
-
-                            serverStatusValue topToBottom serverStatusTitle offset 8
-                            serverStatusValue leftToLeft serverNameValue offset 300
+                            listStatus topToBottom  serverStatusTitle offset 0
+                            listStatus leftRightToLeftRight root offset 8
+                            listStatus bottomToBottom root offset 8
                         }
                     }
 
                     // Software Constraint
-                    +constraint(
-                        size = AsParent
-                    ) {
+                    +constraint(size = AsParent) {
 
                         // Software Versions Content
                         val software = +text(
@@ -271,32 +269,63 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             size = WidthAsParentHeightWrapContent,
                             text = const("Software Versions")
                         )
-                        val softwareTitle = +text(
-                            category = AppTheme.TextStyleDefaultValue,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("Title")
-                        )
-                        val imageValue = +image(
-                            image = const(Image.resource(MR.images.tick_png)),
-                            size = WidgetSize.AspectByWidth(
-                                width = SizeSpec.Exact(30f),
-                                aspectRatio = 1.49f
-                            ),
-                            scaleType = ImageWidget.ScaleType.FIT
+                        val listProgs = +list(
+                            size = AsParent,
+                            id = Ids.ListProgs,
+                            items = viewModel.progsInfoArray.map {
+                                progsToTableUnits(it, viewModel)
+                            }
                         )
 
                         constraints {
                             software topToTop root offset 8
                             software leftRightToLeftRight root offset 8
 
-                            softwareTitle topToBottom software offset 8
-                            softwareTitle leftToLeft root offset 8
-
-                            imageValue topToBottom software offset 8
-                            imageValue leftToLeft softwareTitle offset 300
+                            listProgs topToBottom  software offset 0
+                            listProgs leftRightToLeftRight root offset 8
+                            listProgs bottomToBottom root offset 16
                         }
                     }
                 }
+            )
+        }
+    }
+
+    // Disk Table Units
+    @ImplicitReflectionSerializer
+    private fun diskToTableUnits(disks: List<DiskModel>, viewModel: DetailsModel): List<TableUnitItem> {
+        var index: Long = 0
+        return disks.map { disk ->
+            DiskInfoUnitItem(
+                theme = theme,
+                itemId = index++,
+                disk = disk
+            )
+        }
+    }
+
+    // Status Table Units
+    @ImplicitReflectionSerializer
+    private fun statusToTableUnits(statuses: List<StatusModel>, viewModel: DetailsModel): List<TableUnitItem> {
+        var index: Long = 0
+        return statuses.map { status ->
+            StatusInfoUnitItem(
+                theme = theme,
+                itemId = index++,
+                status = status
+            )
+        }
+    }
+
+    // Progs Table Units
+    @ImplicitReflectionSerializer
+    private fun progsToTableUnits(progs: List<ProgsModel>, viewModel: DetailsModel): List<TableUnitItem> {
+        var index: Long = 0
+        return progs.map { prog ->
+            ProgsInfoUnitItem(
+                theme = theme,
+                itemId = index++,
+                prog = prog
             )
         }
     }
@@ -310,7 +339,9 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object RootScroll : ScrollWidget.Id
         object ServerName : TextWidget.Id
         object DiskUsageId : TextWidget.Id
-        object List : ListWidget.Id
+        object ListDisk : ListWidget.Id
+        object ListStatus : ListWidget.Id
+        object ListProgs : ListWidget.Id
         object Url : TextWidget.Id
         object System : TextWidget.Id
         object IP : TextWidget.Id
@@ -318,17 +349,5 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object SystemUptime : TextWidget.Id
         object SystemDate : TextWidget.Id
         object Updates : TextWidget.Id
-    }
-
-    @ImplicitReflectionSerializer
-    private fun diskToTableUnits(disks: List<DiskModel>, viewModel: DetailsModel): List<TableUnitItem> {
-        var index: Long = 0
-        return disks.map { disk ->
-            DiskUnitItem(
-                theme = theme,
-                itemId = index++,
-                disk = disk
-            )
-        }
     }
 }
