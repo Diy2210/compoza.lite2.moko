@@ -6,10 +6,12 @@ import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
+import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
+import org.example.mpp.theme.AppTheme
 
 class ServerUnitItem(
     private val theme: Theme, itemId: Long, server: ServerItem,
@@ -45,12 +47,23 @@ class ServerUnitItem(
                         }
                     )
 
+                    val menuBtn = +button(
+                        category = AppTheme.MenuBtn,
+                        size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
+                        content = ButtonWidget.Content.Text(Value.data("⋮".desc())),
+                        onTap = { println("Click") }
+                    )
+
                     constraints {
                         title topToTop root offset 16
                         title leftRightToLeftRight root offset 16
 
                         url topToBottom title offset 8
                         url leftRightToLeftRight root offset 16
+
+                        menuBtn topToTop root offset 8
+                        menuBtn bottomToBottom root offset 0
+                        menuBtn rightToRight root offset 8
                     }
                 }
             )

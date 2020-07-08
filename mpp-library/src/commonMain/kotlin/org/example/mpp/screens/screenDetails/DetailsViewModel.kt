@@ -8,17 +8,13 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.units.TableUnitItem
-import dev.icerock.moko.widgets.core.Image
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import org.example.library.MR
 import org.example.mpp.api.CompozaApi
 import org.example.mpp.models.*
-import org.example.mpp.screens.screenServerList.ServerItem
 
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer

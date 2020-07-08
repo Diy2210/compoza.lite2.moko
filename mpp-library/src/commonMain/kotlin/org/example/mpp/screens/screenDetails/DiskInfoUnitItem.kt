@@ -38,24 +38,35 @@ class DiskInfoUnitItem(
                 )
 
                 val free = +text(
-                    category = AppTheme.TextStyleDefaultValue,
+                    category = AppTheme.TextStyleBoldValue,
                     size = WidgetSize.Const(
                         width = SizeSpec.WrapContent,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
-                        it.free.desc() as StringDesc
+//                        it.free.desc() as StringDesc
+                        val longFree = it.free.toLongOrNull()
+                        if (longFree != null) {
+                            "${bytesToGB(longFree)} Gb".desc()
+                        } else {
+                            it.total.desc()
+                        } as StringDesc
                     }
                 )
 
                 val total = +text(
-                    category = AppTheme.TextStyleDefaultValue,
+                    category = AppTheme.TextStyleBoldValue,
                     size = WidgetSize.Const(
                         width = SizeSpec.WrapContent,
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
-                        it.total.desc() as StringDesc
+                        val longTotal = it.total.toLongOrNull()
+                        if (longTotal != null) {
+                            "${bytesToGB(longTotal)} Gb".desc()
+                        } else {
+                            it.total.desc()
+                        } as StringDesc
                     }
                 )
 
@@ -64,12 +75,21 @@ class DiskInfoUnitItem(
                     dir leftToLeft root offset 8
 
                     free topToTop root offset 8
-                    free leftToLeft dir offset 200
+                    free leftToLeft dir offset 220
 
                     total topToTop root offset 8
-                    total leftToLeft free offset 80
+                    total leftToLeft dir offset 300
                 }
             }
         }.let { UnitItemRoot.from(it) }
     }
+
+    // Convert Bytes to KB
+    private fun bytesToKB(number: Long): Long = number / 1000
+
+    // Convert Bytes to MB
+    private fun bytesToMB(number: Long): Long = bytesToKB(number) / 1000
+
+    // Convert Bytes to GB
+    private fun bytesToGB(number: Long): Long = bytesToMB(number) / 1000
 }

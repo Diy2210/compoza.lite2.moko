@@ -6,13 +6,9 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
-import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
-import dev.icerock.moko.widgets.screen.Args
-import dev.icerock.moko.widgets.screen.WidgetScreen
-import dev.icerock.moko.widgets.screen.getViewModel
-import dev.icerock.moko.widgets.screen.listen
+import dev.icerock.moko.widgets.screen.*
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
 import dev.icerock.moko.widgets.screen.navigation.Route
@@ -23,7 +19,6 @@ import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import kotlinx.serialization.ImplicitReflectionSerializer
 import org.example.library.MR
-import org.example.mpp.models.ResponseModel
 import org.example.mpp.theme.AppTheme
 
 class ServerListScreen(
@@ -66,9 +61,9 @@ class ServerListScreen(
 
             val createNewServer = +button(
                 id = Ids.CreateNewServer,
-                category = AppTheme.CreateNewServerBtn,
+                category = AppTheme.PlusBtn,
                 size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
-                content = ButtonWidget.Content.Text(Value.data("".desc())),
+                content = ButtonWidget.Content.Text(Value.data("+".desc())),
                 onTap = viewModel::onAddPressed
             )
 
