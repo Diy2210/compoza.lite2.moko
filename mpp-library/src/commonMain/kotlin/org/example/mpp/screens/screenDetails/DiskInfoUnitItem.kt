@@ -37,6 +37,26 @@ class DiskInfoUnitItem(
                     }
                 )
 
+                // Free Percents Value
+                val percent = +text(
+                    category = AppTheme.TextStyleBoldValue,
+                    size = WidgetSize.Const(
+                        width = SizeSpec.WrapContent,
+                        height = SizeSpec.WrapContent
+                    ),
+                    text = data.map {
+                        val longFreePercents = it.free.toLongOrNull()
+                        val longTotalPercents = it.total.toLongOrNull()
+                        if (longFreePercents != null && longTotalPercents != null) {
+                            val freePercents = (longFreePercents * 100) / longTotalPercents
+                            "$freePercents %".desc()
+                        } else {
+                            it.total.desc()
+                        } as StringDesc
+                    }
+                )
+
+                // Free Value
                 val free = +text(
                     category = AppTheme.TextStyleBoldValue,
                     size = WidgetSize.Const(
@@ -44,16 +64,16 @@ class DiskInfoUnitItem(
                         height = SizeSpec.WrapContent
                     ),
                     text = data.map {
-//                        it.free.desc() as StringDesc
                         val longFree = it.free.toLongOrNull()
                         if (longFree != null) {
-                            "${bytesToGB(longFree)} Gb".desc()
+                            "(${bytesToGB(longFree)} GB)".desc()
                         } else {
                             it.total.desc()
                         } as StringDesc
                     }
                 )
 
+                // Total Value
                 val total = +text(
                     category = AppTheme.TextStyleBoldValue,
                     size = WidgetSize.Const(
@@ -63,7 +83,7 @@ class DiskInfoUnitItem(
                     text = data.map {
                         val longTotal = it.total.toLongOrNull()
                         if (longTotal != null) {
-                            "${bytesToGB(longTotal)} Gb".desc()
+                            "${bytesToGB(longTotal)} GB".desc()
                         } else {
                             it.total.desc()
                         } as StringDesc
@@ -76,6 +96,9 @@ class DiskInfoUnitItem(
 
                     free topToTop root offset 8
                     free leftToLeft dir offset 220
+
+                    percent topToTop root offset 8
+                    percent rightToRight free offset 40
 
                     total topToTop root offset 8
                     total leftToLeft dir offset 300
