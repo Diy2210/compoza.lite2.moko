@@ -61,7 +61,7 @@ class StatusInfoUnitItem(
                     name leftToLeft root offset 8
 
                     imageValue topToTop root offset 8
-                    imageValue leftToLeft name offset 300
+                    imageValue rightToRight root offset 8
                 }
             }
         }.let { UnitItemRoot.from(it) }

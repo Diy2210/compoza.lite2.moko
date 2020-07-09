@@ -4,7 +4,6 @@ import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
-import dev.icerock.moko.resources.desc.plus
 import dev.icerock.moko.widgets.constraint
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.style.view.SizeSpec
@@ -94,14 +93,14 @@ class DiskInfoUnitItem(
                     dir topToTop root offset 8
                     dir leftToLeft root offset 8
 
+                    total topToTop root offset 8
+                    total rightToRight root offset 8
+
                     free topToTop root offset 8
-                    free leftToLeft dir offset 220
+                    free rightToRight total offset 80
 
                     percent topToTop root offset 8
                     percent rightToRight free offset 40
-
-                    total topToTop root offset 8
-                    total leftToLeft dir offset 300
                 }
             }
         }.let { UnitItemRoot.from(it) }

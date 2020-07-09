@@ -52,7 +52,7 @@ class ProgsInfoUnitItem(
                     title leftToLeft root offset 8
 
                     value topToTop root offset 8
-                    value leftToLeft title offset 230
+                    value rightToRight root offset 8
                 }
             }
         }.let { UnitItemRoot.from(it) }

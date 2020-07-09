@@ -7,6 +7,7 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
+import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Widget
 import dev.icerock.moko.widgets.screen.Args
@@ -168,6 +169,13 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             text = viewModel.updates.map { it }
                         )
 
+                        val warningImage = +image(
+                            size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
+                            image = const(Image.resource(MR.images.warning_png)),
+                            scaleType = ImageWidget.ScaleType.FIT
+                        )
+
+
                         constraints {
                             updates topToTop root offset 0
                             updates leftRightToLeftRight root offset 8
@@ -177,6 +185,9 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
                             updatesValue topToBottom updates offset 0
                             updatesValue leftToLeft updatesAvalaible offset 60
+
+                            warningImage topToBottom updates offset 0
+                            warningImage rightToRight root offset 8
                         }
                     }
 
@@ -222,10 +233,10 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             mountPoint leftToLeft root offset 8
 
                             free topToBottom diskUsage offset 8
-                            free leftToLeft mountPoint offset 235
+                            free leftToLeft mountPoint offset 275
 
                             total topToBottom diskUsage offset 8
-                            total leftToLeft mountPoint offset 315
+                            total leftToLeft root offset 375
 
                             listDisk topToBottom mountPoint offset 0
                             listDisk leftRightToLeftRight root offset 8
