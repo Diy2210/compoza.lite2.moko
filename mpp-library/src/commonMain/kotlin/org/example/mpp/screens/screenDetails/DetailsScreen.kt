@@ -160,13 +160,13 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = const("Avalaible: ")
+                            text = const("Available: ")
                         )
                         val updatesValue = +text(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = viewModel.updates.map { it }
+                            text = viewModel.updates
                         )
 
                         val warningImage = +image(

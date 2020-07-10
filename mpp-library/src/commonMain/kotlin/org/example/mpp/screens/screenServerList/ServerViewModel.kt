@@ -7,7 +7,6 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import dev.icerock.moko.widgets.screen.AlertDialogBuilder as AlertDialogBuilder1
 import org.example.mpp.screens.screenServerList.ServerItem as ServerModel
 
 class ServerViewModel(

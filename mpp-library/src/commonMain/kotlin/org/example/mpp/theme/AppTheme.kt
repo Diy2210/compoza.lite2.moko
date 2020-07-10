@@ -40,7 +40,7 @@ object AppTheme {
 
         // Style Text Value Title
         factory[TextStyleHostTitle] = SystemTextViewFactory (
-            textStyle = TextStyle(14),
+            textStyle = TextStyle(14, fontStyle = FontStyle.BOLD),
             margins = MarginValues(8f, 0f, 0f, 0f)
         )
 
