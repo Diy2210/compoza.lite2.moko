@@ -69,88 +69,86 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                     size = WidthAsParentHeightWrapContent
                 ) {
 
-                    // Host Linear
-                    +linear(
-                        id = Ids.HostLinearId,
+                    // Host Constraint
+                    +constraint(
+                        id = Ids.HostConstraintId,
                         size = WidthAsParentHeightWrapContent
                     ) {
 
                         // Hist Info Content
-                        +text(
+                        val serverTitleName = +text(
                             id = Ids.ServerName,
                             category = AppTheme.TextStyleCategory,
                             size = WidthAsParentHeightWrapContent,
                             text = const(title)
                         )
-                        +text(
+                        val hostname = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("System Hostmane")
                         )
-                        +text(
+                        val hostnameValue = +text(
                             id = Ids.Url,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.hostname
                         )
-                        +text(
+                        val os = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("System OS")
                         )
-                        +text(
+                        val osValue = +text(
                             id = Ids.System,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.os
                         )
-                        +text(
+                        val ip = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("Public IP")
                         )
-                        +text(
+                        val ipValue = +text(
                             id = Ids.IP,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.ip
                         )
-                        +text(
+                        val kernel = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("Kernel and CPU")
                         )
-                        +text(
-                            id = Ids.CPU,
+                        val kernelValue = +text(
+                            id = Ids.Kernel,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.kernel
                         )
-                        +text(
+                        val uptime = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("System Uptime")
                         )
-                        +text(
+                        val uptimeValue = +text(
                             id = Ids.SystemUptime,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.uptime
                         )
-                        +text(
+                        val date = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
                             text = const("System Date")
                         )
-                        +text(
+                        val dateValue = +text(
                             id = Ids.SystemDate,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.date
                         )
-                    }
 
-                    +constraint(size = AsParent) {
                         val updates = +text(
                             category = AppTheme.TextStyleHostTitle,
                             size = WidthAsParentHeightWrapContent,
@@ -166,18 +164,55 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.Updates,
                             category = AppTheme.TextStyleHostValue,
                             size = WidthAsParentHeightWrapContent,
-                            text = viewModel.updates.map { it }
+                            text = viewModel.updates
                         )
-
                         val warningImage = +image(
                             size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
                             image = const(Image.resource(MR.images.warning_png)),
                             scaleType = ImageWidget.ScaleType.FIT
                         )
 
-
                         constraints {
-                            updates topToTop root offset 0
+                            serverTitleName topToTop root offset 8
+                            serverTitleName leftRightToLeftRight root offset 8
+
+                            hostname topToBottom  serverTitleName offset 8
+                            hostname leftRightToLeftRight root offset 8
+
+                            hostnameValue topToBottom hostname offset 0
+                            hostnameValue leftRightToLeftRight root offset 8
+
+                            os topToBottom hostnameValue offset 8
+                            os leftRightToLeftRight root offset 8
+
+                            osValue topToBottom os offset 0
+                            osValue leftRightToLeftRight root offset 8
+
+                            ip topToBottom osValue offset 8
+                            ip leftRightToLeftRight root offset 8
+
+                            ipValue topToBottom ip offset 0
+                            ipValue leftRightToLeftRight root offset 8
+
+                            kernel topToBottom ipValue offset 8
+                            kernel leftRightToLeftRight root offset 8
+
+                            kernelValue topToBottom kernel offset 0
+                            kernelValue leftRightToLeftRight root offset 8
+
+                            uptime topToBottom kernelValue offset 8
+                            uptime leftRightToLeftRight root offset 8
+
+                            uptimeValue topToBottom uptime offset 0
+                            uptimeValue leftRightToLeftRight root offset 8
+
+                            date topToBottom uptimeValue offset 8
+                            date leftRightToLeftRight root offset 8
+
+                            dateValue topToBottom date offset 0
+                            dateValue leftRightToLeftRight root offset 8
+
+                            updates topToBottom dateValue offset 8
                             updates leftRightToLeftRight root offset 8
 
                             updatesAvalaible topToBottom updates offset 0
@@ -244,7 +279,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                     }
 
                     // Server Status Constraint
-                    +constraint(size = AsParent) {
+                    +constraint(size = WidthAsParentHeightWrapContent) {
 
                         // Server Status Content
                         val serverStatusTitle = +text(
@@ -253,7 +288,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             text = const("Server Status")
                         )
                         val listStatus = +list(
-                            size = AsParent,
+                            size = WidthAsParentHeightWrapContent,
                             id = Ids.ListStatus,
                             items = viewModel.statusInfoArray.map {
                                 statusToTableUnits(it, viewModel)
@@ -342,6 +377,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
     object Ids {
         object RootLinearId : LinearWidget.Id
         object HostLinearId : LinearWidget.Id
+        object HostConstraintId : ConstraintWidget.Id
         object DiskUsageLinearId : LinearWidget.Id
         object ServerStatusLinearId : LinearWidget.Id
         object SoftwareInfoLinearId : LinearWidget.Id
@@ -354,7 +390,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object Url : TextWidget.Id
         object System : TextWidget.Id
         object IP : TextWidget.Id
-        object CPU : TextWidget.Id
+        object Kernel : TextWidget.Id
         object SystemUptime : TextWidget.Id
         object SystemDate : TextWidget.Id
         object Updates : TextWidget.Id
