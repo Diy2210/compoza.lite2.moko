@@ -14,13 +14,9 @@ import org.example.mpp.screens.screenServerList.ServerListScreen
 class NavigationFactory(
     private val theme: Theme
 ) {
-
     fun createServerListScreen(routeToMain: Route<Unit>, routeToDetails: Route<Unit>): ServerListScreen {
         return ServerListScreen(
             theme = theme,
-//            viewModelFactory = {
-//                ServerViewModel(it)
-//            },
             viewModelFactory = {
                 ServerViewModel(EventsDispatcher())
             },
@@ -35,9 +31,6 @@ class NavigationFactory(
             viewModelFactory = {
                 EditServerViewModel(it)
             },
-//            viewModelFactory = { eventsDispatcher ->
-//                ServerViewModel(eventsDispatcher)
-//            },
             routeToMain = routeToMain
         )
     }
@@ -46,7 +39,6 @@ class NavigationFactory(
     fun createDetailsScreen(routeToMain: Route<Unit>): DetailsScreen {
         return DetailsScreen(
             theme = theme,
-//            resObject = ResponseModel(data = DataModel(disk_fs = , status = , host = , progs = ))
             viewModelFactory = {
                 DetailsViewModel()
             }

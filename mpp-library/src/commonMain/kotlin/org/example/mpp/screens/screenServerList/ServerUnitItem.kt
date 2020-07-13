@@ -7,6 +7,7 @@ import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
+import dev.icerock.moko.widgets.screen.AlertDialogBuilder
 import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.units.UnitItemRoot
@@ -51,7 +52,7 @@ class ServerUnitItem(
                         category = AppTheme.MenuBtn,
                         size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
                         content = ButtonWidget.Content.Text(Value.data("⋮".desc())),
-                        onTap = { println("Click") }
+                        onTap = { println("Pressed!") }
                     )
 
                     constraints {

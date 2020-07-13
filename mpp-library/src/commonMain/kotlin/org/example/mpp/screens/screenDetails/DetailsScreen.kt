@@ -226,6 +226,34 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                         }
                     }
 
+
+                    // Server Status Constraint
+                    +constraint(size = WidthAsParentHeightWrapContent) {
+
+                        // Server Status Content
+                        val serverStatusTitle = +text(
+                            category = AppTheme.TextStyleCategory,
+                            size = WidthAsParentHeightWrapContent,
+                            text = const("Server Status")
+                        )
+
+                        val listStatus = +list(
+                            size = WidthAsParentHeightWrapContent,
+                            id = Ids.ListStatus,
+                            items = viewModel.statusInfoArray.map {
+                                statusToTableUnits(it, viewModel)
+                            }
+                        )
+
+                        constraints {
+                            serverStatusTitle topToTop root offset 8
+                            serverStatusTitle leftRightToLeftRight root offset 8
+
+                            listStatus topToBottom serverStatusTitle offset 0
+                            listStatus leftRightToLeftRight root offset 0
+                        }
+                    }
+
                     // Disk Constraint
                     +constraint(size = AsParent) {
                         val diskUsage = +text(
@@ -275,32 +303,6 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
                             listDisk topToBottom mountPoint offset 0
                             listDisk leftRightToLeftRight root offset 8
-                        }
-                    }
-
-                    // Server Status Constraint
-                    +constraint(size = WidthAsParentHeightWrapContent) {
-
-                        // Server Status Content
-                        val serverStatusTitle = +text(
-                            category = AppTheme.TextStyleCategory,
-                            size = WidthAsParentHeightWrapContent,
-                            text = const("Server Status")
-                        )
-                        val listStatus = +list(
-                            size = WidthAsParentHeightWrapContent,
-                            id = Ids.ListStatus,
-                            items = viewModel.statusInfoArray.map {
-                                statusToTableUnits(it, viewModel)
-                            }
-                        )
-
-                        constraints {
-                            serverStatusTitle topToTop root offset 8
-                            serverStatusTitle leftRightToLeftRight root offset 8
-
-                            listStatus topToBottom serverStatusTitle offset 0
-                            listStatus leftRightToLeftRight root offset 8
                         }
                     }
 
