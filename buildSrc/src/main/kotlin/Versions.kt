@@ -56,8 +56,6 @@ object Versions {
             const val settings = "0.5.1"
 
             const val multiplatformSettings = "0.6"
-
-            const val firebaseDatabase = "0.2.3"
         }
     }
 }
