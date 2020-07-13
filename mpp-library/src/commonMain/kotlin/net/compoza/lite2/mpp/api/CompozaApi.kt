@@ -11,5 +11,4 @@ class CompozaApi {
             header("Authorization", "Bearer $token")
         }
     }
-
 }
