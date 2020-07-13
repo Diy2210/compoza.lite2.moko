@@ -3,10 +3,8 @@ package net.compoza.lite2.mpp.theme
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.widgets.ButtonWidget
 import dev.icerock.moko.widgets.TextWidget
-import dev.icerock.moko.widgets.factory.SystemButtonViewFactory
 import dev.icerock.moko.widgets.core.Theme
-import dev.icerock.moko.widgets.factory.ButtonWithIconViewFactory
-import dev.icerock.moko.widgets.factory.SystemTextViewFactory
+import dev.icerock.moko.widgets.factory.*
 import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState

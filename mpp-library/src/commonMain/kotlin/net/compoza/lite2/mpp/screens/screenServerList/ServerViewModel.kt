@@ -1,4 +1,4 @@
-package net.compoza.lite2.mpp.screens.screenServerList
+package org.example.mpp.screens.screenServerList
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.invoke
@@ -7,7 +7,7 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import net.compoza.lite2.mpp.screens.screenServerList.ServerItem as ServerModel
+import org.example.mpp.screens.screenServerList.ServerItem as ServerModel
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
@@ -28,7 +28,7 @@ class ServerViewModel(
                 token = token
             )
         }
-        )
+    )
 
     val servers: LiveData<List<ServerModel>> = _servers
 

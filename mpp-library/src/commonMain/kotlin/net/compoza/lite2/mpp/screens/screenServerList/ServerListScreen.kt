@@ -6,6 +6,7 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
+import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
