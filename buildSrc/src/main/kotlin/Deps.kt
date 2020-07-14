@@ -14,6 +14,8 @@ object Deps {
             "dev.icerock.moko:units-generator:${Versions.Plugins.mokoUnits}"
         const val mokoWidgets =
             "dev.icerock.moko.widgets:gradle-plugin:${Versions.Plugins.mokoWidgets}"
+        const val sqldelight =
+            "com.squareup.sqldelight:gradle-plugin:${Versions.Plugins.sqldelight}"
     }
 
     object Libs {
@@ -132,6 +134,9 @@ object Deps {
             val multiplatformSettings = MultiPlatformLibrary(
                 common = "com.russhwolf:multiplatform-settings-no-arg:${Versions.Libs.MultiPlatform.multiplatformSettings}"
             )
+//            val sqldelight = MultiPlatformLibrary(
+//                common = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqldelight}"
+//            )
         }
     }
 
@@ -141,6 +146,7 @@ object Deps {
         "dev.icerock.mobile.multiplatform-resources" to Plugins.mokoResources,
         "dev.icerock.mobile.multiplatform-network-generator" to Plugins.mokoNetwork,
         "dev.icerock.mobile.multiplatform-units" to Plugins.mokoUnits,
-        "dev.icerock.mobile.multiplatform-widgets-generator" to Plugins.mokoWidgets
+        "dev.icerock.mobile.multiplatform-widgets-generator" to Plugins.mokoWidgets,
+        "com.squareup.sqldelight" to Plugins.sqldelight
     )
 }

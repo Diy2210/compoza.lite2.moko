@@ -1,3 +1,6 @@
+import Deps.Plugins.sqldelight
+import Versions.Plugins.sqldelight
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
@@ -5,6 +8,13 @@ plugins {
     id("dev.icerock.mobile.multiplatform-resources")
     id("kotlinx-serialization")
     id("kotlin-android-extensions")
+    id("com.squareup.sqldelight")
+}
+
+sqldelight {
+    database("Server") {
+        packageName = "net.compoza.lite2"
+    }
 }
 
 android {

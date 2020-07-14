@@ -12,6 +12,8 @@ object Versions {
     private const val mokoUnits = "0.3.1"
     private const val mokoWidgets = "0.1.0-dev-19"
 
+    private const val sqldelight = "1.4.0"
+
     object Plugins {
         const val kotlin = Versions.kotlin
         const val serialization = Versions.kotlin
@@ -20,6 +22,8 @@ object Versions {
         const val mokoNetwork = Versions.mokoNetwork
         const val mokoUnits = Versions.mokoUnits
         const val mokoWidgets = Versions.mokoWidgets
+
+        const val sqldelight = Versions.sqldelight
     }
 
     object Libs {
@@ -56,6 +60,8 @@ object Versions {
             const val settings = "0.5.1"
 
             const val multiplatformSettings = "0.6"
+
+//            const val sqldelight = "1.4.0"
         }
     }
 }
