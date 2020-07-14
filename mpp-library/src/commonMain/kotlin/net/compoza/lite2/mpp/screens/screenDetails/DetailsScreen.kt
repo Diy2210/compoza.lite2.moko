@@ -22,7 +22,7 @@ import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.AsParent
 import dev.icerock.moko.widgets.style.view.WidgetSize.Companion.WidthAsParentHeightWrapContent
 import kotlinx.serialization.*
-import org.example.library.MR
+import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.models.DiskModel
 import net.compoza.lite2.mpp.models.ProgsModel
 import net.compoza.lite2.mpp.models.StatusModel

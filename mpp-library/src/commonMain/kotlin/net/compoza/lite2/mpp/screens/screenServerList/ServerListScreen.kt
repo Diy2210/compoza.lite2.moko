@@ -19,7 +19,7 @@ import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import kotlinx.serialization.ImplicitReflectionSerializer
-import org.example.library.MR
+import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.theme.AppTheme
 
 class ServerListScreen(

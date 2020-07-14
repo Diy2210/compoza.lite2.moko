@@ -49,5 +49,5 @@ dependencies {
 }
 
 multiplatformResources {
-    multiplatformResourcesPackage = "org.example.library"
+    multiplatformResourcesPackage = "net.compoza.lite2.library"
 }
