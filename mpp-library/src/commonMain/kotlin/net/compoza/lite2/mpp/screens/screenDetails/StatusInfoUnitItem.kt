@@ -14,7 +14,7 @@ import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.text
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
-import org.example.library.MR
+import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.models.StatusModel
 import net.compoza.lite2.mpp.theme.AppTheme
 

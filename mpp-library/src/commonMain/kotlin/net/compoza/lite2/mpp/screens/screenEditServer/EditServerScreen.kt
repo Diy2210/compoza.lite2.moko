@@ -15,7 +15,7 @@ import dev.icerock.moko.widgets.screen.navigation.route
 import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
-import org.example.library.MR
+import net.compoza.lite2.library.MR
 
 class EditServerScreen(
     private val theme: Theme,

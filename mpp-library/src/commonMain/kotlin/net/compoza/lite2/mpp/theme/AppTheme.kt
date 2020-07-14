@@ -9,7 +9,7 @@ import dev.icerock.moko.widgets.style.background.Background
 import dev.icerock.moko.widgets.style.background.Fill
 import dev.icerock.moko.widgets.style.state.PressableState
 import dev.icerock.moko.widgets.style.view.*
-import org.example.library.MR
+import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.screens.screenEditServer.EditServerScreen
 
 val colorAccent get() = Color(0x1BBCACFF)

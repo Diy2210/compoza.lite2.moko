@@ -16,7 +16,7 @@ android {
         minSdkVersion(Versions.Android.minSdk)
         targetSdkVersion(Versions.Android.targetSdk)
 
-        applicationId = "org.example.app" // REPLACE:org.example.app:APP_ID
+        applicationId = "net.compoza.lite2.app"
 
         versionCode = 1
         versionName = "1.0"
@@ -57,7 +57,7 @@ dependencies {
 }
 
 multiplatformUnits {
-    classesPackage = "org.example.app" // REPLACE:org.example.app:APP_ID
-    dataBindingPackage = "org.example.app" // REPLACE:org.example.app:APP_ID
+    classesPackage = "net.compoza.lite2.app"
+    dataBindingPackage = "net.compoza.lite2.app"
     layoutsSourceSet = "main"
 }
