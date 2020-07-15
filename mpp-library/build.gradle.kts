@@ -1,6 +1,3 @@
-import Deps.Plugins.sqldelight
-import Versions.Plugins.sqldelight
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
@@ -42,8 +39,11 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
     mppLibrary(Deps.Libs.MultiPlatform.serialization)
     mppLibrary(Deps.Libs.MultiPlatform.multiplatformSettings)
+    mppLibrary(Deps.Libs.MultiPlatform.lifecycle)
+    mppLibrary(Deps.Libs.MultiPlatform.sqldelight)
 
-    androidLibrary(Deps.Libs.Android.lifecycle)
+//    androidLibrary(Deps.Libs.Android.lifecycle)
+//    androidLibrary(Deps.Libs.Android.sqldelightAndroid)
 
     mppLibs.forEach { mppLibrary(it) }
 }

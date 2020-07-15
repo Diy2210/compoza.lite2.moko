@@ -13,7 +13,7 @@ class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
-    val settings: Settings = Settings()
+    private val settings: Settings = Settings()
     var id = settings.getInt("Server ID")
     var title = settings.getString("Server Title")
     var url = settings.getString("Server Url")

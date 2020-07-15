@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.konan.target.Family
-
 object Deps {
     object Plugins {
         const val kotlinSerialization =
@@ -15,7 +13,7 @@ object Deps {
         const val mokoWidgets =
             "dev.icerock.moko.widgets:gradle-plugin:${Versions.Plugins.mokoWidgets}"
         const val sqldelight =
-            "com.squareup.sqldelight:gradle-plugin:${Versions.Plugins.sqldelight}"
+            "com.squareup.sqldelight:gradle-plugin:${Versions.sqldelight}"
     }
 
     object Libs {
@@ -38,6 +36,9 @@ object Deps {
             val lifecycle = AndroidLibrary(
                 name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
             )
+//            val sqldelightAndroid = AndroidLibrary(
+//                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqldelight}"
+//            )
         }
 
         object MultiPlatform {
@@ -134,9 +135,14 @@ object Deps {
             val multiplatformSettings = MultiPlatformLibrary(
                 common = "com.russhwolf:multiplatform-settings-no-arg:${Versions.Libs.MultiPlatform.multiplatformSettings}"
             )
-//            val sqldelight = MultiPlatformLibrary(
-//                common = "com.squareup.sqldelight:gradle-plugin:${Versions.Libs.MultiPlatform.sqldelight}"
-//            )
+            val lifecycle = MultiPlatformLibrary(
+                android = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
+            )
+            val sqldelight = MultiPlatformLibrary(
+//                common = "com.squareup.sqldelight:gradle-plugin:${Versions.sqldelight}",
+                android = "com.squareup.sqldelight:android-driver:${Versions.sqldelight}",
+                ios = "com.squareup.sqldelight:native-driver:${Versions.sqldelight}"
+            )
         }
     }
 
