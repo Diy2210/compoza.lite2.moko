@@ -10,6 +10,9 @@ SELECT *
 FROM Servers;
 --JOIN Servers.server_id
 
+selectServer:
+SELECT * FROM Servers WHERE id = ?;
+
 insertServer:
 INSERT INTO Servers(title, url, token)
 VALUES (?, ?, ?);
@@ -17,3 +20,11 @@ VALUES (?, ?, ?);
 updateServer:
 UPDATE Servers
 SET title = ?, url = ?, token = ? WHERE id = ?;
+
+deleteServer:
+DELETE FROM Servers WHERE id = ?;
+
+deleteAllServers:
+DELETE
+FROM Servers;
+

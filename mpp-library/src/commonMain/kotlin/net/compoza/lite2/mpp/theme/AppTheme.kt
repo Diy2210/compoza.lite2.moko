@@ -20,7 +20,7 @@ val white get() = Color(0xffffffffFF)
 val black get() = Color(0xff000000FF)
 
 object AppTheme {
-    object CreateNewServerBtn : ButtonWidget.Category
+//    object CreateNewServerBtn : ButtonWidget.Category
     object MenuBtn : ButtonWidget.Category
     object PlusBtn : ButtonWidget.Category
     object TextStyleCategory : TextWidget.Category
@@ -89,21 +89,21 @@ object AppTheme {
         )
 
         // Style CreateNewServerBtn with image
-        factory[CreateNewServerBtn] = ButtonWithIconViewFactory(
-            icon = PressableState(all = MR.images.plus_icon_png),
-            background = PressableState(
-                all = Background(
-                    fill = Fill.Solid(color = colorAccent),
-                    cornerRadius = 50f
-                )
-            ),
-            textStyle = TextStyle(
-                color = PressableState(
-                    all = Colors.white
-                ),
-                size = 15
-            )
-        )
+//        factory[CreateNewServerBtn] = ButtonWithIconViewFactory(
+//            icon = PressableState(all = MR.images.plus_icon_png),
+//            background = PressableState(
+//                all = Background(
+//                    fill = Fill.Solid(color = colorAccent),
+//                    cornerRadius = 50f
+//                )
+//            ),
+//            textStyle = TextStyle(
+//                color = PressableState(
+//                    all = Colors.white
+//                ),
+//                size = 15
+//            )
+//        )
 
         // Style CreateNewServerBtn with text
         factory[PlusBtn] = SystemButtonViewFactory(

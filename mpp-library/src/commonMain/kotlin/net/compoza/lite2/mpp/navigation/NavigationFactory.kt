@@ -1,6 +1,5 @@
 package net.compoza.lite2.mpp.navigation
 
-import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.screen.navigation.Route
 import kotlinx.serialization.ImplicitReflectionSerializer
@@ -18,7 +17,7 @@ class NavigationFactory(
         return ServerListScreen(
             theme = theme,
             viewModelFactory = {
-                ServerViewModel(EventsDispatcher())
+                ServerViewModel(it)
             },
             routeEditServer = routeToMain,
             routeDetails = routeToDetails

@@ -19,7 +19,8 @@ import net.compoza.lite2.mpp.models.*
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer
 class DetailsViewModel : ViewModel() {
-    val settings: Settings = Settings()
+
+    private val settings: Settings = Settings()
     var id = settings.getInt("Server ID")
     var title = settings.getString("Server Title")
     var url = settings.getString("Server Url")

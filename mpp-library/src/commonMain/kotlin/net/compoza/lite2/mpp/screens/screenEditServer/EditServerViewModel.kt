@@ -1,6 +1,5 @@
 package net.compoza.lite2.mpp.screens.screenEditServer
 
-import com.russhwolf.settings.*
 import dev.icerock.moko.fields.FormField
 import dev.icerock.moko.fields.liveBlock
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
@@ -8,12 +7,13 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import net.compoza.lite2.*
 
 class EditServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<EditServerViewModel.EventsListener> {
 
-    val settings: Settings = Settings()
+    private val serverRepository: ServerRepository = ServerRepository()
 
     val serverTitleField = FormField<String, StringDesc>("", liveBlock { null })
     val serverUrlField = FormField<String, StringDesc>("", liveBlock { null })
@@ -32,10 +32,10 @@ class EditServerViewModel(
         }
 
         eventsDispatcher.dispatchEvent {
-            settings.putInt("Server ID", 0)
-            settings.putString("Server Title", title)
-            settings.putString("Server Url", url)
-            settings.putString("Server Token", token)
+            // Insert New Server
+            serverRepository.insert(title, url, token)
+            println("//////////" + serverRepository.list())
+
             routeToMain()
         }
     }

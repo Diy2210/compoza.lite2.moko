@@ -7,6 +7,7 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import net.compoza.lite2.ServerRepository
 import net.compoza.lite2.mpp.screens.screenServerList.ServerItem as ServerModel
 
 class ServerViewModel(
@@ -18,6 +19,7 @@ class ServerViewModel(
     var title = settings.getString("Server Title")
     var url = settings.getString("Server Url")
     var token = settings.getString("Server Token")
+    private val serverRepository: ServerRepository = ServerRepository()
 
     private val _servers: MutableLiveData<List<ServerModel>> =
         MutableLiveData(initialValue = List(1) {
@@ -29,6 +31,17 @@ class ServerViewModel(
             )
         }
     )
+
+//    private val _servers: MutableLiveData<List<ServerModel>> =
+//        MutableLiveData(initialValue = List(1) {
+//            serverRepository.list(
+//                ID = id,
+//                title = title,
+//                url = url,
+//                token = token
+//            )
+//        }
+//    )
 
     val servers: LiveData<List<ServerModel>> = _servers
 

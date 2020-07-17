@@ -41,17 +41,32 @@ class StatusInfoUnitItem(
                     }
                 )
 
-                val imageValue = +image(
-                    size = WidgetSize.AspectByWidth(
-                        width = SizeSpec.Exact(30f),
-                        aspectRatio = 1.49f
+//                val imageValue = +image(
+//                    size = WidgetSize.AspectByWidth(
+//                        width = SizeSpec.Exact(30f),
+//                        aspectRatio = 1.49f
+//                    ),
+//                    scaleType = ImageWidget.ScaleType.FIT,
+//                    image = data.map {
+//                        if (it.status == ("0")) {
+//                            Image.resource(MR.images.empty_png)
+//                        } else {
+//                            Image.resource(MR.images.tick_png)
+//                        }
+//                    }
+//                )
+
+                val imageValue = +text(
+                    category = AppTheme.TextStyleHostTitle,
+                    size = WidgetSize.Const(
+                        width = SizeSpec.WrapContent,
+                        height = SizeSpec.WrapContent
                     ),
-                    scaleType = ImageWidget.ScaleType.FIT,
-                    image = data.map {
+                    text = data.map {
                         if (it.status == ("0")) {
-                            Image.resource(MR.images.empty_png)
+                            "○".desc() as StringDesc
                         } else {
-                            Image.resource(MR.images.tick_png)
+                            "✓".desc() as StringDesc
                         }
                     }
                 )

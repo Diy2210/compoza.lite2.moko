@@ -166,11 +166,16 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             size = WidthAsParentHeightWrapContent,
                             text = viewModel.updates
                         )
-                        val warningImage = +image(
-                            size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
-                            image = const(Image.resource(MR.images.warning_png)),
-                            scaleType = ImageWidget.ScaleType.FIT
+                        val warningImage = +text(
+                            category = AppTheme.TextStyleCategory,
+                            size = WidthAsParentHeightWrapContent,
+                            text = const("⚠")
                         )
+//                        val warningImage = +image(
+//                            size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
+//                            image = const(Image.resource(MR.images.warning_png)),
+//                            scaleType = ImageWidget.ScaleType.FIT
+//                        )
 
                         constraints {
                             serverTitleName topToTop root offset 8

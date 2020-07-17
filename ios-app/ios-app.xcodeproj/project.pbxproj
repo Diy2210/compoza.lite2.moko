@@ -16,7 +16,7 @@
 
 /* Begin PBXFileReference section */
 		23E8F175D182D52740C7E70B /* Pods-ios-app.prod-release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-app.prod-release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-app/Pods-ios-app.prod-release.xcconfig"; sourceTree = "<group>"; };
-		287627FF1F319065007FA12B /* mokoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mokoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		287627FF1F319065007FA12B /* Compoza Lite 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Compoza Lite 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		363BA6BFAA3FA87230445070 /* Pods_ios_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		450802A823E7BDDC002C6F6F /* debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = debug.xcconfig; sourceTree = "<group>"; };
 		450802A923E7BDDC002C6F6F /* prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = prod.xcconfig; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		287628001F319065007FA12B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				287627FF1F319065007FA12B /* mokoApp.app */,
+				287627FF1F319065007FA12B /* Compoza Lite 2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +148,7 @@
 				287627FB1F319065007FA12B /* Sources */,
 				287627FC1F319065007FA12B /* Frameworks */,
 				287627FD1F319065007FA12B /* Resources */,
+				30C8FCFC88EE19F898B01B8C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,7 +156,7 @@
 			);
 			name = "ios-app";
 			productName = IosApp;
-			productReference = 287627FF1F319065007FA12B /* mokoApp.app */;
+			productReference = 287627FF1F319065007FA12B /* Compoza Lite 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -206,6 +207,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		30C8FCFC88EE19F898B01B8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ios-app/Pods-ios-app-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DDE4C06D580BF457BEDF8D0A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +300,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 450802B023E7BDDC002C6F6F /* dev-debug.xcconfig */;
 			buildSettings = {
+				MARKETING_VERSION = 1.0;
+				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "dev-debug";
 		};
@@ -291,6 +309,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 450802AE23E7BDDC002C6F6F /* dev-release.xcconfig */;
 			buildSettings = {
+				MARKETING_VERSION = 1.0;
+				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "dev-release";
 		};
@@ -307,6 +327,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 450802AB23E7BDDC002C6F6F /* prod-debug.xcconfig */;
 			buildSettings = {
+				MARKETING_VERSION = 1.0;
+				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "prod-debug";
 		};
@@ -323,6 +345,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 450802AD23E7BDDC002C6F6F /* prod-release.xcconfig */;
 			buildSettings = {
+				MARKETING_VERSION = 1.0;
+				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "prod-release";
 		};
