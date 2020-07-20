@@ -25,8 +25,7 @@ android {
 
 val mppLibs = listOf(
     Deps.Libs.MultiPlatform.mokoResources,
-    Deps.Libs.MultiPlatform.mokoWidgets,
-    Deps.Libs.MultiPlatform.multiplatformSettings
+    Deps.Libs.MultiPlatform.mokoWidgets
 )
 
 setupFramework(
@@ -38,12 +37,8 @@ dependencies {
     mppLibrary(Deps.Libs.MultiPlatform.coroutines)
     mppLibrary(Deps.Libs.MultiPlatform.ktorClient)
     mppLibrary(Deps.Libs.MultiPlatform.serialization)
-    mppLibrary(Deps.Libs.MultiPlatform.multiplatformSettings)
     mppLibrary(Deps.Libs.MultiPlatform.lifecycle)
     mppLibrary(Deps.Libs.MultiPlatform.sqldelight)
-
-//    androidLibrary(Deps.Libs.Android.lifecycle)
-//    androidLibrary(Deps.Libs.Android.sqldelightAndroid)
 
     mppLibs.forEach { mppLibrary(it) }
 }

@@ -32,9 +32,13 @@ class EditServerViewModel(
         }
 
         eventsDispatcher.dispatchEvent {
+
             // Insert New Server
             serverRepository.insert(title, url, token)
             println("//////////" + serverRepository.list())
+
+            // Update Server
+
 
             routeToMain()
         }

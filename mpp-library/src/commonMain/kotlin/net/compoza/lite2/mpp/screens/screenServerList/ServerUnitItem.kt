@@ -7,21 +7,21 @@ import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.widgets.*
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
-import dev.icerock.moko.widgets.screen.AlertDialogBuilder
 import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import dev.icerock.moko.widgets.units.UnitItemRoot
 import dev.icerock.moko.widgets.units.WidgetsTableUnitItem
+import net.compoza.lite2.Servers
 import net.compoza.lite2.mpp.theme.AppTheme
 
 class ServerUnitItem(
-    private val theme: Theme, itemId: Long, server: ServerItem,
-    private val clickListener: (ServerItem) -> Unit
-) : WidgetsTableUnitItem<ServerItem>(itemId, server) {
+    private val theme: Theme, itemId: Long, server: Servers,
+    private val clickListener: (Servers) -> Unit
+) : WidgetsTableUnitItem<Servers>(itemId, server) {
 
     override val reuseId: String = "serverCell"
 
-    override fun createWidget(data: LiveData<ServerItem>): UnitItemRoot {
+    override fun createWidget(data: LiveData<Servers>): UnitItemRoot {
         return with(theme) {
             clickable(
                 onClick = {

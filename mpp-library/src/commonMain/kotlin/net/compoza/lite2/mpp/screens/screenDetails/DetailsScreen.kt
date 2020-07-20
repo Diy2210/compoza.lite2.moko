@@ -1,7 +1,5 @@
 package net.compoza.lite2.mpp.screens.screenDetails
 
-import com.russhwolf.settings.Settings
-import com.russhwolf.settings.invoke
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
@@ -47,11 +45,6 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
             )
         )
 
-    private val settings: Settings = Settings()
-    var title = settings.getString("Server Title")
-    var url = settings.getString("Server Url")
-    var token = settings.getString("Server Token")
-
     @UnstableDefault
     @ImplicitReflectionSerializer
     override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
@@ -80,7 +73,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.ServerName,
                             category = AppTheme.TextStyleCategory,
                             size = WidthAsParentHeightWrapContent,
-                            text = const(title)
+                            text = const("title")
                         )
                         val hostname = +text(
                             category = AppTheme.TextStyleHostTitle,

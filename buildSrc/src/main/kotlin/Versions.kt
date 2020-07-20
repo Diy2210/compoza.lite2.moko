@@ -22,8 +22,6 @@ object Versions {
         const val mokoNetwork = Versions.mokoNetwork
         const val mokoUnits = Versions.mokoUnits
         const val mokoWidgets = Versions.mokoWidgets
-
-//        const val sqldelight = Versions.sqldelight
     }
 
     object Libs {
@@ -34,13 +32,7 @@ object Versions {
             const val constraintLayout = "1.1.3"
             const val lifecycle = "2.0.0"
             const val recyclerView = "1.0.0"
-
-            const val sqldelight = "1.4.0"
         }
-
-//        object ios {
-//            const val sqldelightIos = "1.4.0"
-//        }
 
         object MultiPlatform {
             const val kotlinStdLib = kotlin
@@ -63,11 +55,7 @@ object Versions {
             const val mokoWidgets = Versions.mokoWidgets
 
             const val napier = "1.2.0"
-            const val settings = "0.5.1"
-
-            const val multiplatformSettings = "0.6"
-
-//            const val sqldelight = "1.4.0"
+            const val settings = "0.6"
         }
     }
 }

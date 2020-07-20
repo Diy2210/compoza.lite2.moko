@@ -36,9 +36,6 @@ object Deps {
             val lifecycle = AndroidLibrary(
                 name = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"
             )
-//            val sqldelightAndroid = AndroidLibrary(
-//                name = "com.squareup.sqldelight:android-driver:${Versions.Libs.Android.sqldelight}"
-//            )
         }
 
         object MultiPlatform {
@@ -131,9 +128,6 @@ object Deps {
                 common = "com.github.aakira:napier:${Versions.Libs.MultiPlatform.napier}",
                 iosX64 = "com.github.aakira:napier-iosX64:${Versions.Libs.MultiPlatform.napier}",
                 iosArm64 = "com.github.aakira:napier-iosArm64:${Versions.Libs.MultiPlatform.napier}"
-            )
-            val multiplatformSettings = MultiPlatformLibrary(
-                common = "com.russhwolf:multiplatform-settings-no-arg:${Versions.Libs.MultiPlatform.multiplatformSettings}"
             )
             val lifecycle = MultiPlatformLibrary(
                 android = "androidx.lifecycle:lifecycle-extensions:${Versions.Libs.Android.lifecycle}"

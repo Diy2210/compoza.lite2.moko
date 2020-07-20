@@ -6,7 +6,6 @@ import dev.icerock.moko.mvvm.livedata.map
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
-import dev.icerock.moko.widgets.core.Image
 import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Value
 import dev.icerock.moko.widgets.screen.*
@@ -19,6 +18,7 @@ import dev.icerock.moko.widgets.style.view.SizeSpec
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import kotlinx.serialization.ImplicitReflectionSerializer
+import net.compoza.lite2.Servers
 import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.theme.AppTheme
 
@@ -92,11 +92,11 @@ class ServerListScreen(
     }
 
     @ImplicitReflectionSerializer
-    private fun serversToTableUnits(servers: List<ServerItem>, viewModel: ServerViewModel): List<TableUnitItem> {
+    private fun serversToTableUnits(servers: List<Servers>, viewModel: ServerViewModel): List<TableUnitItem> {
         return servers.map { server ->
             ServerUnitItem(
                 theme = theme,
-                itemId = server.ID.toLong(),
+                itemId = server.id.toLong(),
                 server = server,
                 clickListener = {
                     viewModel.onClickToItem(it)
