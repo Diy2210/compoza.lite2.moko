@@ -40,4 +40,7 @@
     <string name="disk_free">Free</string>
     <string name="free_size">%s%% (%s)</string>
 
+    <string name="url">https://status.rompos.com</string>
+    <string name="token">LY4aMRHZOTnXrufrEm8Dq8AAebFAgNUaq3k9MgsYetJxwcoR7C2USP6bkfZk</string>
+
 </resources>

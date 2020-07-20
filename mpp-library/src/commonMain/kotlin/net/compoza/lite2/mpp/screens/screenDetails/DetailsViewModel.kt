@@ -1,7 +1,5 @@
 package net.compoza.lite2.mpp.screens.screenDetails
 
-import com.russhwolf.settings.Settings
-import com.russhwolf.settings.invoke
 import dev.icerock.moko.mvvm.livedata.LiveData
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.map
@@ -13,18 +11,13 @@ import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
+import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.api.CompozaApi
 import net.compoza.lite2.mpp.models.*
 
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer
 class DetailsViewModel : ViewModel() {
-
-    private val settings: Settings = Settings()
-    var id = settings.getInt("Server ID")
-    var title = settings.getString("Server Title")
-    var url = settings.getString("Server Url")
-    var token = settings.getString("Server Token")
 
     private val client = CompozaApi()
 
@@ -99,35 +92,36 @@ class DetailsViewModel : ViewModel() {
     fun launchAsyncRequest() {
         viewModelScope.launch {
             try {
-                client.getStatusServer(url, "/api/v1.1/info", token).also { response ->
-                    if (response.contains("success")) {
-                        val json = Json(JsonConfiguration.Default)
-                        val resObject = json.parse(ResponseModel.serializer(), response)
+                client.getStatusServer(MR.strings.url.toString(), "/api/v1.1/info", MR.strings.token.toString())
+                    .also { response ->
+                        if (response.contains("success")) {
+                            val json = Json(JsonConfiguration.Default)
+                            val resObject = json.parse(ResponseModel.serializer(), response)
 
-                        // Host Value
-                        _hostMutableLiveData.value = HostModel(
-                            hostname = resObject.data.host.hostname,
-                            os = resObject.data.host.os,
-                            ip = resObject.data.host.ip,
-                            kernel = resObject.data.host.kernel,
-                            uptime = resObject.data.host.uptime,
-                            date = resObject.data.host.date,
-                            updates = resObject.data.host.updates
-                        )
-                        _updates.value = resObject.data.host.updates.toString()
+                            // Host Value
+                            _hostMutableLiveData.value = HostModel(
+                                hostname = resObject.data.host.hostname,
+                                os = resObject.data.host.os,
+                                ip = resObject.data.host.ip,
+                                kernel = resObject.data.host.kernel,
+                                uptime = resObject.data.host.uptime,
+                                date = resObject.data.host.date,
+                                updates = resObject.data.host.updates
+                            )
+                            _updates.value = resObject.data.host.updates.toString()
 
-                        // Disk Value
-                        _diskMutableLiveData.value = resObject.data.disk_fs.asList()
+                            // Disk Value
+                            _diskMutableLiveData.value = resObject.data.disk_fs.asList()
 
-                        // Status Value
-                        _statusMutableLiveData.value = resObject.data.status.asList()
+                            // Status Value
+                            _statusMutableLiveData.value = resObject.data.status.asList()
 
-                        // Progs Value
-                        _progsMutableLiveData.value = resObject.data.progs.asList()
-                    } else {
-                        println("Error")
+                            // Progs Value
+                            _progsMutableLiveData.value = resObject.data.progs.asList()
+                        } else {
+                            println("Error")
+                        }
                     }
-                }
             } catch (exception: Exception) {
                 println("Server Error")
             }
