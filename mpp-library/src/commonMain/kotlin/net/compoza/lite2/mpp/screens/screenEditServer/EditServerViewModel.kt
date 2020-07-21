@@ -35,10 +35,9 @@ class EditServerViewModel(
 
             // Insert New Server
             serverRepository.insert(title, url, token)
-            println("//////////" + serverRepository.list())
+            println("//////////" + serverRepository.get(1))
 
             // Update Server
-
 
             routeToMain()
         }

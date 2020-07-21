@@ -11,13 +11,14 @@ import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.UnstableDefault
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonConfiguration
-import net.compoza.lite2.library.MR
 import net.compoza.lite2.mpp.api.CompozaApi
 import net.compoza.lite2.mpp.models.*
 
 @OptIn(UnstableDefault::class)
 @ImplicitReflectionSerializer
-class DetailsViewModel : ViewModel() {
+class DetailsViewModel(
+    private val itemId: Long, val title: String, val url: String, val token: String
+) : ViewModel() {
 
     private val client = CompozaApi()
 
@@ -92,7 +93,7 @@ class DetailsViewModel : ViewModel() {
     fun launchAsyncRequest() {
         viewModelScope.launch {
             try {
-                client.getStatusServer(MR.strings.url.toString(), "/api/v1.1/info", MR.strings.token.toString())
+                client.getStatusServer(url, "/api/v1.1/info", token)
                     .also { response ->
                         if (response.contains("success")) {
                             val json = Json(JsonConfiguration.Default)

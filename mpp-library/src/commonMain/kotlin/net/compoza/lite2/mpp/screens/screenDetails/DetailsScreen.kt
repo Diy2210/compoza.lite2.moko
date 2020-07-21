@@ -2,6 +2,8 @@ package net.compoza.lite2.mpp.screens.screenDetails
 
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.parcelize.Parcelable
+import dev.icerock.moko.parcelize.Parcelize
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
@@ -10,6 +12,7 @@ import dev.icerock.moko.widgets.core.Theme
 import dev.icerock.moko.widgets.core.Widget
 import dev.icerock.moko.widgets.screen.Args
 import dev.icerock.moko.widgets.screen.WidgetScreen
+import dev.icerock.moko.widgets.screen.getArgument
 import dev.icerock.moko.widgets.screen.getViewModel
 import dev.icerock.moko.widgets.screen.navigation.NavigationBar
 import dev.icerock.moko.widgets.screen.navigation.NavigationItem
@@ -28,12 +31,12 @@ import net.compoza.lite2.mpp.theme.AppTheme
 
 class DetailsScreen @ImplicitReflectionSerializer constructor(
     private val theme: Theme,
-    private val viewModelFactory: () -> DetailsViewModel
-) : WidgetScreen<Args.Empty>(), NavigationItem {
+    private val viewModelFactory: (itemId: Long, title: String, url: String, token: String) -> DetailsViewModel
+) : WidgetScreen<Args.Parcel<DetailsScreen.Arg>>(), NavigationItem {
 
     override val navigationBar
         get() = NavigationBar.Normal(
-            title = MR.strings.compoza_lite.desc(),
+            title = getArgument().title.desc(),
             styles = NavigationBar.Styles(
                 backgroundColor = Color(0x3155ABFF),
                 tintColor = Color(0xffffffffFF),
@@ -50,7 +53,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
     override fun createContentWidget(): Widget<WidgetSize.Const<SizeSpec.AsParent, SizeSpec.AsParent>> {
 
         val viewModel = getViewModel {
-            viewModelFactory()
+            viewModelFactory(getArgument().itemId, getArgument().title, getArgument().url, getArgument().token)
         }
 
         return with(theme) {
@@ -73,7 +76,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                             id = Ids.ServerName,
                             category = AppTheme.TextStyleCategory,
                             size = WidthAsParentHeightWrapContent,
-                            text = const("title")
+                            text = const(viewModel.title)
                         )
                         val hostname = +text(
                             category = AppTheme.TextStyleHostTitle,
@@ -390,4 +393,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
         object SystemDate : TextWidget.Id
         object Updates : TextWidget.Id
     }
+
+    @Parcelize
+    data class Arg(val itemId: Long, val title: String, val url: String, val token: String): Parcelable
 }

@@ -3,6 +3,8 @@ package net.compoza.lite2.mpp.screens.screenServerList
 import dev.icerock.moko.graphics.Color
 import dev.icerock.moko.mvvm.dispatcher.EventsDispatcher
 import dev.icerock.moko.mvvm.livedata.map
+import dev.icerock.moko.parcelize.Parcelable
+import dev.icerock.moko.parcelize.Parcelize
 import dev.icerock.moko.resources.desc.desc
 import dev.icerock.moko.units.TableUnitItem
 import dev.icerock.moko.widgets.*
@@ -25,7 +27,7 @@ import net.compoza.lite2.mpp.theme.AppTheme
 class ServerListScreen(
     private val theme: Theme,
     private val routeEditServer: Route<Unit>,
-    private val routeDetails: Route<Unit>,
+    private val routeDetails: Route<Arg>,
     private val viewModelFactory: (EventsDispatcher<ServerViewModel.EventsListener>) -> ServerViewModel
 ) : WidgetScreen<Args.Empty>(), ServerViewModel.EventsListener, NavigationItem {
 
@@ -87,8 +89,8 @@ class ServerListScreen(
         routeEditServer.route()
     }
 
-    override fun routeToDetails() {
-        routeDetails.route()
+    override fun routeToDetails(itemId: Long, title: String, url: String, token: String) {
+        routeDetails.route(Arg(itemId, title, url, token))
     }
 
     @ImplicitReflectionSerializer
@@ -96,12 +98,15 @@ class ServerListScreen(
         return servers.map { server ->
             ServerUnitItem(
                 theme = theme,
-                itemId = server.id.toLong(),
+                itemId = server.id,
                 server = server,
                 clickListener = {
-                    viewModel.onClickToItem(it)
+                    viewModel.onClickToItem(it.id, it.title, it.url, it.token)
                 }
             )
         }
     }
+
+    @Parcelize
+    data class Arg(val itemId: Long, val title: String, val url: String, val token: String): Parcelable
 }

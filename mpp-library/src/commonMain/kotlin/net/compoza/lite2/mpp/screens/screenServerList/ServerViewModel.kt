@@ -7,7 +7,6 @@ import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import net.compoza.lite2.ServerRepository
 import net.compoza.lite2.Servers
-import net.compoza.lite2.mpp.screens.screenServerList.ServerItem as ServerModel
 
 class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
@@ -25,14 +24,14 @@ class ServerViewModel(
         }
     }
 
-    fun onClickToItem(model: Servers) {
+    fun onClickToItem(itemId: Long, title: String, url: String, token: String) {
         eventsDispatcher.dispatchEvent {
-            routeToDetails()
+            routeToDetails(itemId, title, url, token)
         }
     }
 
     interface EventsListener {
         fun routeToEditServer()
-        fun routeToDetails()
+        fun routeToDetails(itemId: Long, title: String, url: String, token: String)
     }
 }

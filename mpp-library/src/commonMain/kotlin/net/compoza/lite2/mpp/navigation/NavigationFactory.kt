@@ -13,7 +13,7 @@ import net.compoza.lite2.mpp.screens.screenServerList.ServerListScreen
 class NavigationFactory(
     private val theme: Theme
 ) {
-    fun createServerListScreen(routeToMain: Route<Unit>, routeToDetails: Route<Unit>): ServerListScreen {
+    fun createServerListScreen(routeToMain: Route<Unit>, routeToDetails: Route<ServerListScreen.Arg>): ServerListScreen {
         return ServerListScreen(
             theme = theme,
             viewModelFactory = {
@@ -38,8 +38,8 @@ class NavigationFactory(
     fun createDetailsScreen(routeToMain: Route<Unit>): DetailsScreen {
         return DetailsScreen(
             theme = theme,
-            viewModelFactory = {
-                DetailsViewModel()
+            viewModelFactory = { itemId, title, url, token ->
+                DetailsViewModel(itemId, title, url, token)
             }
         )
     }
