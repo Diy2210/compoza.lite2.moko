@@ -22,7 +22,7 @@ class EditServerViewModel(
 
     fun onSavePressed() {
         val server = Servers(0, serverTitleField.data.value, serverUrlField.data.value, serverTokenField.data.value)
-//
+
         if (server.title.isEmpty() || server.url.isEmpty() || server.token.isEmpty()) {
             eventsDispatcher.dispatchEvent {
                 showError("All fields are required".desc())
@@ -30,18 +30,17 @@ class EditServerViewModel(
             return
         }
 
-        eventsDispatcher.dispatchEvent {
-            viewModelScope.launch {
-                try {
-                    // Insert New Server
-                    serverRepository.insert(server)
-
-                    // Update Server
-                } catch (e: Exception) {
-                    println("Error Insert Server")
+        viewModelScope.launch {
+            try {
+                // Insert New Server
+                serverRepository.insert(server)
+                eventsDispatcher.dispatchEvent {
+                    routeToMain()
                 }
-            }.also {
-                routeToMain()
+                // Update Server
+
+            } catch (e: Exception) {
+                println("Error Insert Server")
             }
         }
     }
