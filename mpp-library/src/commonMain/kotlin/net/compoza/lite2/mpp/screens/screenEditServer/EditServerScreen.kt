@@ -24,8 +24,6 @@ class EditServerScreen(
     -> EditServerViewModel
 ) : WidgetScreen<Args.Empty>(), EditServerViewModel.EventsListener, NavigationItem {
 
-    //    override val navigationBar: NavigationBar = NavigationBar.Normal(MR.strings.compoza_lite.desc())
-
     override val navigationBar
         get() = NavigationBar.Normal(
             title = MR.strings.compoza_lite.desc(),
@@ -49,16 +47,10 @@ class EditServerScreen(
 
         constraint(size = WidgetSize.AsParent) {
 
-//            val title = +text(
-//                size = WidgetSize.WidthAsParentHeightWrapContent,
-//                text = const("Add New Server")
-//            )
-
             val serverTitleInput = +input(
                 id = Ids.ServerTitle,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
                 label = const("Server Title"),
-//                field = FormField(initialValue = "", validation = liveBlock { null })
                 field = viewModel.serverTitleField
             )
 
@@ -66,7 +58,6 @@ class EditServerScreen(
                 id = Ids.ServerUrl,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
                 label = const("Server Url"),
-//                field = FormField(initialValue = "", validation = liveBlock { null })
                 field = viewModel.serverUrlField
             )
 
@@ -74,7 +65,6 @@ class EditServerScreen(
                 id = Ids.ServerToken,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
                 label = const("Authorization Token"),
-//                field = FormField(initialValue = "", validation = liveBlock { null })
                 field = viewModel.serverTokenField
             )
 
@@ -131,8 +121,4 @@ class EditServerScreen(
     override fun routeToMain() {
         routeToMain.route()
     }
-
-//    override fun routeInputCode(title: String, url: String, token: String) {
-//        routeInputCode(title, url, token)
-//    }
 }

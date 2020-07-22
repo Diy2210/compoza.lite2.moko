@@ -51,6 +51,7 @@ class ServerListScreen(
             viewModelFactory(createEventsDispatcher())
         }
 
+        viewModel.reload()
         viewModel.eventsDispatcher.listen(this@ServerListScreen, this@ServerListScreen)
 
         constraint(size = WidgetSize.AsParent) {

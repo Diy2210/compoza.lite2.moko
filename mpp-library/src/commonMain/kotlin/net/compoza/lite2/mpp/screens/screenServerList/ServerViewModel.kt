@@ -13,9 +13,18 @@ class ServerViewModel(
 ) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
     private val serverRepository: ServerRepository = ServerRepository()
-    private val list = serverRepository.list()
-
+    private var list: List<Servers> = emptyList()
     private val _servers: MutableLiveData<List<Servers>> = MutableLiveData(list)
+
+    init {
+        reload()
+    }
+
+    fun reload() {
+        list = serverRepository.list()
+        _servers.value = list
+    }
+
     val servers: LiveData<List<Servers>> = _servers
 
     fun onAddPressed() {

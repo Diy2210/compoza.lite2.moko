@@ -9,8 +9,8 @@ open class ServerRepository {
     private val serverQueries = database?.serverQueries
 
     // Insert New Server
-    fun insert(title: String, url: String, token: String) {
-        serverQueries?.insertServer(title, url, token)
+    fun insert(server: Servers) {
+        serverQueries?.insertServer(server.title, server.url, server.token)
     }
 
     // Get All Servers

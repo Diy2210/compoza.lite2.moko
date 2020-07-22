@@ -7,6 +7,7 @@ import dev.icerock.moko.mvvm.dispatcher.EventsDispatcherOwner
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import dev.icerock.moko.resources.desc.StringDesc
 import dev.icerock.moko.resources.desc.desc
+import kotlinx.coroutines.launch
 import net.compoza.lite2.*
 
 class EditServerViewModel(
@@ -20,11 +21,9 @@ class EditServerViewModel(
     val serverTokenField = FormField<String, StringDesc>("", liveBlock { null })
 
     fun onSavePressed() {
-        val title = serverTitleField.data.value
-        val url = serverUrlField.data.value
-        val token = serverTokenField.data.value
-
-        if (title.isBlank() || url.isBlank() || token.isBlank()) {
+        val server = Servers(0, serverTitleField.data.value, serverUrlField.data.value, serverTokenField.data.value)
+//
+        if (server.title.isEmpty() || server.url.isEmpty() || server.token.isEmpty()) {
             eventsDispatcher.dispatchEvent {
                 showError("All fields are required".desc())
             }
@@ -32,14 +31,18 @@ class EditServerViewModel(
         }
 
         eventsDispatcher.dispatchEvent {
+            viewModelScope.launch {
+                try {
+                    // Insert New Server
+                    serverRepository.insert(server)
 
-            // Insert New Server
-            serverRepository.insert(title, url, token)
-            println("//////////" + serverRepository.get(1))
-
-            // Update Server
-
-            routeToMain()
+                    // Update Server
+                } catch (e: Exception) {
+                    println("Error Insert Server")
+                }
+            }.also {
+                routeToMain()
+            }
         }
     }
 
