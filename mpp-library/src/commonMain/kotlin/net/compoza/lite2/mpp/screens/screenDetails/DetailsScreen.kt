@@ -36,7 +36,8 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
 
     override val navigationBar
         get() = NavigationBar.Normal(
-            title = getArgument().title.desc(),
+//            title = getArgument().title.desc(),
+            title = MR.strings.server_details.desc(),
             styles = NavigationBar.Styles(
                 backgroundColor = Color(0x3155ABFF),
                 tintColor = Color(0xffffffffFF),

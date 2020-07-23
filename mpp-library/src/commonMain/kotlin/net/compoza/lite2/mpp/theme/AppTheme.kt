@@ -143,7 +143,7 @@ object AppTheme {
             background = PressableState(
                 all = Background(
                     fill = Fill.Solid(color = colorAccent),
-                    cornerRadius = 50f
+                    cornerRadius = 25f
                 )
             ),
             textStyle = TextStyle(

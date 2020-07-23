@@ -73,7 +73,7 @@ class ServerListScreen(
 
             constraints {
                 list topToBottom root offset 8
-                list leftToRight root offset 8
+                list leftToLeft root offset 8
                 list bottomToBottom root offset 8
 
                 createNewServer bottomToBottom root offset 20
