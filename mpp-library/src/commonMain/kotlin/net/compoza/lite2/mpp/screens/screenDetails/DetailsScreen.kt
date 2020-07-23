@@ -164,7 +164,7 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                         )
                         val warningImage = +image(
                             size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
-                            image = const(Image.resource(MR.images.warning_png)),
+                            image = const(Image.resource(MR.images.warning)),
                             scaleType = ImageWidget.ScaleType.FIT
                         )
 

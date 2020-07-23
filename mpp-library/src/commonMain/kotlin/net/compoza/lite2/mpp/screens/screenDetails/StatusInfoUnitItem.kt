@@ -49,9 +49,9 @@ class StatusInfoUnitItem(
                     scaleType = ImageWidget.ScaleType.FIT,
                     image = data.map {
                         if (it.status == ("0")) {
-                            Image.resource(MR.images.empty_png)
+                            Image.resource(MR.images.empty)
                         } else {
-                            Image.resource(MR.images.tick_png)
+                            Image.resource(MR.images.tick)
                         }
                     }
                 )

@@ -34,6 +34,8 @@ class EditServerViewModel(
             try {
                 // Insert New Server
                 serverRepository.insert(server)
+                println("Complete!")
+                println(serverRepository.list())
                 eventsDispatcher.dispatchEvent {
                     routeToMain()
                 }

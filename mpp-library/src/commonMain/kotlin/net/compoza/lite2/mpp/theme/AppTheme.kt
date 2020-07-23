@@ -18,6 +18,8 @@ val colorPrimaryDark get() = Color(0x243d79FF)
 val transparent get() = Color(0x00000000)
 val white get() = Color(0xffffffffFF)
 val black get() = Color(0xff000000FF)
+val green get() = Color(0xff008000FF)
+val red get() = Color(0xffFF0000FF)
 
 object AppTheme {
 //    object CreateNewServerBtn : ButtonWidget.Category
@@ -28,6 +30,9 @@ object AppTheme {
     object TextStyleHostValue : TextWidget.Category
     object TextStyleDefaultValue : TextWidget.Category
     object TextStyleBoldValue : TextWidget.Category
+    object TextStyleImageValue : TextWidget.Category
+    object TextStyleTickSymbolValue : TextWidget.Category
+    object TextStyleEmptySymbolValue : TextWidget.Category
     val baseTheme = Theme {
 
         // Style Text Category
@@ -56,10 +61,38 @@ object AppTheme {
 
         // Style Text Value Bold
         factory[TextStyleBoldValue] = SystemTextViewFactory (
-//            textStyle = TextStyle(11),
             textStyle = TextStyle(
                 11,
                 fontStyle = FontStyle.BOLD
+            ),
+            margins = MarginValues(8f, 0f, 0f, 0f)
+        )
+
+        // Style Image Text
+        factory[TextStyleImageValue] = SystemTextViewFactory (
+            textStyle = TextStyle(
+                15,
+                fontStyle = FontStyle.BOLD
+            ),
+            margins = MarginValues(8f, 0f, 0f, 0f)
+        )
+
+        // Style Tick Symbol
+        factory[TextStyleTickSymbolValue] = SystemTextViewFactory (
+            textStyle = TextStyle(
+                15,
+                fontStyle = FontStyle.BOLD,
+                color = green
+            ),
+            margins = MarginValues(8f, 0f, 0f, 0f)
+        )
+
+        // Style Empty Symbol
+        factory[TextStyleEmptySymbolValue] = SystemTextViewFactory (
+            textStyle = TextStyle(
+                15,
+                fontStyle = FontStyle.BOLD,
+                color = red
             ),
             margins = MarginValues(8f, 0f, 0f, 0f)
         )
