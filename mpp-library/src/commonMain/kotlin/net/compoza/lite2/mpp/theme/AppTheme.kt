@@ -22,9 +22,10 @@ val green get() = Color(0xff008000FF)
 val red get() = Color(0xffFF0000FF)
 
 object AppTheme {
-//    object CreateNewServerBtn : ButtonWidget.Category
     object MenuBtn : ButtonWidget.Category
     object PlusBtn : ButtonWidget.Category
+    object CancelBtn : ButtonWidget.Category
+    object SaveBtn : ButtonWidget.Category
     object TextStyleCategory : TextWidget.Category
     object TextStyleHostTitle : TextWidget.Category
     object TextStyleHostValue : TextWidget.Category
@@ -155,7 +156,7 @@ object AppTheme {
         )
 
         // Style Cancel Button
-        factory[EditServerScreen.Ids.CancelBtn] = SystemButtonViewFactory(
+        factory[CancelBtn] = SystemButtonViewFactory(
             background = PressableState(
                 normal = Background(
                     fill = Fill.Solid(color = transparent)
@@ -178,7 +179,7 @@ object AppTheme {
         )
 
         // Style Save Button
-        factory[EditServerScreen.Ids.SaveBtn] = SystemButtonViewFactory(
+        factory[SaveBtn] = SystemButtonViewFactory(
             background = PressableState(
                 normal = Background(
                     fill = Fill.Solid(color = colorAccent),
@@ -198,7 +199,8 @@ object AppTheme {
                     disabled = white
                 ),
                 size = 12
-            )
+            ),
+            margins = MarginValues(8f, 0f, 8f, 0f)
         )
     }
 }

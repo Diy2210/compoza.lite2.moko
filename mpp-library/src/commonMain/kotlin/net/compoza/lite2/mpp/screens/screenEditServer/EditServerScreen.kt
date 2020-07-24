@@ -16,6 +16,7 @@ import dev.icerock.moko.widgets.style.view.FontStyle
 import dev.icerock.moko.widgets.style.view.TextStyle
 import dev.icerock.moko.widgets.style.view.WidgetSize
 import net.compoza.lite2.library.MR
+import net.compoza.lite2.mpp.theme.AppTheme
 
 class EditServerScreen(
     private val theme: Theme,
@@ -26,7 +27,7 @@ class EditServerScreen(
 
     override val navigationBar
         get() = NavigationBar.Normal(
-            title = MR.strings.compoza_lite.desc(),
+            title = MR.strings.edit_server.desc(),
             styles = NavigationBar.Styles(
                 backgroundColor = Color(0x3155ABFF),
                 tintColor = Color(0xffffffffFF),
@@ -46,7 +47,6 @@ class EditServerScreen(
         viewModel.eventsDispatcher.listen(this@EditServerScreen, this@EditServerScreen)
 
         constraint(size = WidgetSize.AsParent) {
-
             val serverTitleInput = +input(
                 id = Ids.ServerTitle,
                 size = WidgetSize.WidthAsParentHeightWrapContent,
@@ -77,6 +77,7 @@ class EditServerScreen(
 
             val cancelButton = +button(
                 id = Ids.CancelBtn,
+                category = AppTheme.CancelBtn,
                 size = WidgetSize.WrapContent,
                 content = ButtonWidget.Content.Text(Value.data("Cancel".desc())),
                 onTap = viewModel::onCancelPressed
@@ -88,7 +89,7 @@ class EditServerScreen(
 //            }
 
             constraints {
-                serverTitleInput topToTop root offset 8
+                serverTitleInput topToTop root.safeArea offset 8
                 serverTitleInput leftRightToLeftRight root offset 16
 
                 serverUrlInput topToBottom serverTitleInput offset 8

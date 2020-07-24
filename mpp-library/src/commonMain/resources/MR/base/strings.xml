@@ -16,6 +16,7 @@
     <string name="server_token">Authorization Token</string>
     <string name="new_server">Add New Server</string>
     <string name="server_details">Server Details</string>
+    <string name="edit_server">Edit Server</string>
     <string name="save_btn">Save</string>
     <string name="cancel_btn">Cancel</string>
     <string name="error_empty_field">All fields are required</string>
