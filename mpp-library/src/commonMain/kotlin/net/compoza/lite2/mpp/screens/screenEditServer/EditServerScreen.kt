@@ -70,6 +70,7 @@ class EditServerScreen(
 
             val saveButton = +button(
                 id = Ids.SaveBtn,
+                category = AppTheme.SaveBtn,
                 size = WidgetSize.WrapContent,
                 content = ButtonWidget.Content.Text(Value.data("Save".desc())),
                 onTap = viewModel::onSavePressed

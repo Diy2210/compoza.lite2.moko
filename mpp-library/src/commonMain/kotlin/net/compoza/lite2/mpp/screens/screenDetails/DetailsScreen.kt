@@ -164,15 +164,21 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
                         )
                         val warningImage = +image(
                             size = WidgetSize.AspectByWidth(width = SizeSpec.Exact(30f), aspectRatio = 1.49f),
-                            image = const(Image.resource(MR.images.warning)),
-                            scaleType = ImageWidget.ScaleType.FIT
+                            scaleType = ImageWidget.ScaleType.FIT,
+                            image = viewModel._hostMutableLiveData.map {
+                                if (it.updates != 0) {
+                                    Image.resource(MR.images.warning)
+                                } else {
+                                    Image.resource(MR.images.trans)
+                                }
+                            }
                         )
 
                         constraints {
                             serverTitleName topToTop root offset 8
                             serverTitleName leftRightToLeftRight root offset 8
 
-                            hostname topToBottom  serverTitleName offset 8
+                            hostname topToBottom serverTitleName offset 8
                             hostname leftRightToLeftRight root offset 8
 
                             hostnameValue topToBottom hostname offset 0
@@ -395,5 +401,5 @@ class DetailsScreen @ImplicitReflectionSerializer constructor(
     }
 
     @Parcelize
-    data class Arg(val itemId: Long, val title: String, val url: String, val token: String): Parcelable
+    data class Arg(val itemId: Long, val title: String, val url: String, val token: String) : Parcelable
 }
