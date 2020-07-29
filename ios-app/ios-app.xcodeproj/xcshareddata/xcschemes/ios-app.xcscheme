@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "287627FE1F319065007FA12B"
                BuildableName = "Compoza Lite 2.app"
-               BlueprintName = "ios-app"
+               BlueprintName = "Compoza Lite 2"
                ReferencedContainer = "container:ios-app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,7 +46,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "287627FE1F319065007FA12B"
             BuildableName = "Compoza Lite 2.app"
-            BlueprintName = "ios-app"
+            BlueprintName = "Compoza Lite 2"
             ReferencedContainer = "container:ios-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,7 +63,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "287627FE1F319065007FA12B"
             BuildableName = "Compoza Lite 2.app"
-            BlueprintName = "ios-app"
+            BlueprintName = "Compoza Lite 2"
             ReferencedContainer = "container:ios-app.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

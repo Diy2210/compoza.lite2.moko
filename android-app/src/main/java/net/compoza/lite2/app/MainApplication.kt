@@ -1,5 +1,3 @@
-// MOVE:APP_ID
-
 package net.compoza.lite2.app
 
 import android.app.Application

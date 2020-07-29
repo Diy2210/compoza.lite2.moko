@@ -104,6 +104,9 @@ class ServerListScreen(
                 server = server,
                 clickListener = {
                     viewModel.onClickToItem(it.id, it.title, it.url, it.token)
+                },
+                contextMenuClickListener = {
+                    viewModel.onAddPressed()
                 }
             )
         }

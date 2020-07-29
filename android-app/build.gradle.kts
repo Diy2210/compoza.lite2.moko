@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.test.recordCrashedTestRun
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -28,7 +30,7 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
         getByName("debug") {

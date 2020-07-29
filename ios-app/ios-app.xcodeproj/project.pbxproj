@@ -140,9 +140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		287627FE1F319065007FA12B /* ios-app */ = {
+		287627FE1F319065007FA12B /* Compoza Lite 2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 287628111F319065007FA12B /* Build configuration list for PBXNativeTarget "ios-app" */;
+			buildConfigurationList = 287628111F319065007FA12B /* Build configuration list for PBXNativeTarget "Compoza Lite 2" */;
 			buildPhases = (
 				DDE4C06D580BF457BEDF8D0A /* [CP] Check Pods Manifest.lock */,
 				287627FB1F319065007FA12B /* Sources */,
@@ -154,7 +154,7 @@
 			);
 			dependencies = (
 			);
-			name = "ios-app";
+			name = "Compoza Lite 2";
 			productName = IosApp;
 			productReference = 287627FF1F319065007FA12B /* Compoza Lite 2.app */;
 			productType = "com.apple.product-type.application";
@@ -188,7 +188,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				287627FE1F319065007FA12B /* ios-app */,
+				287627FE1F319065007FA12B /* Compoza Lite 2 */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +352,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.compoza.lite2;
 				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "dev-debug";
@@ -362,6 +363,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.compoza.lite2.release;
 				PRODUCT_NAME = "Compoza Lite 2";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
@@ -407,6 +409,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.compoza.lite2;
 				PRODUCT_NAME = "Compoza Lite 2";
 			};
 			name = "prod-debug";
@@ -451,6 +454,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.compoza.lite2;
 				PRODUCT_NAME = "Compoza Lite 2";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
@@ -470,7 +474,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "dev-release";
 		};
-		287628111F319065007FA12B /* Build configuration list for PBXNativeTarget "ios-app" */ = {
+		287628111F319065007FA12B /* Build configuration list for PBXNativeTarget "Compoza Lite 2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				287628121F319065007FA12B /* dev-debug */,

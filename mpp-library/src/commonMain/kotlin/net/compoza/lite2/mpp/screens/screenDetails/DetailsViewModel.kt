@@ -46,8 +46,6 @@ class DetailsViewModel(
     val date: LiveData<StringDesc> = _hostMutableLiveData.map { it.date.desc() }
     val updates: LiveData<StringDesc> = _updates.map { it.desc() }
 
-    var s: String = ""
-
     // Disk Mutable Live Data
     private val _diskMutableLiveData: MutableLiveData<List<DiskModel>> =
         MutableLiveData(initialValue = List(1) {
@@ -112,7 +110,6 @@ class DetailsViewModel(
                                 updates = resObject.data.host.updates
                             )
                             _updates.value = resObject.data.host.updates.toString()
-                            s = resObject.data.host.updates.toString()
 
                             // Disk Value
                             _diskMutableLiveData.value = resObject.data.disk_fs.asList()

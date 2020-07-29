@@ -16,7 +16,8 @@ import net.compoza.lite2.mpp.theme.AppTheme
 
 class ServerUnitItem(
     private val theme: Theme, itemId: Long, server: Servers,
-    private val clickListener: (Servers) -> Unit
+    private val clickListener: (Servers) -> Unit,
+    private val contextMenuClickListener: (Servers) -> Unit
 ) : WidgetsTableUnitItem<Servers>(itemId, server) {
 
     override val reuseId: String = "serverCell"
@@ -52,7 +53,9 @@ class ServerUnitItem(
                         category = AppTheme.MenuBtn,
                         size = WidgetSize.Const(SizeSpec.Exact(50f), SizeSpec.Exact(50f)),
                         content = ButtonWidget.Content.Text(Value.data("⋮".desc())),
-                        onTap = { println("Pressed!") }
+                        onTap = {
+                            contextMenuClickListener(data.value)
+                        }
                     )
 
                     constraints {

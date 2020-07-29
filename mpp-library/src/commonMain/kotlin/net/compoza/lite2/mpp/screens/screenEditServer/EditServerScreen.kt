@@ -99,11 +99,11 @@ class EditServerScreen(
                 serverTokenInput topToBottom serverUrlInput offset 8
                 serverTokenInput leftRightToLeftRight root offset 16
 
-                cancelButton bottomToBottom root offset 16
-                cancelButton leftToLeft root offset 100
+                cancelButton bottomToBottom root.safeArea offset 16
+                cancelButton leftToLeft root.safeArea offset 100
 
-                saveButton bottomToBottom root offset 16
-                saveButton rightToRight root offset 100
+                saveButton bottomToBottom root.safeArea offset 16
+                saveButton rightToRight root.safeArea offset 100
             }
         }
     }

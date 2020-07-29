@@ -16,12 +16,12 @@ actual class ContextMenuViewFactory actual constructor(
         val childViewBundle =
             widget.child.buildView(viewFactoryContext) as ViewBundle<WS>
 
-        return childViewBundle.copy(
-            view = childViewBundle.view.apply {
-                // set here context menu showing on click to `this`
-                // https://developer.android.com/guide/topics/ui/menus#context-menu
-                // https://developer.android.com/guide/topics/ui/menus#PopupMenu
-            }
-        )
+        childViewBundle.view.apply {
+            // set here context menu showing on click to `this`
+            // https://developer.apple.com/design/human-interface-guidelines/ios/controls/context-menus/
+            // https://developer.apple.com/design/human-interface-guidelines/ios/views/action-sheets/
+        }
+
+        return childViewBundle
     }
 }

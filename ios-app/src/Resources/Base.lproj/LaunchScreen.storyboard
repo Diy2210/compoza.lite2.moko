@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,17 +19,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="moko-app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPr-40-z5d">
-                                <rect key="frame" x="129" y="317.5" width="117" height="32"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compoza_logo_light.png" translatesAutoresizingMaskIntoConstraints="NO" id="hcL-6P-cl0">
+                                <rect key="frame" x="67" y="269" width="241" height="129"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All rights reserved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ri2-u5-gla">
+                                <rect key="frame" x="125" y="629" width="125" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" image="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
-                            <constraint firstItem="SPr-40-z5d" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="StY-xE-mqI"/>
-                            <constraint firstItem="SPr-40-z5d" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gMJ-d9-gfI"/>
+                            <constraint firstItem="hcL-6P-cl0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3Xm-Ay-mLq"/>
+                            <constraint firstAttribute="trailing" secondItem="hcL-6P-cl0" secondAttribute="trailing" constant="67" id="CA0-Yy-rjX"/>
+                            <constraint firstItem="ri2-u5-gla" firstAttribute="top" secondItem="hcL-6P-cl0" secondAttribute="bottom" constant="231" id="UK6-bP-Ckd"/>
+                            <constraint firstItem="ri2-u5-gla" firstAttribute="centerX" secondItem="hcL-6P-cl0" secondAttribute="centerX" id="top-G8-5RF"/>
+                            <constraint firstItem="hcL-6P-cl0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="xBA-pa-94I"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +56,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compoza_logo_light.png" width="135" height="25"/>
+    </resources>
 </document>
