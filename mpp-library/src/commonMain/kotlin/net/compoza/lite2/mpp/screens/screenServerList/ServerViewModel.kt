@@ -12,7 +12,7 @@ class ServerViewModel(
     override val eventsDispatcher: EventsDispatcher<EventsListener>
 ) : ViewModel(), EventsDispatcherOwner<ServerViewModel.EventsListener> {
 
-    private val serverRepository: ServerRepository = ServerRepository()
+    val serverRepository: ServerRepository = ServerRepository()
     private var list: List<Servers> = emptyList()
     private val _servers: MutableLiveData<List<Servers>> = MutableLiveData(list)
 

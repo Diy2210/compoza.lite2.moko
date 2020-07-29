@@ -106,7 +106,7 @@ class ServerListScreen(
                     viewModel.onClickToItem(it.id, it.title, it.url, it.token)
                 },
                 contextMenuClickListener = {
-                    viewModel.onAddPressed()
+//                    viewModel.serverRepository.delete(it.id)
                 }
             )
         }
